@@ -1,984 +1,329 @@
 <!doctype html>
 <html>
-  <head>
+<head>
   <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Lei Pan's website</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <title>Lei Pan's website</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="stylesheets/github-light.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-29643011-3', 'auto');
-      ga('send', 'pageview');
-    </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-29643011-3', 'auto');
+    ga('send', 'pageview');
+  </script>
 
-    <!-- For all browsers -->
-    <link rel="stylesheet" href="assets/css/academicons.min.css"/>
-    <link rel="stylesheet" href="assets/css/academicons.css"/>
+  <!-- For all browsers -->
+  <link rel="stylesheet" href="assets/css/academicons.min.css"/>
+  <link rel="stylesheet" href="assets/css/academicons.css"/>
 
-    <style>
-      button.accordion {
-      font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      cursor: pointer;
-      padding: 0px;
+  <style>
+    /* 论文卡片基础样式 */
+    .paper-card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 22px;
+      transition: box-shadow .25s ease, transform .25s ease;
+    }
+    .paper-card:hover {
+      box-shadow: 0 4px 18px rgba(0,0,0,.06);
+      transform: translateY(-1px);
+    }
+    .paper-title {
+      margin: 0 0 6px 0;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+    .paper-title a {
+      color: #222;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s;
+    }
+    .paper-title a:hover {
+      border-bottom-color: #222;
+    }
+    .paper-meta {
+      margin: 0 0 12px 0;
+      font-size: 13.5px;
+      color: #555;
+      line-height: 1.6;
+    }
+    .paper-meta i {
+      color: #666;
+    }
+    .paper-buttons {
+      margin: 10px 0 14px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .paper-btn {
+      display: inline-block;
+      padding: 5px 12px;
+      font-size: 12.5px;
+      color: #444;
+      background: #f5f5f5;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
       border: none;
-      text-align: left;
-      outline: none;
-      font-size: 100%;
-      transition: 0.3s;
-      background-color: #f8f8f8;
-      }
-      button.accordion.active, button.accordion:hover {
-      background-color: #f8f8f8;
-      }
-      button.accordion:after {
-      content: " [+] ";
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .paper-btn:hover {
+      background: #eaeaea;
+      transform: translateY(-1px);
+    }
+    .paper-btn.accordion-btn::after {
+      content: " [+]";
       font-size: 90%;
-      color:#777;
-      float: left;
-      margin-left: 1px;
-      }
+      color: #888;
+    }
+    .paper-btn.accordion-btn.active::after {
+      content: " [–]";
+    }
 
-      button.accordion.active:after {
-      content: " [\2212] ";
-      }
-      div.panel {
-      padding: 0 20px;
-      margin-top: 5px;
+    /* 摘要面板 */
+    .abstract-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+      background: #f8f8f8;
+      border-radius: 8px;
+      padding: 0 16px;
+      color: #555;
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+    .abstract-panel.show {
+      max-height: 600px;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+    }
+
+    /* 图廊 */
+    .figure-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .figure-item {
+      margin: 0;
+      cursor: zoom-in;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #eee;
+      transition: border-color .2s;
+    }
+    .figure-item:hover {
+      border-color: #bbb;
+    }
+    .figure-item img {
+      width: 100%;
+      display: block;
+      background: #fafafa;
+    }
+    .figure-item figcaption {
+      font-size: 12px;
+      color: #666;
+      padding: 6px 8px 8px;
+      line-height: 1.4;
+      background: #fafafa;
+    }
+
+    /* 灯箱 */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.82);
       display: none;
-      background-color: white;
-      font-size: 100%;
-      }
-      div.panel.show {
-      display: block !important;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Lei Pan</h1>
-        <p>Assistant Professor<br>
-          <a href = "https://www.curtin.edu.au/about/learning-teaching/business-and-law/curtin-business-school/accounting-economics-finance/" target="_blank"> Economics Discipline </a><br>
-          <a href="https://www.curtin.edu.au/" target="_blank">Curtin University</a></p>
-        <!-- <p>Research Affiliate<br><a href="http://legacy.iza.org/en/webcontent/personnel/photos/index_html?key=24155">Institute for the Study of Labor (IZA)</a></p> -->
-    <h3><p class="view"><a href="https://leipanecon.github.io/">Home</a></p></h3>
-    <h3><p class="view"><a href="https://leipanecon.github.io/research/Lei Pan_CV.pdf" target="_explorer.exe">CV</a> </p></h3>
-        <h3><p class="view"><a href="https://leipanecon.github.io/research.html">Research</a></p></h3>
-        <h3><p class="view"><a href="https://leipanecon.github.io/teaching.html">Teaching</a></p></h3>
-        <h3><p class="view"><a href="https://leipanecon.github.io/miscellaneous.html">Miscellaneous</a></p></h3>
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      cursor: zoom-out;
+      padding: 30px;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 92%;
+      max-height: 92vh;
+      border-radius: 6px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.5);
+    }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #eee;
+      font-size: 13px;
+      background: rgba(0,0,0,.5);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
 
-    <p class="view"><b>Circle</b><br>
-        <a href="mailto:lei.pan@curtin.edu.au" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
-        <a href="https://scholar.google.com/citations?user=bkbOz1IAAAAJ&hl=en" target="_blank"><i class="ai ai-fw ai-google-scholar-square"></i> Scholar</a><br>
-        <a href="https://au.linkedin.com/in/lei-pan-75b394b6" class="author-social" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a><br>
-        <a href="https://twitter.com/LeiPanEcon" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
-        <a href="https://github.com/leipanecon" target="_blank"><i class="fa fa-fw fa-github-square"></i> GitHub</a><br>
-        <!--<a href="https://www.researchgate.net/profile/Zhiyuan_Chen21"><i class='fa fa-aw fa-researchgate'></i> ReGate</a><br> -->
+    /* 分区标题 */
+    section h2 {
+      margin-top: 30px;
+      margin-bottom: 18px;
+      font-size: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 6px;
+    }
+
+    /* 荣誉/报告列表 */
+    .paper-notes {
+      margin: 12px 0 0 0;
+      padding-left: 20px;
+      font-size: 12.5px;
+      color: #7a5c3e;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>Lei Pan</h1>
+      <p>Assistant Professor<br>
+        <a href="https://www.curtin.edu.au/about/learning-teaching/business-and-law/curtin-business-school/accounting-economics-finance/" target="_blank" rel="noopener"> Economics Discipline </a><br>
+        <a href="https://www.curtin.edu.au/" target="_blank" rel="noopener">Curtin University</a></p>
+
+      <h3><p class="view"><a href="https://leipanecon.github.io/">Home</a></p></h3>
+      <h3><p class="view"><a href="https://leipanecon.github.io/research/Lei Pan_CV.pdf" target="_blank" rel="noopener">CV</a> </p></h3>
+      <h3><p class="view"><a href="https://leipanecon.github.io/research.html">Research</a></p></h3>
+      <h3><p class="view"><a href="https://leipanecon.github.io/teaching.html">Teaching</a></p></h3>
+      <h3><p class="view"><a href="https://leipanecon.github.io/miscellaneous.html">Miscellaneous</a></p></h3>
+
+      <p class="view"><b>Circle</b><br>
+        <a href="mailto:lei.pan@curtin.edu.au" class="author-social" target="_blank" rel="noopener"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
+        <a href="https://scholar.google.com/citations?user=bkbOz1IAAAAJ&hl=en" target="_blank" rel="noopener"><i class="ai ai-fw ai-google-scholar-square"></i> Scholar</a><br>
+        <a href="https://au.linkedin.com/in/lei-pan-75b394b6" class="author-social" target="_blank" rel="noopener"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a><br>
+        <a href="https://twitter.com/LeiPanEcon" class="author-social" target="_blank" rel="noopener"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
+        <a href="https://github.com/leipanecon" target="_blank" rel="noopener"><i class="fa fa-fw fa-github-square"></i> GitHub</a><br>
+      </p>
 
       <p><b>Contact:</b><br> <a href="mailto:lei.pan@curtin.edu.au">lei.pan@curtin.edu.au</a><br>Economics Discipline<br>Curtin University<br>Perth, WA 6102, Australia</p>
-      </header>
-      <section>
+    </header>
 
-<h2><a id="published-papers-updated" class="anchor" href="#publications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Publications</h2>
+    <section>
 
-      <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/The Role of Remittances and FDI for the Current Account The Case of Cambodia_JMCB.pdf" target="_explorer.exe"> The role of remittances and FDI for the current account: the case of Cambodia</a>
-      <br> with Veasna Kheng and Xiaodong Fan, 2026, <i>Journal of Money, Credit and Banking</i>. 
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/current-account.pdf"  target="_explorer.exe"> SSRN</a></button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/current-account_appendix.pdf"  target="_explorer.exe"> Online Appendix</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper develops a small open economy real-business cycle model to examine the dynamics of Cambodian current account. 
-    Differing from previous studies, our model incorporates both net foreign direct investment (FDI) and remittances as additional sources of macroeconomic fluctuations. 
-    Our results reveal that these two factors, especially FDI, account for more than 50% of the variations in the current account. 
-    Additionally, the model mimics well the actual trajectory of the Cambodia's current account, suggesting that the nature of the discount factor - whether endogenous or exogenous - does not play a crucial role in explaining the external balances.
-     </div></p>
+      <h2><a id="published-papers-updated" class="anchor" href="#publications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Publications</h2>
 
-   <p style="margin:0;" }><p > Centrality crowding in asset prices: a limited-attention network model
-      <br> solo-authored, 2026, <i>Economics Letters</i>.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Centrality_Crowding.pdf"  target="_explorer.exe"> SSRN</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-     This paper develops a one-period behavioral model of price aggregation in social networks.
-     Investors combine noisy private signals with a centrality-weighted social feed. In the equal-precision benchmark, pricing error is summarized by M=&sigma;&sup2; H, where H is the Herfindahl concentration of equilibrium signal weights.
-     Greater centrality amplification increases H in non-uniform networks, reducing price informativeness.
-     A Gaussian projection implies larger one-period corrections when pricing error is greater.
-     With heterogeneous precision, centrality-based attention is efficient if and only if visibility weights align with precision weights.
-     The model links network concentration to fragile price discovery.
-    </div></p>
+      <!-- 论文 1：Remittances and FDI -->
+      <div class="paper-card">
+        <h3 class="paper-title">
+          <a href="https://leipanecon.github.io/research/The Role of Remittances and FDI for the Current Account The Case of Cambodia_JMCB.pdf" target="_blank" rel="noopener">
+            The role of remittances and FDI for the current account: the case of Cambodia
+          </a>
+        </h3>
+        <p class="paper-meta">
+          with Veasna Kheng and Xiaodong Fan, 2026, <i>Journal of Money, Credit and Banking</i>.
+        </p>
 
+        <div class="paper-buttons">
+          <button class="paper-btn accordion-btn">Abstract</button>
+          <a class="paper-btn" href="https://leipanecon.github.io/research/current-account.pdf" target="_blank" rel="noopener">SSRN</a>
+          <a class="paper-btn" href="https://leipanecon.github.io/research/current-account_appendix.pdf" target="_blank" rel="noopener">Online Appendix</a>
+        </div>
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/monetary policy spillover_MD.pdf" target="_explorer.exe"> US sneezing and Australian colds: economic spillovers in both conventional and unconventional monetary policy times</a>
-      <br> with Richard Adjei Dwumfour and Mark N. Harris, 2026, <i>Macroeconomic Dynamics</i>, 30. 
-      <br> <button class="accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/monetary policy spillover.pdf"  target="_explorer.exe"> SSRN</a></button> </button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/spillover appendix.pdf"  target="_explorer.exe"> Online Appendix</a></button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/spillover slides.pdf"  target="_explorer.exe"> Slides</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    We provide new evidence on U.S. monetary policy spillovers to Australia using an integrated time–frequency connectedness framework.
-    Spillovers primarily transmit through the interestrate (policy-rate) channel, followed by asset prices (with the consumer discretionary sector as the main conduit) and the exchange rate. 
-    Spillovers are highly time-varying, peaking at the onset of COVID-19 and again during the global financial crisis and the European sovereign debt crisis. 
-    Linking these spillovers to the real economy, we show that an identified U.S. tightening is followed by a tightening in Australia’s monetary policy stance and generates contractionary and disinflationary effects on Australian output and inflation, consistent with transmission via imported financial conditions and the domestic policy reaction.
-    Finally, we show that ignoring spillovers yields a price puzzle under recursive VAR identification, while using spillover-based surprises as external instruments removes the puzzle and recovers theory-consistent responses.
-    </div></p>
-    <ul style="list-style-type:disc">
-<li> <font size="-1"> <font color="brown"> SSRN's Top Ten download list (Oct-2023) </font> </font> </li>
-<li> <font size="-1"> <font color="brown"> Best Paper Award - Highly commended, Curtin University, 2022 </font> </font> </li>      
-<li> <font size="-1"> Presented at: The Bank of France (Paris); International Conference on Empirical Economics (Pennsylvania State University at Altoona, USA); Xi'an Jiaotong-Liverpool University research seminar series; Doctoral Students and Early Career Researchers (DSECR) Colloquium (Curtin University, Perth); Curtin University research seminar series; University of Ghana (Finance Research Lab) research seminar series </font> </li>  
-</ul>
+        <div class="abstract-panel">
+          This paper develops a small open economy real-business cycle model to examine the dynamics of Cambodian current account.
+          Differing from previous studies, our model incorporates both net foreign direct investment (FDI) and remittances as additional sources of macroeconomic fluctuations.
+          Our results reveal that these two factors, especially FDI, account for more than 50% of the variations in the current account.
+          Additionally, the model mimics well the actual trajectory of the Cambodia's current account, suggesting that the nature of the discount factor – whether endogenous or exogenous – does not play a crucial role in explaining the external balances.
+        </div>
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/exchange rate flexibility_JIMF.pdf" target="_explorer.exe">Exchange rate flexibility and firms' employment</a>
-      <br> with Silvio Contessi, Qingyuan Du, Deting Gao and Shenxiang Xie, 2026, <i>Journal of International Money and Finance</i>, 161, 103487.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/exchange rate flexibility.pdf"  target="_explorer.exe"> SSRN</a></button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/ex flexibility and firm employment_appendix.pdf"  target="_explorer.exe"> Online Appendix</a></button> |
-    </button><button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/ex flexibility slides.pdf"  target="_explorer.exe"> Slides</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper examines how exchange rate flexibility impacts the allocation of labor across firms. 
-    Specifically, we investigate how labor-intensity or capital-intensity in production affects employment decisions under various exchange rate flexibilities. 
-    In a simple theoretical model, we show that firms utilizing more labor-intensive production technologies are more likely to expand their employment when the exchange rate becomes less flexible. 
-    In contrast, firms employing more capital-intensive technology tend to hire more workers when the exchange rate is more flexible. 
-    We test our theory using extensive firm-level data from China and provide robust evidence supporting the theoretical predictions.
-     </div></p>
+        <div class="figure-gallery">
+          <figure class="figure-item" data-caption="Figure 1. Trends of FDI and remittance in developing economies, 1990–2022.">
+            <img src="assets/fig1_remittance_fdi_trend.png" alt="FDI and remittance trends">
+            <figcaption>Figure 1. FDI &amp; remittance trends in developing economies.</figcaption>
+          </figure>
+          <figure class="figure-item" data-caption="Figure 3. Cambodian balance of payments and NIIP, 1993–2022.">
+            <img src="assets/fig3_bop_niip.png" alt="Balance of payments and NIIP">
+            <figcaption>Figure 3. Balance of payments &amp; NIIP (% of GDP).</figcaption>
+          </figure>
+          <figure class="figure-item" data-caption="Figure 6. Impulse responses to a 1% FDI-to-output shock.">
+            <img src="assets/fig6_fdi_irf.png" alt="FDI impulse responses">
+            <figcaption>Figure 6. Impulse responses to FDI shock.</figcaption>
+          </figure>
+          <figure class="figure-item" data-caption="Figure 7. Model fit vs. actual data: current account and trade balance.">
+            <img src="assets/fig7_model_fit.png" alt="Model fit comparison">
+            <figcaption>Figure 7. Model fit vs. actual data.</figcaption>
+          </figure>
+        </div>
+      </div>
 
-     <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/energy poverty-EE.pdf" target="_explorer.exe">Energy poverty and public health: global evidence</a>
-      <br> with Ashenafi Biru and Sandra Lettu, 2021, <i>Energy Economics</i>, 101, 105423. 
-      <br><button class="accordion">
-      Abstract
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-      The impacts of energy poverty on a range of development goals have been widely examined in the literature; 
-      however, how energy poverty affects public health has yet to be studied. Using annual data for a broad panel of 175 countries over the period 2000 to 2018, this paper investigates the effect of energy poverty on public health. 
-      To identify the causal effect of energy poverty on public health and tackle the issue of endogeneity, 
-      we rely on Oster's (2019) bound analysis and the system generalized method of moments (GMM) estimation. 
-      Our results show that energy poverty has a detrimental effect on public health. We also find that living standards can serve as a channel through which energy poverty influences health, and that countries with higher standards of living weaken the negative effect of energy poverty on public health. 
-      Our results are robust across various specifications and measures of health indicators. 
-      Our findings have important implications for policies in public health and transitions to renewable energy.
-     </div></p>
+      <!-- 后续论文继续在此处追加 -->
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/CO2 convergence-EE.pdf" target="_explorer.exe">Per capita carbon emissions convergence in developing Asia: a century of evidence from covariate unit root test with endogenous structural breaks</a>
-      <br> with Takashi Matsuki, 2021, <i>Energy Economics</i>, 99, 105326. 
-      <br><button class="accordion">
-      Abstract
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-      Many studies address the convergence in per capita CO2 emissions. However, whether countries with lower initial per capita emission levels can “catch up” with more emission-intensive countries is unknown. 
-      Utilising historical CO2 emission data from 1907, this study investigates whether the per capita CO2 emissions of seven developing Asian economies; namely, China, Indonesia, India, Myanmar, the Philippines, Taiwan, and Thailand, catch up with or converge toward that of the US in the long run. 
-      We simultaneously examine the existence of per capita CO2 emissions convergence and the statistical contribution of the emissions drivers using the most recently developed covariate augmented Dickey-Fuller test, which allows for endogenous structural breaks. 
-      The main results show firm evidence of catching-up or relative/absolute convergence between the Asian economies and the US in terms of per capita CO2 emissions. 
-      Emissions drivers such as population and real GDP per capita growth may encourage the Asian economies to achieve and to maintain the long-run convergence toward the reference country.
-     </div></p>
+      <h2><a id="working-papers-updated" class="anchor" href="#workingpapers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Working Papers</h2>
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/IREF Fintech and tourism.pdf" target="_explorer.exe">From beaches to Fintech: exploring the connectedness of tourism, Fintech, and cryptocurrency</a>
-      <br> with Richard Adjei Dwumfour and Dennis Nsafoah, 2026, <i>International Review of Economics and Finance</i>, 106, 104845.
-      <br> <button class="accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Fintech and tourism.pdf"  target="_explorer.exe"> Working Paper</a></button> </button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper analyses spillover dynamics, hedging performance, and portfolio optimisation across tourism, cryptocurrency, and Fintech markets, while accounting for traditional financial markets within a time-varying connectedness framework.
-    We document strong time-varying spillovers, peaking during COVID-19, with traditional finance acting as the main shock transmitter and tourism as the dominant recipient.
-    Cryptocurrencies provide the cheapest but least effective hedge, whereas tourism assets hedge crypto exposure more efficiently, albeit with higher downside risk.
-    Dynamic portfolio weight strategies outperform hedge ratio strategies, and the minimum connectedness portfolio (MCoP) achieves the highest risk-adjusted returns. 
-    Diebold–Mariano tests show no significant differences in return predictability, but Jobson–Korkie results confirm that MCoP and minimum correlation portfolio (MCP) significantly outperform minimum variance portfolio (MVP) in Sharpe ratios.
-    Downside risk metrics indicate that MCoP delivers superior returns at the expense of deeper drawdowns.
-    These findings underscore the value of connectedness-based strategies for portfolio design in increasingly integrated markets.
-     </div></p>
+      <p style="color:#888; font-size:14px;">Working papers will be added progressively.</p>
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/air pollution and tourism-JTR.pdf" target="_explorer.exe">Air pollution and tourism: evidence from G20 countries</a>
-      <br> with Sefa Awaworyi Churchill and Sudharshan Reddy Paramati, 2022, <i>Journal of Travel Research</i>, 61(2), 223-234. 
-      <br><button class="accordion">
-      Abstract
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    Theoretically, it is well argued that environmental factors affect the growth of the tourism industry; however, from an empirical perspective, some gaps still exist in the literature. 
-    We empirically examine the effect of carbon dioxide (CO2) and particulate matter (PM2.5) emissions on tourist arrivals in a panel of G20 countries. 
-    Using annual data from 1995 to 2014 and a series of panel data models, our results suggest that the growth of both CO2 and PM2.5 emissions adversely affects international tourist arrivals. 
-    The results also show that the observed effect of CO2 emissions is more pronounced in developed economies, while the effect of PM2.5 emissions is stronger for developing economies. 
-    Given these findings, our study provides and discusses a number of policy and practical implications.
-     </div></p>
+    </section>
+  </div>
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Pan2022_Article_ForeignPortfolioInvestmentPatt.pdf" target="_explorer.exe">Foreign portfolio investment patterns: evidence from a gravity model</a>
-      <br> with Rong Hu and Qingyuan Du, 2022, <i>Empirical Economics</i>, 63, 391-415. 
-      <br> <button class="accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/FPI-EE.pdf"  target="_explorer.exe"> Working Paper</a></button> </button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/FPI-appendix.pdf"  target="_explorer.exe"> Online Appendix</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    Cross-country capital flows have been widely studied in the literature; however, why some countries may form more similar foreign investment portfolios than others has not been investigated. 
-    Using data for a broad panel of countries during the period 2002–2015, we adopt gravity equations to estimate cross-country foreign portfolio investment patterns. 
-    The main empirical results reveal that countries are more likely to form similar foreign portfolio investment patterns if:(i) countries are geographically closer; (ii) countries share the same official language; and (iii) countries adopt fixed exchange rate regimes.
-     </div></p>
+  <!-- 灯箱容器 -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Enlarged figure">
+    <div class="lightbox-caption"></div>
+  </div>
 
-<p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/EE-FDI and inclusive finance.pdf" target="_explorer.exe">Foreign direct investment and inclusive finance: do financial markets and quality of institutions matter?</a>
-      <br> with Joshua Yindenaba Abor, Richard Adjei Dwumfour and Elikplimi Kolma Agbloyor, 2024, <i>Empirical Economics</i>, 67, 773-815. 
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/FDI and inclusive finance.pdf"  target="_explorer.exe"> Working Paper</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    We examine the impact of foreign direct investment (FDI) on financial inclusion. 
-    To identify the causal effect of FDI on financial inclusion, we use plausibly exogenous source of variations in bilateral investment treaties (BITs) as a novel instrumental variable (IV) for net FDI inflows. 
-    Using annual data for a broad panel of 90 countries over the period 2004 to 2017, our results show that FDI improves financial inclusion both for "access to finance" and "use of financial services". 
-    This impact is more pronounced for relatively poor countries and developing countries compared to rich and developed countries. 
-    We also find that higher financial market development and quality institutions improve financial inclusion directly. 
-    Moreover, financial market development and institutional quality can serve as potential channels and moderating variables through which FDI affects financial inclusion. 
-    Our results are robust to various estimations and sample splitting, and have important implications for policy on financial inclusion.
-     </div></p>
+  <script src="javascripts/scale.fix.js"></script>
+  <script>
+    // 摘要折叠展开
+    const accButtons = document.querySelectorAll('.accordion-btn');
+    accButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        const panel = btn.closest('.paper-buttons').nextElementSibling;
+        if (panel && panel.classList.contains('abstract-panel')) {
+          panel.classList.toggle('show');
+        }
+      });
+    });
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/stock market and econ growth-EM.pdf" target="_explorer.exe">Stock market development and economic growth: empirical evidence from China</a>
-      <br> with Vinod Mishra, 2018, <i>Economic Modelling</i>, 68, 661-673. 
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/1616stockmarketpanmishra.pdf"  target="_explorer.exe"> Working Paper</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    The interplay between the stock market and the real economy is crucial in the various channels through which financial markets drive economic growth. 
-    In the current study, we investigate the effects of this relationship on the Chinese economy, which is the fastest growing and largest emerging economy in the world. 
-    The methodology incudes unit root testing in the presence of structural breaks and the Autoregressive distributed lag (ARDL) model. 
-    The results of the analysis showed that the global financial crisis from 2007 to 2012 had a significant impact on both the real sector and the financial sector in China. 
-    Our findings also suggest that the Shanghai A share market has had a long-run negative association with the real sector of the economy; however, the magnitude of impact has been miniscule. 
-    These findings indicate that this negative relationship is proof of the so-called existence of irrational prosperity in the stock market and the economic bubble in China's financial sector. 
-    The findings did not show any evidence of a relationship between the stock market and the real economy in the short run. 
-    Toda Yamamoto causality test showed that economic growth has spurred the development of the Shenzhen B share market. 
-    Furthermore, the equally weighted index showed that stock market liquidity and stock market sectoral indices were alternative measures of stock market activities. 
-    The results were robust to the alternative measures of stock market activities. 
-    The results also indicate that state-owned monopolies play an important role in China's economic performance because they stimulate the economy in the short run.
-     </div></p>
-    <ul style="list-style-type:disc">
-<li> <font size="-1"> <font color="brown"> one of the 72 most cited articles at Economic Modelling</font> </font> </li>   
-<li> <font size="-1"> <font color="brown"> selected for celebrating Economic Modelling as a top 20 economics journal in 2023</font> </font> </li>    
-</ul>
+    // 图片灯箱
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+    const figures = document.querySelectorAll('.figure-item');
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/IMF bailout-FRL.pdf" target="_explorer.exe">We are back again! What can artificial intelligence and machine learning models tell us about why countries knock at the door of the IMF?</a>
-      <br> with Elikplimi Komla Agbloyor, Richard Adjei Dwumfour and Agyapomaa Gyeke-Dako, 2023, <i>Finance Research Letters</i>, 57, 104244. 
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/IMF bailout.pdf"  target="_explorer.exe"> Working Paper</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper examines the factors that predict an IMF bailout. 
-    In doing so, we use a large dataset from 1993 to 2021 with 6550 observation and 138 features and adopt recent advances in machine learning and artificial intelligence models such as tree-based, boosting and artificial neural network techniques. 
-    We find that apart from traditional indicators such as debt and macroeconomic factors, agricultural, energy, health and social factors are strong predictors of an IMF bailout. 
-    These factors have hitherto not received much attention in the literature.
-     </div></p>
+    figures.forEach(fig => {
+      fig.addEventListener('click', () => {
+        const img = fig.querySelector('img');
+        const caption = fig.dataset.caption || fig.querySelector('figcaption')?.textContent || '';
+        lightboxImg.src = img.src;
+        lightboxCaption.textContent = caption;
+        lightbox.classList.add('active');
+      });
+    });
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Greening your way to profits.pdf" target="_explorer.exe">Greening your way to profits: green strategies and green revenues</a>
-      <br> with Zijie Huang and June Cao, 2024, <i>Finance Research Letters</i>, 61, 105029.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/green revenues.pdf"  target="_explorer.exe"> Working Paper</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    We examine hot-debated but underexplored questions of whether and how green strategies affect corporate green revenues. 
-    Using a generalized Difference-in-Differences (DiD) framework, we find that green strategies significantly enhance corporate green revenues in the presence of China’s Emission Trading Scheme (ETS) pilot. 
-    This is consistent with the Porter Hypothesis. 
-    Our mechanism analyses document that green strategies increase green revenues by improving green quality and catalyzing environmentally friendly transformation. 
-    This study has important implications for policymakers and practitioners, offering new insights into the intended consequences and real outcomes of environmental regulations.
-     </div></p>
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
 
-   <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/terror and tourism_TE.pdf" target="_explorer.exe">When fear disrupts growth: modeling the economic toll of terror on tourism</a>
-      <br> with Richard Adjei Dwumfour, 2026, <i>Tourism Economics</i>, 32(6), 1364-1378.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/terror and tourism.pdf"  target="_explorer.exe"> Working Paper</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper develops a dynamic Ramsey-Cass-Koopmans (RCK) model to analyse the macroeconomic impact of terrorism-induced fear on tourism and growth. 
-      We introduce a behavioural mechanism where households’ utility from tourism consumption is distorted by a time-varying security perception index, &#920;(t), which declines following terrorist attacks. 
-      This fear channel reduces savings and investment, slowing capital accumulation and long-run growth. 
-      Our model also incorporates government intervention through public safety investment aimed at restoring confidence. 
-      We evaluate three scenarios: i) one-time shock; ii) persistent fear; and iii) policy-driven recovery, and simulate their effects on capital, consumption, and welfare. 
-      Our results show that persistent fear leads to the greatest welfare loss, while rapid policy-driven recovery can paradoxically destabilize investment if not properly calibrated. 
-      Our paper highlights the trade-offs in post-terrorism policy design and offers new theoretical insights into how behavioural responses to insecurity can shape macroeconomic trajectories in tourism-dependent economies. 
-     </div></p>
-
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/importing-to-feed-international-tourists-growth-implications-for-islands-across-the-globe.pdf" target="_explorer.exe">Importing to feed international tourists: growth implications for islands across the globe</a>
-      <br> with Francis Baidoo, Vera Ogeh Lassey Fiador and Elikplimi Komla Agbloyor, 2024, <i>Tourism Economics</i>, 30(7), 1651-1679.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/import to feed international tourists.pdf"  target="_explorer.exe"> Working Paper</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    Employing fixed and random effects estimation techniques on five-year-non-overlapping-averaged data, covering 1980 through 2019, this study, firstly, investigates, empirically, the potential bi-causal relationship between international tourist arrivals and the importation of consumables/merchandises, in the case of 45 sovereign islands. 
-    The economic growth implication of a concurrent pursuit of tourism expansion and merchandise imports is also examined. 
-    The study further investigates how over-reliance on imported merchandise to feed international tourists, and over-specialisation in the tourism sector, affect the tourism-led-growth hypothesis in the case of these islands. 
-    Results from the study show that an increase in arrivals of international tourists significantly leads to an increase in the importation of consumable merchandises, and vice versa. 
-    In addition, an importation of merchandises to sustain international tourist arrivals is significantly observed not to be detrimental to the economic growth of these islands. 
-    However, the results further reveal that over-reliance on imported merchandises for the sake of international tourists, as well as over-specialisation in tourism with the help of imported merchandises, both exert significant detrimental net effects on the economic growth of islands across the globe. 
-    The findings hold policy guidelines for the pursuit of tourism-led and merchandise-import-led growth strategies among global islands.
-     </div></p>
-
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/convergence south korea.pdf" target="_explorer.exe">Exploring the tourism markets' convergence hypothesis in South Korea</a>
-      <br> with Takashi Matsuki, 2023, <i>Tourism Economics</i>, 29(7), 1960-1971.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/tourism convergence.pdf"  target="_explorer.exe"> Working Paper</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper examines the tourism markets’ convergence hypothesis across South Korea’s major source markets. 
-    In doing so, we use monthly data of visitor arrivals over the period July 1995 to June 2019 and adopt a novel quantile unit root tests that allows for multiple structural breaks via a Fourier expansion series. 
-    Our results indicate that seven countries out of ten show firm convergence tendencies at most of the quantiles, and two countries have weak but significant converging trends at some quantiles.
-     </div></p>
-
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/electricity-SJPE.pdf" target="_explorer.exe">Lightening the path to financial development: the power of electricity</a>
-      <br> with Richard Adjei Dwumfour and Veasna Kheng, 2024, <i>Scottish Journal of Political Economy</i>, 71(3), 276-294.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/electricity and FD.pdf"  target="_explorer.exe"> Working Paper</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper examines the impact of access to electricity on financial development. 
-    In doing so, we use average slope of terrain as an instrument for electrification rate. 
-    Using panel data for 44 countries in Sub-Saharan Africa over the period 2000 to 2018, the results suggest that more people having access to electricity can promote financial development. 
-    In addition, mobile phone and commercial bank branches diffusion serve as potential channels through which access to electricity affects financial development. 
-    Our results are robust to sample-splitting and different estimation techniques. 
-    The results have important implications for policies in overcoming barriers to electricity access.
-     </div></p>
-
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/house price_SJPE.pdf" target="_explorer.exe">House price convergence in the very long run</a>
-      <br> with Takashi Matsuki, 2024, <i>Scottish Journal of Political Economy</i>, 71(5), 720-730.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/house price convergence.pdf"  target="_explorer.exe"> Working Paper</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    We examine the house prices convergence across twelve OECD countries over the period 1905-2016. 
-    Using novel quantile unit root tests which allow for smooth breaks via a Fourier expansion series, we find that nine countries show the presence of relative house price convergence at all the quantiles. 
-    Focusing on several specific quantiles, eleven countries have significant convergence tendencies. 
-    Moreover, there are four definite patterns related to shocks on the relative house prices across quantiles.
-     </div></p>
-
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/The decline of labour share in OECD and non-OECD since the 1980s.pdf" target="_explorer.exe">The declince of labour share in OECD and non-OECD since the 1980s</a>
-      <br> with Veasna Kheng and Justin Mckinley, 2024, <i>Applied Economics</i>, 56(16), 1899-1915.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/labour share.pdf"  target="_explorer.exe"> Working Paper</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper examines the causes of falling labour share in OECD and non-OECD countries since the 1980s by using Karabarbounis and Neiman’s (2014) labour share model. 
-    While both groups of countries experience an elasticity of substitution between capital and labour, the factors driving down labour share are different. 
-    In OECD countries, export and volatility are key drivers, but in non-OECD countries, the significant factors are financial openness and the capital’s relative price. 
-    Overall, technological advancement – as reflected by declining capital’s relative price - coupled with globalisation and low economic risk are key factors in explaining a long-term decline of labour share world- wide.
-     </div></p>
-
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/portfolio diversification-AE.pdf" target="_explorer.exe">International portfolio diversification possibilities: can BRICS become a destination for US investors?</a>
-      <br> with Vinod Mishra, 2022, <i>Applied Economics</i>, 54(20), 2302-2319.
-      <br><button class="accordion">
-      Abstract
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper investigates the portfolio diversification possibilities between BRICS and the US stock market. 
-    Using bootstrap full-sample Granger causality and bootstrap rolling-window sub-sample Granger causality tests, we did not find evidence supporting the causal linkage between BRICS and the US stock markets; time-varying causality was observed for particular sub-samples. 
-    Our findings imply that BRICS stock markets can provide diversification possibilities for US investors most of the time; however, such opportunities become extremely limited during crisis periods. 
-    We also find that stock markets are more likely to be causally linked if they have similar business conditions, excess returns and size premiums.
-     </div></p>
-
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/covid and tourism-ta.pdf" target="_explorer.exe">The impact of COVID-19 on the stock market performance of the tourism and leisure industry</a>
-      <br> with Abebe Hailemariam and Kris Ivanovski, 2023, <i>Tourism Analysis</i>, 28(2), 329-335.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/vaccine and tourism.pdf"  target="_explorer.exe"> Working Paper</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    The COVID-19 pandemic has inflicted significant damage to the world economy, and the tourism and leisure industry is no exception. 
-    This paper investigates the effect of COVID-19 pandemic, vaccine rollouts and government policy responses on Australia's tourism and leisure industry. 
-    To do so, we use data on stock market performances of the travel and leisure industry as key indicators. 
-    Our findings show that while vaccine rollouts help for a partial recovery of the travel and leisure industry, full and speedy recovery remains a challenge under stringent policies related to COVID-19 safety suggesting the enormous magnitude of the task ahead in terms of policy responses.
-     </div></p>
-
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Stochastic convergence in per capita energy consumption and its catch up rate evidence from 26 African countries.pdf" target="_explorer.exe">Stochastic convergence in per capita energy consumption and its catch-up rate: evidence from 26 African countries</a>
-      <br> with Svetlana Maslyuk, 2019, <i>Applied Economics</i>, 51(24), 2566-2590, Lead article.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/1617stochasticpanescobedo.pdf"  target="_explorer.exe"> Working Paper</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    Using annual data from 1971 to 2014, we examine stochastic conditional convergence in per capita energy consumption for 26 low income, lower middle-income and upper-middle-income African countries. 
-    To do so, we use panel unit root tests that allow for cross-sectional dependence and structural breaks as well as the recently developed univariate Residual Augmented Least Squares-Lagrange multiplier (RALS-LM) unit root test with structural breaks. 
-    Although for most countries our evidence suggests stochastic conditional convergence, we find divergence for four countries including DR Congo, Senegal, Egypt and Botswana. 
-    Consistent with the neoclassical growth models we also examine the catch-up rate between energy consumption levels of African economies and that one of China and investigate its convergence properties. 
-    As African economies continue to grow, regional energy consumption disparity narrows, African energy consumption levels will catch up to the ones in China.
-     </div></p>
-
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Financial development and tourism a century of evidence from Germany.pdf" target="_explorer.exe">Financial development and tourism: a century of evidence from Germany</a>
-      <br> with Sefa Awaworyi Churchill, Yifei Cai and Michael Odei Erdiaw-Kwasie, 2023, <i>Applied Economics</i>, 55(3), 305-318.
-      <br><button class="accordion">
-      Abstract
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This article presents findings from the first study to examine the direct effects of financial development on tourism. 
-    Using a unique historical dataset for Germany covering 1870 to 2016, we apply an autoregressive distributional lag (ARDL) model with structural breaks. 
-    To identify the lead–lag relationship between financial development and tourism, we adopt the wavelet coherence method and the most recently developed Shi et al. (2020) time-varying causality test. 
-    The ARDL results suggest that, on average, financial development is associated with an increase in tourist arrivals. 
-    The wavelet coherence results unveil a significant positive correlation between financial development and tourism in both short- and medium-terms, and financial development leads to tourism growth in Germany. 
-    Moreover, the causality results indicate that the positive effect of financial development on tourism is most evident from 2009 onward. 
-    Our study provides important implications for policymakers.
-     </div></p>  
-
-    <hr>
-        
-    <h2><a id="recent-papers-updated" class="anchor" href="#workingpapers" aria-hidden="true"><span class="octicon octicon-link"></span>
-    </a>Working Papers</h2>
-    <p style="margin:0;" }><p > The dollarisation paradox in Cambodia: network externalities matter
-      <br> with Veasna Kheng, Richard Adjei Dwumfour and Justin Mckinley, <i>Journal of Money, Credit and Banking</i>, revised and resubmitted.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/dollarisation-ssrn.pdf"  target="_explorer.exe"> SSRN</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    The increase in dollarisation in Cambodia has run counter to the general belief that macroeconomic and political stability help reduce it.
-    We provide the first explanation for this counterfactual phenomenon. 
-    In doing so, this paper develops a cash-in-advance model by including a dollar pricing index to amplify the network effects of using a foreign currency (denoted dollar). 
-    The dollar pricing index, defined as the share of active prices quoted in dollars and derived from firms’ quotation choices, reduces the dollar’s transaction costs, thereby increasing its use in the economy.
-    This increased use of the dollar further improves the experience of using it, thereby leading to higher dollar usage in price quotations.
-    The positive interaction between using the dollar as a unit of account and as a means of payment continues to drive dollarisation higher, even though the economy has achieved low inflation and political stability.
-    A disciplined minimum-distance benchmark against a nested Uribe specification further shows that the quotation margin is needed to rationalise Cambodia’s divergence from the declining dollarisation paths observed in Laos P.D.R., Vietnam, and Peru.
-     </div></p>
-        
-
-   <!--       
-    <p style="margin:0;" }><p > Who pays the inflation tax? cash constraints, inequality, and the optimal policy mix, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Who Pays the Inflation Tax.pdf"  target="_explorer.exe"> PDF</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper studies optimal monetary–fiscal design in a two-period overlapping-generations economy with segmented asset-market access.
-    Ricardian households save in capital but must finance a fraction of retirement consumption with money (cash-inadvance), while Keynesian households are financially excluded and save only in money. 
-    The government chooses money growth and a capital income tax on Ricardians, rebating both seigniorage and tax revenue as lump-sum transfers to Keynesian retirees.
-    Closed-form steady-state results show that higher money growth lowers capital accumulation and, under mild conditions, increases old-age consumption inequality.
-    In contrast, a higher capital tax can raise the steady-state capital stock and compress inequality through a transfer-and-liquidity channel. 
-    A Ramsey planner balances capital deepening against redistribution and selects an interior inflation rate with a strictly positive capital tax.
-    Calibration to Australia illustrates the trade-offs quantitatively.
-     </div></p>
-
-   <p style="margin:0;" }><p > Public capital, markups, and labor-share dynamics, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Public Capital, Markups, and Labor-Share Dynamics.pdf"  target="_explorer.exe"> PDF</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper studies how debt-financed public investment affects labor’s share of income when public capital is sector-biased.
-    We build a tractable two-sector general-equilibrium model with monopolistic competition and constant markups.
-    Government issues oneperiod debt to finance public capital, which augments productivity with higher exposure in the capital-intensive sector. 
-    Public capital affects the aggregate labor share through: i) a within-sector factor-price channel operating via the rental–wage ratio and ii) a betweensector market-share channel operating via relative prices and expenditure shares.
-    We derive a closed-form decomposition and sufficient conditions under which both channels reduce the labor share.
-    Calibrated to U.S. annual data (1970–2019), the model’s impulse responses show that a debt-financed investment shock raises public capital and real wages, shifts demand toward the capital-intensive sector, and generates a temporary decline in the aggregate labor share.
-    </div></p>
-
-    <p style="margin:0;" }><p > A gravity-based theory of bilateral portfolio choice, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/gravity theory.pdf"  target="_explorer.exe"> PDF</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper develops a unified theory of bilateral portfolio similarity grounded in gravitytype information frictions and exchange-rate stabilization.
-    We construct a Bayesian portfoliochoice framework in which investors from countries i and j allocate wealth to a common set of risky assets under heterogeneous signal structures and bilateral currency regimes.
-    The model shows that portfolio dissimilarity admits a closed-form gravity representation, increasing in bilateral distance and decreasing in peg strength.  
-    We extend the analysis to a multivariate asset environment, a dynamic Bayesian learning structure with autoregressive signals, and an endogenous exchange-rate regime in which governments optimally choose &#923;<sub>ij</sub> to trade off monetary autonomy against risk-sharing gains.
-    The theory rationalizes persistent cross-country heterogeneity in foreign-asset shares and provides welfare-based predictions for bilateral monetary integration.
-    Policy implications follow for regional currency arrangements, information infrastructure, and financial-integration strategies.  
-     </div></p>
-
-    <p style="margin:0;" }><p > Growth under institutional risk: tax evasion, public service volatility, and capital allocation, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Growth under Institutional Risk.pdf"  target="_explorer.exe"> PDF</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper develops a continuous-time growth model in which weak public institutions shape households’ choices over tax evasion, sectoral allocation, and capital accumulation.
-    Two forms of institutional risk matter: volatility in tax enforcement and uncertainty in the quality of education services.
-    Because preferences are logarithmic and technologies are linear, the model admits closed-form solutions for optimal evasion, the allocation of capital across sectors, and the resulting growth rate.
-    The analysis shows how enforcement risk and instability in public service delivery depress investment in the high-productivity sector and lower long-run growth.
-    An extension incorporates productivity spillovers from education quality, which further amplifies the adverse effects of institutional volatility.
-    The framework highlights how the reliability of public inputs—not only their level—plays a central role in shaping incentives for private investment.
-     </div></p>
-
-    <p style="margin:0;" }><p > Institutions, exchange rate flexibility and firm employment
-      <br> with Qingyuan Du, Rong Hu, Yanhui Huang and Meihua Wang, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/institutions ex and employment.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    In this paper, we investigate the effect of exchange rate regime choices on firm employment under varying degrees of institutional quality. 
-    Our theoretical analysis shows that firms tend to hire more workers under a flexible exchange rate regime when institutional quality is relatively low. 
-    Conversely, as institutional quality improves, firms may increase employment when the exchange rate is more stable. 
-    To test our theoretical predictions, we construct an industry-level exchange rate flexibility index and examine how its flexibility influences Chinese firms' employment across different levels of institutional quality. 
-    Our empirical results strongly support the theoretical predictions.
-    </div></p>
-
-     <p style="margin:0;" }><p > From policy rates to prices: financing costs and the price puzzle in Australia, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/price puzzle_theory.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper revisits the price puzzle in Australia: inflation often rises in the quarters immediately following an exogenous domestic monetary tightening.
-    We build a small open-economy New Keynesian DSGE model in which the policy shock is a domestic innovation to the Taylor rule. 
-    The model combines (i) a workingcapital cost channel that makes marginal costs interest-rate sensitive, (ii) a balancesheet financial accelerator that widens effective spreads when net worth falls, and
-    (iii) an endogenous uncovered interest rate risk premium that can mute—or temporarily overturn—the standard exchange-rate appreciation channel. 
-    Calibrated to Australian data and expenditure shares, the model reproduces a negative outputgap response alongside a positive impact response of CPI inflation.
-    An impact decomposition shows that the working-capital wedge is the main driver, while exchange-rate and financial wedges provide economically important amplification. 
-    The results suggest that a domestic price puzzle can arise as a structural outcome in a financially open economy, with implications for policy design and communication.
-    </div></p>
-    -->
-
-    <p style="margin:0;" }><p > When risk-off hits: foreign-currency bank funding and amplification in a small open economy
-      <br> solo-authored, <i>Oxford Economic Papers</i>, reject and resubmit.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/foreign-currency bank funding and amplification.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper develops a small open New Keynesian DSGE model with a financial accelerator and a banking sector that borrows abroad in foreign currency and faces a leverage constraint. 
-    A “risk shock” is modeled as an increase in the cross-sectional dispersion of entrepreneurial idiosyncratic risk, which raises default probability and monitoring losses and thereby widens the external finance premium. 
-    The banking block links this domestic tightening to global risk conditions and external leverage through an endogenous foreign funding premium, while currency mismatch erodes bank net worth when the exchange rate depreciates. 
-    Calibrated impulse responses show that a one-standard-deviation risk shock generates a sharp and persistent contraction in investment and output, and that amplification is substantially stronger when leverage is higher, monitoring frictions are more severe, or capital flows are more procyclical.
-    The framework provides a transparent laboratory for evaluating macroprudential and capital-flow management policies.
-    </div></p>
-
-    <p style="margin:0;" }><p > Beyond GARCH: kernel-based volatility and tail-risk forecasting for Ethereum
-      <br> solo-authored, <i>Studies in Nonlinear Dynamics & Econometrics</i>, revise and resubmit.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Forecasting for Ethereum.pdf"  target="_explorer.exe"> SSRN</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper studies volatility prediction for Ethereum in the post-Merge era.
-    Using daily ETH/USD returns from 15 September 2022 to 23 April 2026, we compare standard GARCH(1,1), Heston–Nandi GARCH(1,1), cross-validated and aggregated EWMA predictors, and Nadaraya–Watson kernelregression predictors.
-    The kernel forecasts are constructed from a rank-transformed state vector that captures recent volatility and signed-return conditions, allowing the conditional variance function to be nonlinear and state dependent.
-    The results show that forecast performance is strongly horizon dependent.
-    At the one-day horizon, the kernel predictor using the fitted GARCH volatility state delivers the lowest final cumulative squared prediction error, outperforming the standard GARCH benchmark and all EWMA-type competitors.
-    At the ten-day-ahead horizon, the advantage of local nonparametric information weakens, and the mean-reverting structure of GARCH becomes more valuable.
-    The estimated kernel surface reveals that predicted ETH volatility is highest when elevated recent volatility coincides with negative signed-return pressure.
-    Conditional quantile results further show that kernel-based VaR improves lower-tail risk forecasts, especially at the 1% quantile.
-    Overall, the evidence suggests that post-Merge Ethereum volatility is persistent, asymmetric, heavytailed, and nonlinear, and is best modelled by combining economically meaningful volatility states with flexible nonparametric forecasting maps.
-    </div></p>
-
-    <p style="margin:0;" }><p > Banking on agglomeration: local credit competition and the geography of entrepreneurship
-      <br> solo-authored, <i>Macroeconomic Dynamics</i>, revise and resubmit.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Bankgeography.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-     We develop a tractable two-region spatial model to evaluate how local credit markets shape entrepreneurial geography.
-     In the presence of oligopolistic banking and imperfect interregional credit integration, stronger local bank competition lowers effective borrowing costs, compresses producer prices, and increases real entrepreneurial returns.
-     We show that this finance-driven agglomeration is strictly bounded by the degree of credit market integration and amplified by a sector’s reliance on external finance. 
-     Analytical characterizations and numerical simulations confirm that modest banking asymmetries generate economically meaningful shifts in production location, an effect that is substantially magnified when interregional goods trade is highly integrated.
-    </div></p>    
-
-    <!-- 
-    <p style="margin:0;" }><p > The green rivalry threat: evidence from peers' green strategies
-      <br> with Zijie Huang and June Cao, <i>Journal of Business Finance and Accounting</i>, revise and resubmit.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/green rivalry threat.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    We examine whether and how firms subject to stringent environmental regulation have a peer effect on unconstrained firms’ green innovations. 
-    Using a generalized difference-in-differences model, we find that unconstrained firms significantly increase their green innovations in response to the heightened green innovations of constrained firms after China’s Emission Trading Scheme (ETS) pilot. 
-    We document the competitive threat as the underlying mechanism, consistent with the rivalry-based theory. 
-    Our heterogeneity analyses show that peer effects are more pronounced among non-ETS firms characterized by leader status, high public scrutiny, higher financial constraints, more institutional investors, and under-investment. 
-    We further find that these peer effects significantly increase non-ETS firms’ economic performance and green revenues. 
-    Our research offers valuable insights and ex-ante evidence for policymakers and practitioners to further develop decarbonization regulation.
-     </div></p>
-    <ul style="list-style-type:disc">
-    <li> <font size="-1"> Presented at: The Annual Conference of the British Accounting Review (Harvard Faculty Club); The Global Conference of the British Accounting Review (Cape Town, South Africa); The AFAANZ Annual Conference (Auckland, New Zealand; Outstanding Reviewer Award); Curtin University research seminar series </font> </li> 
-    </ul>
-    -->
-
-   <p style="margin:0;" }><p > Do energy sentiment predict oil price shocks? A machine learning analysis
-      <br> with Mohammad Abdullah, Sahib Hossain and Aviral Kumar Tiwari, <i>Journal of Forecasting</i>, revised and resubmitted.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/energy sentiment.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This study explores the use of energy sentiment as a predictive tool for forecasting oil price shocks by developing a Twitter-based energy sentiment index derived from 1,911,631 tweets. 
-      The sentiment index is utilized to predict three types of oil price shocks: demand, supply, and risk shocks, through various machine learning algorithms. 
-      Among these, the XGBoost model is found to outperform other models, achieving prediction accuracies of 60.20%, 62.00%, and 92.60% for demand shock, supply shock, and risk shock, respectively. 
-      Further model interpretation using Explainable AI reveals that the developed energy sentiment indicators contribute 29.33% to the oil price shock prediction, demonstrating the significant role of sentiment data in forecasting oil price fluctuations. 
-      These findings highlight the potential of leveraging real-time social media sentiment for improving oil price prediction models.
-     </div></p>
-
-    <p style="margin:0;" }><p > When carry crowds: endogenous foreign exchange crash risk, capital inflows, and foreign-investor coordination 
-      <br> solo-authored, <i>Journal of Mathematical Economics</i>, revised and resubmitted.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Foreign Exchange Crash Risk.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper develops a tractable model of crowded carry trades in which foreign capital inflows endogenously increase exchange-rate crash risk.
-    A continuum of atomistic foreign investors chooses local-currency positions while taking aggregate inflows as given, although aggregate positioning raises both expected currency appreciation over the relevant holding period and the probability of a discrete depreciation.
-    The symmetric competitive equilibrium is characterized by a cubic fixed-point equation with closed-form solutions.
-    With positive baseline carry, the equilibrium is unique.
-    When baseline carry is weak and the appreciation feedback is sufficiently strong, however, a no-inflow equilibrium can coexist with a self-sustaining inflow boom, so a deterioration in global funding or risk conditions can trigger a discontinuous sudden stop.
-    Importantly, the additional high-inflow equilibrium is generated by the positive appreciation feedback, while endogenous crash risk limits the boom rather than generating multiplicity by itself.
-    The competitive allocation also differs from a foreign-investor-sector coordination benchmark because atomistic investors fail to internalize the systemic fragility created by their positions.
-    In high-inflow states, fragility dominates and the market takes excessive tail risk relative to this benchmark.
-    A prudential wedge can reduce inflows and crash probability and can eliminate fragile multiplicity.
-    The framework provides a simple analytical link between crowded carry trades, endogenous tail risk, global funding conditions, and macroprudential policy.
-    </div></p>
-
-   <p style="margin:0;" }><p > Foreign direct investment and development and the role of research and development
-      <br> with Richard Adjei Dwumfour and Mark N. Harris, <i>Southern Economic Journal</i>, revise and resubmit.
-      <br> <button class="accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/FDI R&D.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    Using a sample of 130 countries over the period 2004-2019, we revisit the development impact of foreign direct investment (FDI), but novelly examine the role of research and development (R&D) within this framework. 
-    To allow us to make causality statement, we use bilateral investment treaties (BITs) as an innovative instrument for FDI in the development equations. 
-    We find that, compared to FDI, expenditure on R&D has a more pronounced impact on development outcomes - through increasing growth and human development while reducing poverty and inequality. 
-    We also find that countries that spend more on R&D are less dependent on FDI for development. 
-    This suggests that R&D and FDI are substitutes in the development process with the results showing varying FDI and R&D thresholds at which the substitution takes place. 
-    We however, find a diminishing effect of FDI on development. 
-    Further to this, we find that R&D complements FDI only when FDI reaches a threshold level, and then begins to hurt development - at this stage there is sufficient R&D expenditure which possibly suggest sufficient adaptive capacity.
-     </div></p>
-
-    <!--      
-    <p style="margin:0;" }><p > CEO multiple crisis imprints and firm cash holdings
-      <br> with Wenjun Liu, June Cao and Ran Zhang, <i>International Review of Financial Analysis</i>, reject and resubmit.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/pandemic imprints.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    Rather than focus on early-life natural disasters (Bernile et al., 2017), this study investigates how multiple pandemic imprints throughout a CEO's career affect their behaviours. 
-    Drawing on imprinting theory, we provide robust evidence that companies led by CEOs who experience SARS tend to have lower cash holdings. 
-    However, the imprinting effects become insignificant when CEOs experience more severe and multiple pandemics (i.e., SARS and COVID-19). 
-    We document a nonmonotonic relationship between the severity and intensity of CEOs' pandemic imprints throughout their careers and their propensity for adopting agressive financial strategies. 
-    Our study extends Bernile et al. (2017) and enriches the literature on CEO imprints by investigating the impact of multiple pandemic experiences at the CEO's career stage rather than early-life on their behaviours.
-    </div></p>
-    -->
-
-    <!--    
-    <p style="margin:0;" }><p > A $75 billion dollar question: do African countries suffer a systematic sovereign credit ratings bias?
-      <br> with Elikplimi Kolma Agbloyor, Richard Adjei Dwumfour and Dennis Nsafoah, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/credit rating bias.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper examines whether African countries face a systematic bias in sovereign credit ratings.
-    Using long-term sovereign ratings from Fitch and Moody’s for 132 countries over 2000–2023, we apply machine-learning classification techniques—including random forests, bagging, and gradient boosting—to predict rating outcomes based on economic, institutional, and financial fundamentals.
-    Feature-importance analyses allow us to assess whether an African location dummy independently influences ratings.
-    We find that institutional quality and financial development are the dominant global predictors of sovereign ratings.
-    However, African countries exhibit persistently lower average ratings, greater downgrade intensity during the COVID-19 and Russia–Ukraine shocks, and less rating stability.
-    While Africa is not among the top predictors in the full sample, its importance rises markedly after 2015 and becomes one of the strongest predictors once sample-selection biases are addressed.
-    The results provide evidence consistent with a location-based rating penalty, with implications for sovereign borrowing costs and market access in Africa.
-    </div></p>
-    <ul style="list-style-type:disc">
-<li> <font size="-1"> Presented at: CSAE Conference 2025: Economic Development in Africa (University of Oxford, UK); University of Ghana inter-college lecture series </font> </li> 
-</ul>
-    -->
-
-    <!--    
-    <p style="margin:0;" }><p > Digital adoption, population ageing, and age-specific structural change: A two-sector model with mobility frictions, under review. 
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Digital adoption, population ageing.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper develops a tractable two-sector model to study how population ageing interacts with digital adoption to shape age-specific structural change.
-    The labour force consists of young and old workers. Each sector combines the two age groups through a CES technology, while imperfect reallocation is captured by a logit sector-choice block that generates age-specific mobility wedges.
-    Digital adoption affects older workers through two channels: it raises their sector-specific effective productivity and lowers their relative barrier to switching sectors.
-    The model yields a closed-form “sorting” restriction that links a weighted difference in age-specific employment log-odds to primitives (age-augmenting technologies and mobility wedges).
-    We derive sharp sign conditions under which digital adoption reduces age segmentation and under which ageing pushes older workers toward or away from a sector.
-    A simple planner problem shows that optimal adoption rises with ageing when adoption removes more misallocation in older economies.
-    </div></p>
-    -->
-
-    <!--    
-    <p style="margin:0;" }><p > Human capital: "travel broadens the mind" 
-      <br> with Veasna Kheng and Xiaodong Fan, under review. 
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/human capital and travel.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper develops a simple theoretical model to explain the impact of international travel on human capital development. 
-    Empirically, using a fixed-effects instrumental variable estimator as the primary analytical approach, the study investigates a panel dataset covering 64 countries from 1995 to 2019. 
-    The findings reveal that international travel, measured through tourism openness, has a significant positive effect on human capital. 
-    These results underscore the importance of global human mobility---encompassing migration, international educational exchange, and tourism---in fostering the development and dissemination of knowledge, culture, and technology.
-     </div></p>
-    -->
-
-   <!--     
-   <p style="margin:0;" }><p > When inflation expectations meet probability weighting: a behavioral–macro portfolio framework
-      <br> with Richard Adjei Dwumfour, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Behavioral–Macro Portfolio.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    We develop a single-period behavioral–macro portfolio model with CRRA utility and Prelec probability weighting to study how inflation expectations affect risk-taking.
-    Expected inflation uniformly lowers real returns, shifting the opportunity frontier downward via a pure wealth effect.
-    Under decreasing absolute risk aversion, higher expected inflation reduces the optimal risky share, while stronger overweighting of the good state increases it by distorting perceived state payoffs.
-    The model yields closed-form comparative statics and a simple geometry for joint inflation–behavioral effects on portfolio choice.
-    Policy implication: credible, transparent monetary communication can anchor real-return expectations and temper swings in risk-taking.
-    </div></p>
-    -->
-
-    <p style="margin:0;" }><p > How did financial markets react to the COVID-19 vaccine rollout? Fresh evidence from Australia
-      <br> with Takashi Matsuki and Richard Adjei Dwumfour, <i>International Review of Finance</i>, revise and resubmit.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/COVID-vaccine.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    We provide the first study on how COVID-19 vaccine rollout affects Australian financial markets. 
-    To examine the heterogeneous and asymmetric effects of vaccination rate on financial markets, we adopt the quantile-on-quantile regression (QQR). 
-    We also use the novel quantile copula coherency developed by Baruník and Kley (2019) to detect longer (e.g. monthly or yearly) reactions of financial markets or distinguish the mixed market reactions to short- and long-persistent impacts from vaccine rollout. 
-    We find that relative short-term impacts of lagged vaccination rates on quantiles of the returns of the ASX200 stock price and foreign exchange (FX) are stable against fluctuations of the Dow Jones stock price index or FX return at various quantiles. 
-    Therefore, the vaccination policy implemented in Australia homogeneously affects financial markets at quantiles. 
-    Moreover, our study properly detects short- and long-lived significant reactions of the stock price index and FX returns to the vaccine rate variation.
-     </div></p>
-
-   <p style="margin:0;" }><p > Borrow long, dump short: debt maturity and leverage choices under negative interest rates
-      <br> with Richard Adjei Dwumfour, Dennis Nsafoah and Mark N. Harris, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/NIRP.pdf"  target="_explorer.exe"> SSRN</a></button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/appendix_NIRP.pdf"  target="_explorer.exe"> Online Appendix</a></button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/nirp_penn state.pdf"  target="_explorer.exe"> Slides</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    We study the impact of negative interest rate policy (NIRP) on corporate debt structure using a difference-in-differences design applied to a panel of over 54,000 firms across 127 countires.
-    We find that firms in NIRP jurisdictions systematically reallocate from short-term to long-term debt—a pattern we term “borrow long, dump short”—consistent with locking in historically low long-term borrowing costs.
-    This maturity rebalancing is most pronounced among smaller, older, highly leveraged, and less liquid firms.
-    Notably, aggregate leverage remains stable on impact but rises significantly when negative rates persist.
-    To rationalise these findings, we develop a DSGE model calibrated to the euro area that identifies two transmission channels: a signalling channel through which NIRP compresses real long-term yields, inducing immediate maturity rebalancing; and a reserve-carry channel through which the deposit rate floor affects bank net worth and credit rapidly reshape debt maturity composition.
-    Our results demonstrate that NIRP can rapidly reshape the maturity composition of corporate debt, but its effect on aggregate leverage depends on policy persistence and credible forward guidance.
-    </div></p>
-    <ul style="list-style-type:disc">
-<li> <font size="-1"> Presented at: 2026 International Conference on Empirical Economics (Scheduled: Pennsylvania State University Altoona; Session Chair for Macroeconomics and Monetary Economics); 39th Annual Australian PhD Conference in Economics and Business (University of New South Wales); Curtin University research seminar series  </font> </li>  
-</ul>     
-
-    <p style="margin:0;" }><p > Does monetary tightening improve banking stability? The role of bank cost efficiency
-      <br> with Richard Adjei Dwumfour and Mark N. Harris, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/monetary policy and bank stability.pdf"  target="_explorer.exe"> SSRN</a></button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/appendix_monetary policy and bank stability.pdf"  target="_explorer.exe"> Online Appendix</a></button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/slides_monetary policy and bank stability.pdf"  target="_explorer.exe"> Slides</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    Yes, monetary tightening improves banking stability, but stability weakens over the medium run, and bank efficiency shapes this trajectory.
-    The empirical exercise draws on annual data for 3,903 banks across 95 countries over 1996–2024, measuring efficiency via a stochastic metafrontier and identifying policy shocks through Taylor-rule deviations (and, in IV, central bank independence).
-    Fixed-effects estimates and local projections confirm that a one-standard-deviation tightening initially raises Z-scores and reduces non-performing loan growth — yet as borrower distress accumulates, these gains erode at medium horizons.
-    Critically, this deterioration is notably smoother for high-efficiency banks, consistent with stronger risk control. 
-    Tightening further compresses net interest margins—most persistently for efficient banks—while credit growth responses remain heterogeneous. 
-    An efficiency-augmented New Keynesian DSGE model reproduces both the sign reversal and the cross-bank smoothing pattern.
-    Counterfactual experiments show that the efficiency gap across bank types collapses to zero under homogeneous cost efficiency, and that the impact stabilisation vanishes entirely when the risk-management channel is shut down.
-    </div></p>
-    <ul style="list-style-type:disc">    
-<li> <font size="-1"> Presented at: Bank of Ghana; Curtin University research seminar series  </font> </li>  
-</ul>
-
-    <p style="margin:0;" }><p > Monetary policy, competition Policy, and the dynamics of market power
-      <br> with Richard Adjei Dwumfour, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/money competition and market power.pdf"  target="_explorer.exe"> PDF</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    We develop a two-sector New Keynesian model in which firms allocate scarce organizational resources between productive capability and customer capital.
-    Customer capital lowers demand elasticity and raises desired markups, monetary policy therefore affects not only aggregate demand but also incentives to build market power.
-    Disciplined by U.S. firm-level accounting data and business-cycle moments, the model implies that endogenous demand-to-market-power transmission accounts for about 78 percent of markup variance.
-    Firm-level local projections support the mechanism: customer-capital-intensive firms increase marketbuilding after demand expansions and monetary easing.
-    Implementable-rule frontiers show that competition policy, by targeting customer acquisition, complements monetary stabilization and raises welfare.
-    </div></p>
-
-   <p style="margin:0;" }><p > Small transfers, big frictions: digital payments and the remittance size penalty
-      <br> solo-authored, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/small transfers.pdf"  target="_explorer.exe"> SSRN</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    Are digital payment discounts larger for small transfers?
-    Using World Bank remittance quotes for 2016Q2–2025Q1, we compare small and large benchmark amounts within services, then compare initiation channels within provider–corridor–quarter cells.
-    Across 70,219 service pairs, digital initiation is associated with a 1.101 percentage-point smaller size penalty, equivalent to 39.1% of the physical-channel mean.
-    Fee-rate differences account for the result; the exchange-rate component is small and statistically insignificant.
-    The association survives service controls, alternative weighting and major-provider exclusions.
-    </div></p>
-
-    <p style="margin:0;" }><p > Price dynamics of cobalt and its major downstream products: evidence from China’s unique daily transaction data
-      <br> with Yifei Cai and Yuanchen Sun, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/cobalt price.pdf"  target="_explorer.exe"> PDF</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This study examines the connectedness among eight cobalt-related assets under different market conditions using a partial correlation connectedness method. 
-    The model is estimated at three quantiles (&tau; = 0.05, 0.5, 0.95), representing extreme downside, normal, and extreme upside market states, to capture variations in dependence and spillover dynamics.
-    Cobalt oxide and cobalt powder act as central hubs and primary transmitters of risk, while cobalt concentrate and cobalt hydroxide mainly absorb spillovers as net receivers.
-    Under extreme market conditions, the overall connectedness strengthens, with shocks spreading more intensively through the core cluster of assets.
-    These results highlight the asymmetric roles of cobalt products in risk transmission and provide important insights in managing supply chain risks and understanding systemic market behavior in the cobalt industry.
-    </div></p>
-
-    <p style="margin:0;" }><p > Oil prices and currency volatility: time-varying evidence from eight advanced economies
-      <br> solo-authored, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/oil prices and currency volatility.pdf"  target="_explorer.exe"> SSRN</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    How stable is the relationship between oil prices and currency volatility?
-    We study eight advanced economies over March 2000–December 2024 using monthly volatility constructed from daily exchange rates.
-    A local-linear fixed-effects model allows associations with real oil price changes, oil variability, the VIX and US yield changes to evolve over time. 
-    Dependence-aware simultaneous bands distinguish changing point estimates from supported sign changes.
-    The common oil coefficient crosses zero, but its baseline band includes zero throughout the interior and accommodates a constant coefficient.
-    Alternative benchmarks and conditioning sets reveal some negative episodes without establishing a positive-to-negative reversal.
-    The VIX association is more clearly positive and time-varying, and country oil slopes depart from their average.
-    Generalized responses from a monthly global-variable system indicate short-horizon financial-risk comovement; oil responses are less precise and sensitive to contemporaneous allocation.
-    Matched-sample local projections provide no stronger oil-sign evidence.
-    The results favour a conditional, currency-specific interpretation of oil–FX linkages, with a clear distinction between contemporaneous associations and joint market dynamics.
-    </div></p>
-    
-
-   <!-- 
-    <p style="margin:0;" }><p > When risk becomes ambiguity: shadow banking, collateral, and the left tail
-      <br> solo-authored, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Financial Uncertainty and the Left Tail.pdf"  target="_explorer.exe"> SSRN</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper develops a theoretical model of how financial uncertainty reshapes macroeconomic downside risk through shadow banking and collateral feedback.
-    Financial uncertainty is modelled as ambiguity about firm fundamentals: when lenders become less confident about the probability law governing repayment, they behave as if their effective risk aversion rises.
-    This widens credit spreads, contracts lending, and raises default thresholds.
-    The effect is stronger for shadow banks because rollover-sensitive funding makes them more exposed to ambiguous survival probabilities.
-    Once shadow-bank net worth is exhausted, fire-sale losses transmit through interbank claims to regulated banks, generating an endogenous contagion threshold.
-    At the same time, falling credit depresses collateral prices, weakens pledgeable wealth, and further tightens borrowing constraints.
-    The model also shows that innovative firms are disproportionately exposed because their technologies are more capital intensive, riskier, and less pledgeable in default.
-    Quantitative exercises show that ambiguity shifts the output distribution left, lowers the fifth percentile of output, and makes optimal capital regulation state contingent: buffers should be built in calm periods and released under high ambiguity.
-    </div></p>
-
-    <p style="margin:0;" }><p > Racing the benchmark: competition and robust risk-taking in financial markets
-      <br> solo-authored, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Racing the benchmark.pdf"  target="_explorer.exe"> SSRN</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    We develop a continuous-time game-theoretic model in which financial institutions jointly choose portfolio allocation and surplus risk transfer under regime-switching asset returns, ambiguity aversion, and relative performance concerns.
-    We derive closed-form Nash equilibrium strategies in both the finite-n game and the mean field limit.
-    The model shows that benchmarking incentives generate a competitive amplification mechanism: stronger relative performance concerns increase equilibrium risky investment and weaken the incentive to transfer surplus risk, producing an arms-race effect that becomes unstable as average competition approaches its critical upper bound.
-    Ambiguity aversion works in the opposite direction by reducing effective risk tolerance, compressing equilibrium leverage, and strengthening prudent risk management.
-    The regime-switching structure makes these effects strongly state dependent.
-    Under the empirical calibration, bull-market conditions support aggressive risky investment, while bear-market conditions with negative excess returns can induce short positions rather than merely smaller long positions.
-    The multi-asset calibration further shows that high cross-asset correlation can generate leveraged long–short spread positions when institutions exploit differences in risk-adjusted returns, while negative correlation and strong model confidence sharply magnify diversification-driven risk-taking.
-    On the risk-control margin, highly competitive and risktolerant institutions may become net absorbers of surplus risk, implying that systemic fragility can arise not only from crowded asset portfolios but also from endogenous shifts in risk bearing.
-    The results provide new insights into benchmarking, model confidence, leverage, long–short crowding, risk transfer, and systemic fragility in modern financial markets.
-    </div></p>
-
-    <p style="margin:0;" }><p > Measurement of renewable-energy efficiency and convergence across the US states: evidence from a non-parametric frontier analysis
-      <br> with Richard Adjei Dwumfour, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/Measurement_of_renewable_energy_efficiency_and_convergence.pdf"  target="_explorer.exe"> PDF</a></button> 
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper examines whether the clean-energy transition is producing convergence in renewable-energy efficiency across the United States.
-    Using a balanced panel of the 50 states and the District of Columbia over 2010-2022, we measure renewable-energy efficiency with three non-parametric frontier estimators: conventional DEA under variable returns to scale, robust order-m, and convexified order-m.
-    Renewable electricity generation is treated as the desirable output, while fossil-fuel generation, electric power-sector CO2 emissions, and total nameplate generating capacity are treated as inputs to be minimised.
-    We then apply the Phillips–Sul log-t test and stochastic-kernel methods to examine convergence dynamics.
-    The results reject full-sample convergence under all three efficiency indicators.
-    Instead, US states form persistent convergence clubs, with high-performing hydro, wind-belt, and low-load states separated from fossil-reliant laggards.
-    Stochastic kernels reveal strong intra-distribution persistence: states largely preserve their relative positions between 2010 and 2022.
-    The findings imply that uniform clean-energy incentives are unlikely to close cross-state renewable-efficiency gaps.
-    Federal and state policy should instead target club-specific constraints, including transmission bottlenecks, fossil lock-in, grid integration, and uneven renewable-resource deployment.
-    </div></p>
-    -->
-        
-
-    <!--    
-    <p style="margin:0;" }><p > What drives green growth? ESG risks, green innovation, and productive capacity in the OECD countries
-      <br> with Buhari Dogan, Yifei Cai, Emad Kazemzadeh and Sudeshna Ghosh, under review.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/what drives green growth.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper studies what drives green growth in 18 OECD countries from 2003 to 2022 using green GDP as the main measure.
-    We focus on productive capacities, economic complexity, green technology, economic policy uncertainty, ESG uncertainty, and energy use.
-    To capture nonlinear and state-dependent effects, we apply quantile-based and wavelet methods.
-    We find that stronger productive capacities and higher economic complexity support green growth, especially once countries reach higher development states.
-    A larger share of green technology patents also boosts green GDP after it passes a certain threshold.
-    By contrast, higher economic policy and ESG uncertainty reduce green growth, in particular when green performance is already weak.
-    Changes in energy use are positively linked to green GDP, but the long-run gains depend on cleaner and more efficient energy supply.
-    The results suggest that stable policies, green innovation, and structural upgrading are central for sustained green growth.
-    </div></p>
-
-    <p style="margin:0;" }><p > Inflation anchoring and behavioural tourism demand
-      <br> with Richard Adjei Dwumfour, <i>Tourism Economics</i>, revise and resubmit.
-      <br><button class="accordion">
-      Abstract</button> | <button><a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/tourism and inflation.pdf"  target="_explorer.exe"> PDF</a></button>
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This paper develops a behavioural open-economy model to explain how inflation expectations influence international tourist demand.
-    Unlike conventional frameworks that treat inflation as exogenous, our model embeds expectations directly in tourists’ forward-looking decisions.
-    When expectations are unanchored, perceived destination costs rise disproportionately, producing nonlinear declines in real tourism demand; when expectations remain anchored, spending stabilises.
-    Extending the model to include cost rigidity and exchange rate flexibility shows that low credibility regimes amplify volatility as inflation pessimism links with depreciation risk.
-    Our framework rationalises recent anomalies—such as sharp demand contractions in high inflation economies like Turkey in 2022—and complements empirical findings showing weak direct price elasticities in long-haul markets.
-     </div></p>
-    -->
-        
-
-    <hr>
-
-    <h2><a id="book-chapters-updated" class="anchor" href="#bookchapters" aria-hidden="true"><span class="octicon octicon-link"></span>
-    </a>Book Chapters</h2>
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%" href="https://leipanecon.github.io/research/The Role of Private Equity Investments in Infrastructure Projects.pdf" target="_explorer.exe">The role of private equity investments in infrastructure projects</a>
-      <br> with Richard Adjei Dwumfour, Elikplimi Agbloyor and Ali Sheikhbahaei, 2026, <i>The Routledge Handbook of Infrastructure Finance</i>, J. Yindenaba Abor, J. Macomber, T. Arun, & V. Murinde (Eds.), (1st ed., pp. 240-260). Routledge.
-      <br><button class="accordion">
-      Abstract
-    </button>
-    </p>
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">
-    This chapter examines the evolving role of private equity (PE) in global infrastructure investment, addressing its contributions, challenges, and outlook. 
-    As governments face fiscal constraints, PE has emerged as a crucial funding source, enabling large-scale infrastructure projects across sectors like energy, transportation, and telecommunications. 
-    The analysis highlights PE's role in accelerating project timelines, enhancing operational efficiency, and closing funding gaps, particularly through public–private partnerships (PPPs). 
-    However, the alignment of short-term profit motives with the long-term needs of public infrastructure poses challenges alongside regulatory and political risks. 
-    The chapter also explores the impact of environmental, social, and governance (ESG) trends and regulatory shifts on PE's strategic direction, emphasising sustainable infrastructure as a growth area. 
-    Concluding with a forward-looking perspective, this study underscores PE's transformative potential in infrastructure while advocating balanced policies to safeguard the public interest.
-     </div></p>
-
-        
-
-        
-    <script src="javascripts/scale.fix.js"></script>
-    <script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].onclick = function(){
-            this.classList.toggle("active");
-            this.parentNode.nextElementSibling.classList.toggle("show");
-      }
-    }
-    </script>
-  </body>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+    });
+  </script>
+</body>
 </html>
