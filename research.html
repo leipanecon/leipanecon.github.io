@@ -1,329 +1,327 @@
 <!doctype html>
 <html>
 <head>
-  <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <title>Lei Pan's website</title>
+<script src="https://use.fontawesome.com/baff6f55f5.js"></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<title>Lei Pan's website</title>
 
-  <link rel="stylesheet" href="stylesheets/styles.css">
-  <link rel="stylesheet" href="stylesheets/github-light.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <!--[if lt IE 9]>
-  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+<link rel="stylesheet" href="stylesheets/styles.css">
+<link rel="stylesheet" href="stylesheets/github-light.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-29643011-3', 'auto');
-    ga('send', 'pageview');
-  </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-29643011-3', 'auto');
+  ga('send', 'pageview');
+</script>
 
-  <!-- For all browsers -->
-  <link rel="stylesheet" href="assets/css/academicons.min.css"/>
-  <link rel="stylesheet" href="assets/css/academicons.css"/>
+<link rel="stylesheet" href="assets/css/academicons.min.css"/>
+<link rel="stylesheet" href="assets/css/academicons.css"/>
 
-  <style>
-    /* 论文卡片基础样式 */
-    .paper-card {
-      background: #fff;
-      border: 1px solid #e8e8e8;
-      border-radius: 10px;
-      padding: 20px 24px;
-      margin-bottom: 22px;
-      transition: box-shadow .25s ease, transform .25s ease;
-    }
-    .paper-card:hover {
-      box-shadow: 0 4px 18px rgba(0,0,0,.06);
-      transform: translateY(-1px);
-    }
-    .paper-title {
-      margin: 0 0 6px 0;
-      font-size: 17px;
-      font-weight: 600;
-      line-height: 1.45;
-    }
-    .paper-title a {
-      color: #222;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color .2s;
-    }
-    .paper-title a:hover {
-      border-bottom-color: #222;
-    }
-    .paper-meta {
-      margin: 0 0 12px 0;
-      font-size: 13.5px;
-      color: #555;
-      line-height: 1.6;
-    }
-    .paper-meta i {
-      color: #666;
-    }
-    .paper-buttons {
-      margin: 10px 0 14px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-    .paper-btn {
-      display: inline-block;
-      padding: 5px 12px;
-      font-size: 12.5px;
-      color: #444;
-      background: #f5f5f5;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background .2s, transform .2s;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-    }
-    .paper-btn:hover {
-      background: #eaeaea;
-      transform: translateY(-1px);
-    }
-    .paper-btn.accordion-btn::after {
-      content: " [+]";
-      font-size: 90%;
-      color: #888;
-    }
-    .paper-btn.accordion-btn.active::after {
-      content: " [–]";
-    }
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#f6f5f1;
+    --card:#ffffff;
+    --ink:#20242b;
+    --ink-soft:#4a515c;
+    --muted:#6b7280;
+    --line:#e6e3da;
+    --accent:#274c77;
+    --accent-soft:#eaf0f7;
+    --chip:#f1efe9;
+    --radius:12px;
+  }
+  *{box-sizing:border-box;}
+  .research-body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:48px 24px 80px;}
+  .section-title{
+    font-family:"Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size:30px;font-weight:600;letter-spacing:.01em;
+    margin:0 0 6px;
+  }
+  .section-sub{color:var(--muted);font-size:15px;margin:0 0 32px;}
+  .group-title{
+    font-family:"Source Serif 4", Georgia, serif;
+    font-size:24px;font-weight:600;letter-spacing:.01em;
+    margin:36px 0 18px;padding-bottom:6px;border-bottom:1px solid var(--line);
+  }
+  .group-title:first-of-type{margin-top:0;}
+  .group-note{color:var(--muted);font-size:14.5px;}
 
-    /* 摘要面板 */
-    .abstract-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .35s ease;
-      background: #f8f8f8;
-      border-radius: 8px;
-      padding: 0 16px;
-      color: #555;
-      font-size: 13.5px;
-      line-height: 1.65;
-    }
-    .abstract-panel.show {
-      max-height: 600px;
-      padding: 12px 16px;
-      margin-bottom: 14px;
-    }
+  /* ===== Paper card ===== */
+  .paper{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 30px;
+    box-shadow:0 1px 2px rgba(32,36,43,.05), 0 8px 24px rgba(32,36,43,.05);
+  }
+  .paper + .paper{margin-top:28px;}
 
-    /* 图廊 */
-    .figure-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 6px;
-    }
-    .figure-item {
-      margin: 0;
-      cursor: zoom-in;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid #eee;
-      transition: border-color .2s;
-    }
-    .figure-item:hover {
-      border-color: #bbb;
-    }
-    .figure-item img {
-      width: 100%;
-      display: block;
-      background: #fafafa;
-    }
-    .figure-item figcaption {
-      font-size: 12px;
-      color: #666;
-      padding: 6px 8px 8px;
-      line-height: 1.4;
-      background: #fafafa;
-    }
+  .paper-title{
+    font-family:"Source Serif 4", Georgia, serif;
+    font-size:23px;font-weight:600;line-height:1.35;margin:0 0 10px;
+  }
+  .paper-title a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;}
+  .paper-title a:hover{color:var(--accent);border-bottom-color:var(--accent);}
 
-    /* 灯箱 */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.82);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      cursor: zoom-out;
-      padding: 30px;
-    }
-    .lightbox.active {
-      display: flex;
-    }
-    .lightbox img {
-      max-width: 92%;
-      max-height: 92vh;
-      border-radius: 6px;
-      box-shadow: 0 10px 40px rgba(0,0,0,.5);
-    }
-    .lightbox-caption {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #eee;
-      font-size: 13px;
-      background: rgba(0,0,0,.5);
-      padding: 6px 14px;
-      border-radius: 20px;
-    }
+  .paper-meta{font-size:14.5px;color:var(--ink-soft);margin:0 0 6px;}
+  .paper-meta .venue{font-style:italic;color:var(--ink);}
+  .paper-meta .year{color:var(--muted);}
 
-    /* 分区标题 */
-    section h2 {
-      margin-top: 30px;
-      margin-bottom: 18px;
-      font-size: 20px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 6px;
-    }
+  /* ===== Resource pills ===== */
+  .resources{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;}
+  .pill{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:13.5px;font-weight:500;
+    color:var(--accent);text-decoration:none;
+    background:var(--accent-soft);
+    border:1px solid transparent;border-radius:999px;
+    padding:6px 13px;cursor:pointer;
+    transition:background .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  .pill:hover{background:#dde8f2;border-color:#c6d6e6;transform:translateY(-1px);}
+  .pill svg{width:13px;height:13px;flex:none;}
+  .pill.ghost{background:var(--chip);color:var(--ink-soft);}
+  .pill.ghost:hover{background:#e9e6dd;border-color:#dcd8cc;}
 
-    /* 荣誉/报告列表 */
-    .paper-notes {
-      margin: 12px 0 0 0;
-      padding-left: 20px;
-      font-size: 12.5px;
-      color: #7a5c3e;
-      line-height: 1.7;
-    }
-  </style>
+  /* ===== Abstract accordion ===== */
+  .abstract{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;}
+  .accordion{
+    background:none;border:none;padding:0;cursor:pointer;
+    display:inline-flex;align-items:center;gap:7px;
+    font:inherit;font-size:14px;font-weight:600;color:var(--accent);
+  }
+  .accordion .chev{width:14px;height:14px;transition:transform .2s ease;}
+  .accordion[aria-expanded="true"] .chev{transform:rotate(180deg);}
+  .panel{
+    overflow:hidden;max-height:0;transition:max-height .28s ease;
+    color:var(--ink-soft);font-size:14.5px;
+  }
+  .panel p{margin:10px 0 0;}
+
+  /* ===== Figure gallery ===== */
+  .figures{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:18px;margin-top:22px;
+  }
+  .figure-item{
+    margin:0;cursor:zoom-in;
+    border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    background:#fbfaf7;
+    transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  }
+  .figure-item:hover{
+    border-color:#cfd9e4;
+    box-shadow:0 6px 18px rgba(39,76,119,.12);
+    transform:translateY(-2px);
+  }
+  .figure-item .thumb{padding:14px 14px 0;}
+  .figure-item img{width:100%;height:auto;display:block;}
+  .figure-item figcaption{
+    padding:10px 14px 13px;font-size:13px;color:var(--muted);
+    border-top:1px solid var(--line);background:#fff;
+  }
+  .figure-item figcaption b{color:var(--ink-soft);font-weight:600;}
+
+  /* ===== Lightbox ===== */
+  .lightbox{
+    position:fixed;inset:0;z-index:50;
+    background:rgba(20,24,30,.82);
+    display:none;align-items:center;justify-content:center;padding:32px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-box{
+    background:#fff;border-radius:14px;max-width:820px;width:100%;
+    padding:26px 28px 20px;position:relative;
+    box-shadow:0 24px 60px rgba(0,0,0,.35);
+  }
+  .lightbox-box .lb-img{max-height:62vh;overflow:hidden;}
+  .lightbox-box img{width:100%;height:auto;display:block;}
+  .lightbox-box .lb-caption{margin-top:14px;font-size:14px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:12px;}
+  .lb-close{
+    position:absolute;top:14px;right:14px;
+    width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
+    background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);font-size:18px;line-height:1;
+  }
+  .lb-close:hover{background:var(--chip);}
+
+  @media (max-width:640px){
+    .wrap{padding:32px 16px 60px;}
+    .paper{padding:22px 20px;}
+    .figures{grid-template-columns:1fr;}
+    .paper-title{font-size:20px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
 </head>
-
 <body>
-  <div class="wrapper">
-    <header>
-      <h1>Lei Pan</h1>
-      <p>Assistant Professor<br>
-        <a href="https://www.curtin.edu.au/about/learning-teaching/business-and-law/curtin-business-school/accounting-economics-finance/" target="_blank" rel="noopener"> Economics Discipline </a><br>
-        <a href="https://www.curtin.edu.au/" target="_blank" rel="noopener">Curtin University</a></p>
+<div class="wrapper">
 
-      <h3><p class="view"><a href="https://leipanecon.github.io/">Home</a></p></h3>
-      <h3><p class="view"><a href="https://leipanecon.github.io/research/Lei Pan_CV.pdf" target="_blank" rel="noopener">CV</a> </p></h3>
-      <h3><p class="view"><a href="https://leipanecon.github.io/research.html">Research</a></p></h3>
-      <h3><p class="view"><a href="https://leipanecon.github.io/teaching.html">Teaching</a></p></h3>
-      <h3><p class="view"><a href="https://leipanecon.github.io/miscellaneous.html">Miscellaneous</a></p></h3>
+  <header>
+    <h1>Lei Pan</h1>
+    <p>Assistant Professor<br>
+      <a href="https://www.curtin.edu.au/about/learning-teaching/business-and-law/curtin-business-school/accounting-economics-finance/" target="_blank" rel="noopener">Economics Discipline</a><br>
+      <a href="https://www.curtin.edu.au/" target="_blank" rel="noopener">Curtin University</a></p>
+    <h3><p class="view"><a href="https://leipanecon.github.io/">Home</a></p></h3>
+    <h3><p class="view"><a href="https://leipanecon.github.io/research/Lei Pan_CV.pdf" target="_blank" rel="noopener">CV</a></p></h3>
+    <h3><p class="view"><a href="https://leipanecon.github.io/research.html">Research</a></p></h3>
+    <h3><p class="view"><a href="https://leipanecon.github.io/teaching.html">Teaching</a></p></h3>
+    <h3><p class="view"><a href="https://leipanecon.github.io/miscellaneous.html">Miscellaneous</a></p></h3>
 
-      <p class="view"><b>Circle</b><br>
-        <a href="mailto:lei.pan@curtin.edu.au" class="author-social" target="_blank" rel="noopener"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
-        <a href="https://scholar.google.com/citations?user=bkbOz1IAAAAJ&hl=en" target="_blank" rel="noopener"><i class="ai ai-fw ai-google-scholar-square"></i> Scholar</a><br>
-        <a href="https://au.linkedin.com/in/lei-pan-75b394b6" class="author-social" target="_blank" rel="noopener"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a><br>
-        <a href="https://twitter.com/LeiPanEcon" class="author-social" target="_blank" rel="noopener"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
-        <a href="https://github.com/leipanecon" target="_blank" rel="noopener"><i class="fa fa-fw fa-github-square"></i> GitHub</a><br>
-      </p>
+    <p class="view"><b>Social</b><br>
+      <a href="mailto:lei.pan@curtin.edu.au" class="author-social" target="_blank" rel="noopener"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
+      <a href="https://scholar.google.com/citations?user=bkbOz1IAAAAJ&hl=en" target="_blank" rel="noopener"><i class="ai ai-fw ai-google-scholar-square"></i> Scholar</a><br>
+      <a href="https://au.linkedin.com/in/lei-pan-75b394b6" class="author-social" target="_blank" rel="noopener"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a><br>
+      <a href="https://twitter.com/LeiPanEcon" class="author-social" target="_blank" rel="noopener"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
+      <a href="https://github.com/leipanecon" target="_blank" rel="noopener"><i class="fa fa-fw fa-github-square"></i> GitHub</a><br>
+    </p>
 
-      <p><b>Contact:</b><br> <a href="mailto:lei.pan@curtin.edu.au">lei.pan@curtin.edu.au</a><br>Economics Discipline<br>Curtin University<br>Perth, WA 6102, Australia</p>
-    </header>
+    <p><b>Contact:</b><br><a href="mailto:lei.pan@curtin.edu.au">lei.pan@curtin.edu.au</a><br>Economics Discipline<br>Curtin University<br>Perth, WA 6102, Australia</p>
+  </header>
 
-    <section>
+  <section class="research-body">
+    <div class="wrap">
 
-      <h2><a id="published-papers-updated" class="anchor" href="#publications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Publications</h2>
+      <h1 class="section-title">Research</h1>
+      <p class="section-sub">Peer-reviewed publications and working papers. Click a figure to enlarge.</p>
 
-      <!-- 论文 1：Remittances and FDI -->
-      <div class="paper-card">
-        <h3 class="paper-title">
-          <a href="https://leipanecon.github.io/research/The Role of Remittances and FDI for the Current Account The Case of Cambodia_JMCB.pdf" target="_blank" rel="noopener">
-            The role of remittances and FDI for the current account: the case of Cambodia
-          </a>
-        </h3>
+      <h2 class="group-title" id="publications">Publications</h2>
+
+      <!-- ===== Paper card (duplicate this block per paper) ===== -->
+      <article class="paper">
+        <h2 class="paper-title">
+          <a href="https://leipanecon.github.io/research/The%20Role%20of%20Remittances%20and%20FDI%20for%20the%20Current%20Account%20The%20Case%20of%20Cambodia_JMCB.pdf" target="_blank" rel="noopener">The role of remittances and FDI for the current account: the case of Cambodia</a>
+        </h2>
         <p class="paper-meta">
-          with Veasna Kheng and Xiaodong Fan, 2026, <i>Journal of Money, Credit and Banking</i>.
+          with Veasna Kheng and Xiaodong Fan,
+          <span class="year">2026</span>,
+          <span class="venue">Journal of Money, Credit and Banking</span>.
         </p>
 
-        <div class="paper-buttons">
-          <button class="paper-btn accordion-btn">Abstract</button>
-          <a class="paper-btn" href="https://leipanecon.github.io/research/current-account.pdf" target="_blank" rel="noopener">SSRN</a>
-          <a class="paper-btn" href="https://leipanecon.github.io/research/current-account_appendix.pdf" target="_blank" rel="noopener">Online Appendix</a>
+        <div class="resources">
+          <a class="pill" href="https://leipanecon.github.io/research/The%20Role%20of%20Remittances%20and%20FDI%20for%20the%20Current%20Account%20The%20Case%20of%20Cambodia_JMCB.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+            Published PDF
+          </a>
+          <a class="pill ghost" href="https://leipanecon.github.io/research/current-account.pdf" target="_blank" rel="noopener">SSRN</a>
+          <a class="pill ghost" href="https://leipanecon.github.io/research/current-account_appendix.pdf" target="_blank" rel="noopener">Online Appendix</a>
         </div>
 
-        <div class="abstract-panel">
-          This paper develops a small open economy real-business cycle model to examine the dynamics of Cambodian current account.
-          Differing from previous studies, our model incorporates both net foreign direct investment (FDI) and remittances as additional sources of macroeconomic fluctuations.
-          Our results reveal that these two factors, especially FDI, account for more than 50% of the variations in the current account.
-          Additionally, the model mimics well the actual trajectory of the Cambodia's current account, suggesting that the nature of the discount factor – whether endogenous or exogenous – does not play a crucial role in explaining the external balances.
+        <div class="abstract">
+          <button class="accordion" aria-expanded="false" aria-controls="panel-1">
+            Abstract
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="panel" id="panel-1">
+            <p>This paper develops a small open economy real-business cycle model to examine the dynamics of Cambodian current account. Differing from previous studies, our model incorporates both net foreign direct investment (FDI) and remittances as additional sources of macroeconomic fluctuations. Our results reveal that these two factors, especially FDI, account for more than 50% of the variations in the current account. Additionally, the model mimics well the actual trajectory of the Cambodia's current account, suggesting that the nature of the discount factor — whether endogenous or exogenous — does not play a crucial role in explaining the external balances.</p>
+          </div>
         </div>
 
-        <div class="figure-gallery">
-          <figure class="figure-item" data-caption="Figure 1. Trends of FDI and remittance in developing economies, 1990–2022.">
-            <img src="assets/fig1_remittance_fdi_trend.png" alt="FDI and remittance trends">
-            <figcaption>Figure 1. FDI &amp; remittance trends in developing economies.</figcaption>
+        <div class="figures">
+          <figure class="figure-item" data-caption="Fig 1. The Trends of FDI and Remittance in Developing Economies from 1990 to 2022.">
+            <div class="thumb">
+              <img src="assets/fig1_fdi_remittance_trends.png" alt="FDI and remittance trends in developing economies, 1990–2022" loading="lazy">
+            </div>
+            <figcaption><b>Fig 1.</b> The Trends of FDI and Remittance in Developing Economies from 1990 to 2022.</figcaption>
           </figure>
-          <figure class="figure-item" data-caption="Figure 3. Cambodian balance of payments and NIIP, 1993–2022.">
-            <img src="assets/fig3_bop_niip.png" alt="Balance of payments and NIIP">
-            <figcaption>Figure 3. Balance of payments &amp; NIIP (% of GDP).</figcaption>
+
+          <figure class="figure-item" data-caption="Fig 3. Trends of Cambodian Balance of Payment, and Net International Investment Position (NIIP) from 1993 to 2022.">
+            <div class="thumb">
+              <img src="assets/fig3_cambodia_bop_niip.png" alt="Cambodian balance of payment and NIIP, 1993–2022" loading="lazy">
+            </div>
+            <figcaption><b>Fig 3.</b> Trends of Cambodian Balance of Payment, and Net International Investment Position (NIIP) from 1993 to 2022.</figcaption>
           </figure>
-          <figure class="figure-item" data-caption="Figure 6. Impulse responses to a 1% FDI-to-output shock.">
-            <img src="assets/fig6_fdi_irf.png" alt="FDI impulse responses">
-            <figcaption>Figure 6. Impulse responses to FDI shock.</figcaption>
+
+          <figure class="figure-item" data-caption="Fig 6. Responses to a 1% FDI-to-Output Shock.">
+            <div class="thumb">
+              <img src="assets/fig6_fdi_shock_irf.png" alt="Impulse responses to a 1% FDI-to-output shock" loading="lazy">
+            </div>
+            <figcaption><b>Fig 6.</b> Responses to a 1% FDI-to-Output Shock.</figcaption>
           </figure>
-          <figure class="figure-item" data-caption="Figure 7. Model fit vs. actual data: current account and trade balance.">
-            <img src="assets/fig7_model_fit.png" alt="Model fit comparison">
-            <figcaption>Figure 7. Model fit vs. actual data.</figcaption>
+
+          <figure class="figure-item" data-caption="Fig 7. Trends of Current Account and Trade Balance with Actual Data and Model-Generated Data.">
+            <div class="thumb">
+              <img src="assets/fig7_model_fit.png" alt="Model fit versus actual data for current account and trade balance" loading="lazy">
+            </div>
+            <figcaption><b>Fig 7.</b> Trends of Current Account and Trade Balance with Actual Data and Model-Generated Data.</figcaption>
           </figure>
         </div>
-      </div>
+      </article>
+      <!-- ===== /Paper card ===== -->
 
-      <!-- 后续论文继续在此处追加 -->
+      <h2 class="group-title" id="workingpapers">Working Papers</h2>
+      <p class="group-note">Working papers will be added progressively.</p>
 
-      <h2><a id="working-papers-updated" class="anchor" href="#workingpapers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Working Papers</h2>
+    </div>
+  </section>
+</div>
 
-      <p style="color:#888; font-size:14px;">Working papers will be added progressively.</p>
-
-    </section>
+<!-- Lightbox overlay -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Figure preview">
+  <div class="lightbox-box">
+    <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
+    <div class="lb-img" id="lb-img"></div>
+    <div class="lb-caption" id="lb-caption"></div>
   </div>
+</div>
 
-  <!-- 灯箱容器 -->
-  <div class="lightbox" id="lightbox">
-    <img src="" alt="Enlarged figure">
-    <div class="lightbox-caption"></div>
-  </div>
-
-  <script src="javascripts/scale.fix.js"></script>
-  <script>
-    // 摘要折叠展开
-    const accButtons = document.querySelectorAll('.accordion-btn');
-    accButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.classList.toggle('active');
-        const panel = btn.closest('.paper-buttons').nextElementSibling;
-        if (panel && panel.classList.contains('abstract-panel')) {
-          panel.classList.toggle('show');
-        }
-      });
+<script src="javascripts/scale.fix.js"></script>
+<script>
+(function(){
+  // Accordion
+  document.querySelectorAll('.accordion').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.style.maxHeight = open ? '0' : panel.scrollHeight + 'px';
     });
+  });
 
-    // 图片灯箱
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = lightbox.querySelector('img');
-    const lightboxCaption = lightbox.querySelector('.lightbox-caption');
-    const figures = document.querySelectorAll('.figure-item');
+  // Lightbox
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbCaption = document.getElementById('lb-caption');
+  var closeBtn = document.getElementById('lb-close');
 
-    figures.forEach(fig => {
-      fig.addEventListener('click', () => {
-        const img = fig.querySelector('img');
-        const caption = fig.dataset.caption || fig.querySelector('figcaption')?.textContent || '';
-        lightboxImg.src = img.src;
-        lightboxCaption.textContent = caption;
-        lightbox.classList.add('active');
-      });
+  document.querySelectorAll('.figure-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      var img = item.querySelector('img');
+      lbImg.innerHTML = '';
+      if (img) lbImg.appendChild(img.cloneNode(true));
+      lbCaption.textContent = item.getAttribute('data-caption') || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
     });
+  });
 
-    lightbox.addEventListener('click', () => {
-      lightbox.classList.remove('active');
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') lightbox.classList.remove('active');
-    });
-  </script>
+  function close(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  closeBtn.addEventListener('click', close);
+  lightbox.addEventListener('click', function(e){ if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+</script>
 </body>
 </html>
