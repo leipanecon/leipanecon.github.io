@@ -1,179 +1,593 @@
 <!doctype html>
-<html>
-  <head>
-  <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Lei Pan's Website</title>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Miscellaneous — Lei Pan, Curtin University</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231f3a5f'/%3E%3Ctext x='32' y='42' font-family='Georgia, serif' font-size='28' font-weight='700' fill='%23f6f5f1' text-anchor='middle'%3ELP%3C/text%3E%3C/svg%3E">
 
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap">
 
-      ga('create', 'UA-29643011-3', 'auto');
-      ga('send', 'pageview');
-    </script>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/academicons.min.css"/>
 
-    <!-- For all browsers -->
-    <link rel="stylesheet" href="assets/css/academicons.min.css"/>
-    <link rel="stylesheet" href="assets/css/academicons.css"/>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-29643011-3', 'auto');
+    ga('send', 'pageview');
+  </script>
 
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-      <h1>Lei Pan</h1>
-        <p>Assistant Professor<br>
-          <a href = "https://www.curtin.edu.au/about/learning-teaching/business-and-law/curtin-business-school/accounting-economics-finance/" target="_blank"> Economics Discipline </a><br>
-          <a href="https://www.curtin.edu.au/" target="_blank">Curtin University</a></p>
-        <!-- <p>Research Affiliate<br><a href="http://legacy.iza.org/en/webcontent/personnel/photos/index_html?key=24155">Institute for the Study of Labor (IZA)</a></p> -->
-    <h3><p class="view"><a href="https://leipanecon.github.io/">Home</a></p></h3>
-    <h3><p class="view"><a href="https://leipanecon.github.io/research/Lei Pan_CV.pdf" target="_explorer.exe">CV</a> </p></h3>
-        <h3><p class="view"><a href="https://leipanecon.github.io/research.html">Research</a></p></h3>
-        <h3><p class="view"><a href="https://leipanecon.github.io/teaching.html">Teaching</a></p></h3>
-        <h3><p class="view"><a href="https://leipanecon.github.io/miscellaneous.html">Miscellaneous</a></p></h3>
+  <style>
+    /* ============ Design tokens (shared with homepage) ============ */
+    :root {
+      --paper:      #f6f5f1;
+      --surface:    #ffffff;
+      --ink:        #1d2733;
+      --ink-soft:   #4a515c;
+      --muted:      #6b7280;
+      --line:       #e4e1d8;
+      --navy:       #1f3a5f;
+      --navy-deep:  #162c47;
+      --navy-soft:  #eaf0f7;
+      --brass:      #8c6d34;
+      --brass-soft: #f1ead9;
+      --warm:       #f8f5ee;
+      --shadow-sm:  0 1px 2px rgba(29, 39, 51, .05);
+      --shadow:     0 1px 3px rgba(29, 39, 51, .08), 0 8px 24px rgba(29, 39, 51, .06);
+      --shadow-lg:  0 4px 12px rgba(29, 39, 51, .10), 0 20px 48px rgba(29, 39, 51, .12);
+      --radius:     14px;
+      --serif: "Newsreader", Georgia, "Times New Roman", serif;
+      --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
 
-    <p class="view"><b>Circle</b><br>
-        <a href="mailto:lei.pan@curtin.edu.au" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
-        <a href="https://scholar.google.com/citations?user=bkbOz1IAAAAJ&hl=en" target="_blank"><i class="ai ai-fw ai-google-scholar-square"></i> Scholar</a><br>
-        <a href="https://au.linkedin.com/in/lei-pan-75b394b6" class="author-social" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a><br>
-        <a href="https://twitter.com/LeiPanEcon" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
-        <a href="https://github.com/leipanecon" target="_blank"><i class="fa fa-fw fa-github-square"></i> GitHub</a><br>
-        <!--<a href="https://www.researchgate.net/profile/Zhiyuan_Chen21"><i class='fa fa-aw fa-researchgate'></i> ReGate</a><br> -->
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-      <p><b>Contact:</b><br> <a href="mailto:lei.pan@curtin.edu.au">lei.pan@curtin.edu.au</a><br>Economics Discipline<br>Curtin University<br>Perth, WA 6102, Australia</p>
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(31, 58, 95, .3);
+      transition: color .15s ease, text-decoration-color .15s ease;
+    }
+    a:hover { color: var(--brass); text-decoration-color: var(--brass); }
+    a:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 4px; }
+
+    /* ============ Layout (shared) ============ */
+    .wrapper {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 48px 28px 80px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ============ Sidebar (shared) ============ */
+    aside.sidebar { position: sticky; top: 36px; min-width: 0; }
+
+    .portrait {
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: block;
+    }
+
+    .identity h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: .01em;
+      margin: 20px 0 8px;
+      color: var(--navy-deep);
+    }
+    .identity .role { color: var(--ink); font-size: 15px; line-height: 1.6; margin: 0; }
+    .identity .role .affil { color: var(--muted); }
+
+    nav.main-nav { margin-top: 26px; }
+    nav.main-nav ul { list-style: none; margin: 0; padding: 0; }
+    nav.main-nav li { margin: 2px 0; }
+    nav.main-nav a {
+      display: block; padding: 8px 12px; border-radius: 8px;
+      text-decoration: none; font-size: 15px; font-weight: 500; color: var(--ink);
+    }
+    nav.main-nav a:hover { background: var(--brass-soft); color: var(--navy); }
+    nav.main-nav a.active { color: var(--navy); background: var(--brass-soft); }
+
+    .social { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 0; padding: 0; list-style: none; }
+    .social a {
+      width: 38px; height: 38px; display: grid; place-items: center;
+      border: 1px solid var(--line); border-radius: 50%; background: var(--surface);
+      color: var(--navy); text-decoration: none; font-size: 17px;
+      transition: background .15s ease, color .15s ease, border-color .15s ease, transform .15s ease;
+    }
+    .social a:hover { background: var(--navy); border-color: var(--navy); color: #fff; transform: translateY(-2px); }
+
+    .contact {
+      margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line);
+      font-size: 13.5px; color: var(--muted); line-height: 1.65;
+    }
+    .contact .label { font-weight: 600; color: var(--ink); letter-spacing: .02em; display: block; margin-bottom: 4px; }
+
+    /* ============ Main column ============ */
+    main.content { min-width: 0; }
+
+    .page-header { margin-bottom: 48px; }
+    .page-title {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 38px;
+      letter-spacing: .01em;
+      margin: 0 0 8px;
+      color: var(--navy-deep);
+    }
+    .page-sub {
+      color: var(--muted);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
+      margin: 0;
+    }
+
+    /* ============ Section styling ============ */
+    .gallery-section { margin-bottom: 68px; }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: .01em;
+      color: var(--navy-deep);
+      margin: 0 0 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-intro {
+      color: var(--ink-soft);
+      font-size: 15.5px;
+      margin: 0 0 24px;
+      max-width: 62ch;
+    }
+
+    /* ============ Photo grid (masonry feel) ============ */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      grid-auto-flow: dense;
+    }
+
+    .photo-item {
+      margin: 0;
+      cursor: zoom-in;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm), var(--shadow);
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+    .photo-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .photo-item:hover img { transform: scale(1.04); }
+
+    .photo-item.span-2 { grid-column: span 2; }
+    .photo-item.tall { grid-row: span 2; }
+
+    .photo-caption {
+      padding: 12px 16px 14px;
+      font-size: 13.5px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: var(--surface);
+      line-height: 1.55;
+    }
+    .photo-caption b { color: var(--ink-soft); font-weight: 600; }
+
+    /* Framed style for drawings */
+    .photo-item.framed {
+      background: var(--warm);
+      padding: 14px;
+    }
+    .photo-item.framed img {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    /* Single hero photo */
+    .hero-photo {
+      max-width: 640px;
+      margin: 0 auto 20px;
+    }
+    .hero-photo figure {
+      margin: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm), var(--shadow);
+      cursor: zoom-in;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-caption {
+      text-align: center;
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 12px;
+    }
+
+    /* ============ Lightbox ============ */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(20, 24, 30, .88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      backdrop-filter: blur(4px);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-box {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 960px;
+      width: 100%;
+      max-height: 90vh;
+      padding: 22px 22px 18px;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .4);
+    }
+    .lightbox-box .lb-img {
+      max-height: 72vh;
+      overflow: hidden;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: #faf9f6;
+    }
+    .lightbox-box img {
+      max-width: 100%;
+      max-height: 72vh;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+    .lightbox-box .lb-caption {
+      margin-top: 14px;
+      font-size: 14px;
+      color: var(--ink-soft);
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      text-align: center;
+      font-family: var(--serif);
+      font-style: italic;
+    }
+    .lb-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-soft);
+      font-size: 18px;
+      line-height: 1;
+      z-index: 2;
+    }
+    .lb-close:hover { background: var(--brass-soft); }
+
+    /* ============ Responsive ============ */
+    @media (max-width: 880px) {
+      .wrapper {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 32px 22px 64px;
+      }
+      aside.sidebar { position: static; }
+      .portrait { max-width: 190px; }
+      .identity h1 { margin-top: 16px; }
+      nav.main-nav ul { display: flex; flex-wrap: wrap; gap: 4px; }
+      nav.main-nav a { padding: 7px 12px; }
+      .page-title { font-size: 30px; }
+      .section-title { font-size: 22px; }
+    }
+
+    @media (max-width: 640px) {
+      .photo-item.span-2 { grid-column: span 1; }
+      .photo-item.tall { grid-row: span 1; }
+      .gallery-section { margin-bottom: 52px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- ================= Sidebar (identical to homepage) ================= -->
+    <aside class="sidebar">
+      <img class="portrait" src="LP_best.png" alt="Portrait of Lei Pan">
+
+      <div class="identity">
+        <h1>Lei Pan</h1>
+        <p class="role">
+          Assistant Professor (Lecturer) in Economics<br>
+          <span class="affil">
+            <a href="https://www.curtin.edu.au/about/learning-teaching/business-and-law/curtin-business-school/accounting-economics-finance/" target="_blank" rel="noopener noreferrer">Economics Discipline</a>,
+            <a href="https://www.curtin.edu.au/" target="_blank" rel="noopener noreferrer">Curtin University</a>
+          </span>
+        </p>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="https://leipanecon.github.io/">Home</a></li>
+          <li><a href="https://leipanecon.github.io/research/Lei%20Pan_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
+          <li><a href="https://leipanecon.github.io/research.html">Research</a></li>
+          <li><a href="https://leipanecon.github.io/teaching.html">Teaching</a></li>
+          <li><a href="https://leipanecon.github.io/miscellaneous.html" class="active">Miscellaneous</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social" aria-label="Social and academic profiles">
+        <li><a href="mailto:lei.pan@curtin.edu.au" target="_blank" rel="noopener noreferrer" title="Email" aria-label="Email"><i class="fa fa-fw fa-envelope"></i></a></li>
+        <li><a href="https://scholar.google.com/citations?user=bkbOz1IAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-fw ai-google-scholar"></i></a></li>
+        <li><a href="https://au.linkedin.com/in/lei-pan-75b394b6" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa fa-fw fa-linkedin"></i></a></li>
+        <li><a href="https://twitter.com/LeiPanEcon" target="_blank" rel="noopener noreferrer" title="Twitter" aria-label="Twitter"><i class="fa fa-fw fa-twitter"></i></a></li>
+        <li><a href="https://github.com/leipanecon" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fa fa-fw fa-github"></i></a></li>
+      </ul>
+
+      <div class="contact">
+        <span class="label">Contact</span>
+        <a href="mailto:lei.pan@curtin.edu.au">lei.pan@curtin.edu.au</a><br>
+        Economics Discipline<br>
+        Curtin University<br>
+        Perth, WA 6102, Australia
+      </div>
+    </aside>
+
+    <!-- ================= Main content ================= -->
+    <main class="content">
+
+      <header class="page-header">
+        <h1 class="page-title">Miscellaneous</h1>
+        <p class="page-sub">Moments beyond research — hometown, sketches, and journeys.</p>
       </header>
-      <section>
-<p></p>
-      Harvey attends my PhD graduation ceremony (20/05/2019) 
-  <figure>  
-    <img src="https://leipanecon.github.io/photo/phd-graduation.png">
-    </figure>
-<br>
-I grow up in Wuhu, a city in southeastern Anhui Province, China. It is a place of great people and rich spirituality. <br>
-<br>
-My hometown: Wuhu
-<br>        
-Zhongjiang Pagoda        
-<figure>  
-    <img src="https://leipanecon.github.io/photo/wuhu-1.png">
-  <figcaption><font size="-1"></font></figcaption>
-    </figure>
-        
-The third Yangtze river bridge in Wuhu        
-<figure>  
-    <img src="https://leipanecon.github.io/photo/wuhu-2.png">
-  <figcaption><font size="-1"></font></figcaption>
-    </figure>
-<br>
-I like playing Chinese chess and drawing in my spare time, below are the pictures I draw. <br>
-<br>
-The Deer and the Cauldron: Zhang Kangnian (1998 TVB version)  
-<figure>  
-    <img src="/photo/zkn.png" width="300" height="400">
-  <figcaption><font size="-1"></font></figcaption>
-    </figure>
 
-Sun Quan (Romance of the Three Kindgoms)
-<figure>  
-    <img src="/photo/sq.jpg" width="300" height="400">
-  <figcaption><font size="-1"></font></figcaption>
-    </figure>
-        
-<br>        
-Apart from economics, playing Chinese chess and drawing, there are other things I enjoy. I like to travel around the world and seek for tasty food. 
-<br>
-Second hometown: Melbourne
-<figure>  
-    <img src="/photo/melbourne.png">
-  <figcaption><font size="-1"></font></figcaption>
-    </figure>         
+      <!-- Graduation -->
+      <section class="gallery-section" id="graduation">
+        <h2 class="section-title">A Memorable Day</h2>
+        <p class="section-intro">PhD graduation, 20 May 2019.</p>
 
-Melbourne in the rain
-<figure>  
-    <img src="/photo/melr.png">
-  <figcaption><font size="-1"></font></figcaption>
-    </figure>  
+        <div class="hero-photo">
+          <figure data-caption="Harvey attends my PhD graduation ceremony · 20/05/2019">
+            <img src="/photo/phd-graduation.png" alt="PhD graduation ceremony">
+          </figure>
+          <p class="hero-caption">Harvey attends my PhD graduation ceremony · 20/05/2019</p>
+        </div>
+      </section>
 
-Melbourne landmark: Flinders street railway station
-<figure>  
-    <img src="/photo/fss.png">
-  <figcaption><font size="-1"></font></figcaption>
-    </figure>
+      <!-- Hometown -->
+      <section class="gallery-section" id="hometown">
+        <h2 class="section-title">Hometown · Wuhu</h2>
+        <p class="section-intro">
+          I grew up in Wuhu, a city in southeastern Anhui Province, China — a place of warm people and rich cultural spirit,
+          nestled along the Yangtze River.
+        </p>
 
-Melbourne's spectacular night view from my favourite bar
-<figure>  
-    <img src="/photo/mel-bar.png">
-  <figcaption><font size="-1">(Bar: Lui Bar; Address: 525 Collins St, Melbourne VIC 3000)</font></figcaption>
-    </figure>
+        <div class="photo-grid">
+          <figure class="photo-item" data-caption="Zhongjiang Pagoda, Wuhu">
+            <img src="/photo/wuhu-1.png" alt="Zhongjiang Pagoda in Wuhu">
+            <figcaption class="photo-caption"><b>Zhongjiang Pagoda</b></figcaption>
+          </figure>
+          <figure class="photo-item" data-caption="The Third Yangtze River Bridge, Wuhu">
+            <img src="/photo/wuhu-2.png" alt="The third Yangtze River bridge in Wuhu">
+            <figcaption class="photo-caption"><b>The Third Yangtze River Bridge</b></figcaption>
+          </figure>
+        </div>
+      </section>
 
-Point Ormond Lookout
-<figure>  
-    <img src="/photo/mel_skyline.png">
-  <figcaption><font size="-1"></font></figcaption>
-    </figure>
+      <!-- Drawings -->
+      <section class="gallery-section" id="drawings">
+        <h2 class="section-title">Sketches</h2>
+        <p class="section-intro">
+          In my spare time I enjoy Chinese chess and drawing. Below are two of my portrait sketches,
+          inspired by classic characters.
+        </p>
 
-Royal Exhibition Building
-<figure>  
-    <img src="/photo/reb.png" style="width: 75%; height: auto; display: block;">
-    <figcaption><font size="-1"></font></figcaption>
-</figure>
+        <div class="photo-grid">
+          <figure class="photo-item framed" data-caption="The Deer and the Cauldron: Zhang Kangnian (1998 TVB version)">
+            <img src="/photo/zkn.png" alt="The Deer and the Cauldron: Zhang Kangnian">
+            <figcaption class="photo-caption">
+              <b>The Deer and the Cauldron</b><br>
+              Zhang Kangnian · 1998 TVB version
+            </figcaption>
+          </figure>
+          <figure class="photo-item framed" data-caption="Sun Quan — Romance of the Three Kingdoms">
+            <img src="/photo/sq.jpg" alt="Sun Quan from Romance of the Three Kingdoms">
+            <figcaption class="photo-caption">
+              <b>Romance of the Three Kingdoms</b><br>
+              Sun Quan
+            </figcaption>
+          </figure>
+        </div>
+      </section>
 
-Royal Botanic Gardens
-<figure>  
-    <img src="/photo/rbg.png">
-  <figcaption><font size="-1"></font></figcaption>
-    </figure>
+      <!-- Melbourne -->
+      <section class="gallery-section" id="melbourne">
+        <h2 class="section-title">Second Home · Melbourne</h2>
+        <p class="section-intro">
+          Apart from economics, chess and drawing, I love travelling and good food.
+          Melbourne, where I completed my PhD, has always felt like a second home.
+        </p>
 
-Melbourne autumn
-<figure>  
-    <img src="/photo/mel-autumn.png">
-  <figcaption><font size="-1"></font></figcaption>
-    </figure>
+        <div class="photo-grid">
+          <figure class="photo-item span-2" data-caption="Melbourne skyline">
+            <img src="/photo/melbourne.png" alt="Melbourne city panorama">
+            <figcaption class="photo-caption"><b>Melbourne</b></figcaption>
+          </figure>
 
-Melbourne street view
+          <figure class="photo-item" data-caption="Melbourne in the rain">
+            <img src="/photo/melr.png" alt="Melbourne in the rain">
+            <figcaption class="photo-caption">Rainy Melbourne</figcaption>
+          </figure>
 
-<figure style="margin: 5px 0 17px 0; display: flex; gap: 16px; align-items: flex-start;">
-  <img src="/photo/msv_1.png" style="width: 50%; height: auto; display: block;">
-  <img src="/photo/msv_2.png" style="width: 50%; height: auto; display: block;">
-</figure>
+          <figure class="photo-item" data-caption="Flinders Street Station">
+            <img src="/photo/fss.png" alt="Flinders Street railway station">
+            <figcaption class="photo-caption">Flinders Street Station</figcaption>
+          </figure>
 
-Melbourne Zoo (went there with my PhD cohorts in our 1st year)
+          <figure class="photo-item span-2" data-caption="Lui Bar — 525 Collins St, Melbourne VIC 3000">
+            <img src="/photo/mel-bar.png" alt="Melbourne night view from Lui Bar">
+            <figcaption class="photo-caption">
+              <b>City lights from Lui Bar</b><br>
+              525 Collins St, Melbourne VIC 3000
+            </figcaption>
+          </figure>
 
-<!-- 整体宽度和上方单张图保持一致，左右自然对齐 -->
-<div style="margin: 5px 0 0 0; display: flex; gap: 15px; width: 135%; max-width: 800px; align-items: flex-start;">
-  <figure style="margin: 0; flex: 1;">
-    <img src="/photo/mel zoo_1.png" style="width: 100%; height: auto; display: block;">
-    <figcaption><font size="-1"></font></figcaption>
-  </figure>
-  <figure style="margin: 0; flex: 1;">
-    <img src="/photo/mel zoo_2.png" style="width: 100%; height: auto; display: block;">
-    <figcaption><font size="-1"></font></figcaption>
-  </figure>
-</div>
+          <figure class="photo-item" data-caption="Point Ormond Lookout">
+            <img src="/photo/mel_skyline.png" alt="Point Ormond Lookout">
+            <figcaption class="photo-caption">Point Ormond Lookout</figcaption>
+          </figure>
 
-<div style="display: flex; gap: 15px; width: 135%; max-width: 800px; align-items: flex-start; margin-top: 5px;">
-  <figure style="margin: 0; flex: 1;">
-    <img src="/photo/mel zoo_3.png" style="width: 100%; height: auto; display: block;">
-    <figcaption><font size="-1"></font></figcaption>
-  </figure>
-  <figure style="margin: 0; flex: 1;">
-    <img src="/photo/mel zoo_4.png" style="width: 100%; height: auto; display: block;">
-    <figcaption><font size="-1"></font></figcaption>
-  </figure>
-</div>
+          <figure class="photo-item" data-caption="Royal Exhibition Building">
+            <img src="/photo/reb.png" alt="Royal Exhibition Building">
+            <figcaption class="photo-caption">Royal Exhibition Building</figcaption>
+          </figure>
 
+          <figure class="photo-item" data-caption="Royal Botanic Gardens">
+            <img src="/photo/rbg.png" alt="Royal Botanic Gardens">
+            <figcaption class="photo-caption">Royal Botanic Gardens</figcaption>
+          </figure>
 
-        
-      <script src="javascripts/scale.fix.js"></script>
-  </body>
+          <figure class="photo-item" data-caption="Melbourne in autumn">
+            <img src="/photo/mel-autumn.png" alt="Melbourne autumn">
+            <figcaption class="photo-caption">Autumn in Melbourne</figcaption>
+          </figure>
+
+          <figure class="photo-item" data-caption="Melbourne street view">
+            <img src="/photo/msv_1.png" alt="Melbourne street view 1">
+            <figcaption class="photo-caption">Street view · I</figcaption>
+          </figure>
+
+          <figure class="photo-item" data-caption="Melbourne street view">
+            <img src="/photo/msv_2.png" alt="Melbourne street view 2">
+            <figcaption class="photo-caption">Street view · II</figcaption>
+          </figure>
+
+          <figure class="photo-item" data-caption="Melbourne Zoo — first year with PhD cohorts">
+            <img src="/photo/mel zoo_1.png" alt="Melbourne Zoo photo 1">
+            <figcaption class="photo-caption">Melbourne Zoo · I</figcaption>
+          </figure>
+
+          <figure class="photo-item" data-caption="Melbourne Zoo — first year with PhD cohorts">
+            <img src="/photo/mel zoo_2.png" alt="Melbourne Zoo photo 2">
+            <figcaption class="photo-caption">Melbourne Zoo · II</figcaption>
+          </figure>
+
+          <figure class="photo-item" data-caption="Melbourne Zoo — first year with PhD cohorts">
+            <img src="/photo/mel zoo_3.png" alt="Melbourne Zoo photo 3">
+            <figcaption class="photo-caption">Melbourne Zoo · III</figcaption>
+          </figure>
+
+          <figure class="photo-item" data-caption="Melbourne Zoo — first year with PhD cohorts">
+            <img src="/photo/mel zoo_4.png" alt="Melbourne Zoo photo 4">
+            <figcaption class="photo-caption">Melbourne Zoo · IV</figcaption>
+          </figure>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview">
+    <div class="lightbox-box">
+      <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
+      <div class="lb-img" id="lb-img"></div>
+      <div class="lb-caption" id="lb-caption"></div>
+    </div>
+  </div>
+
+  <script src="javascripts/scale.fix.js"></script>
+  <script>
+    (function(){
+      var lightbox = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lb-img');
+      var lbCaption = document.getElementById('lb-caption');
+      var closeBtn = document.getElementById('lb-close');
+
+      function openFrom(el){
+        var img = el.querySelector('img');
+        var caption = el.getAttribute('data-caption') || '';
+        lbImg.innerHTML = '';
+        if (img) lbImg.appendChild(img.cloneNode(true));
+        lbCaption.textContent = caption;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function close(){
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      // Bind all photos
+      document.querySelectorAll('.photo-item, .hero-photo figure').forEach(function(el){
+        el.addEventListener('click', function(){ openFrom(el); });
+      });
+
+      closeBtn.addEventListener('click', close);
+      lightbox.addEventListener('click', function(e){ if (e.target === lightbox) close(); });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+    })();
+  </script>
+</body>
 </html>
