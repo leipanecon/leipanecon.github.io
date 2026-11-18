@@ -36,13 +36,12 @@
       --line:       #e4e1d8;
       --navy:       #1f3a5f;
       --navy-deep:  #162c47;
-      --navy-soft:  #eaf0f7;
       --brass:      #8c6d34;
       --brass-soft: #f1ead9;
       --warm:       #f8f5ee;
-      --shadow-sm:  0 1px 2px rgba(29, 39, 51, .05);
-      --shadow:     0 1px 3px rgba(29, 39, 51, .08), 0 8px 24px rgba(29, 39, 51, .06);
-      --radius:     14px;
+      --shadow:     0 1px 2px rgba(29, 39, 51, .05), 0 6px 20px rgba(29, 39, 51, .07);
+      --shadow-lg:  0 2px 6px rgba(29, 39, 51, .07), 0 14px 36px rgba(29, 39, 51, .10);
+      --radius:     10px;
       --serif: "Newsreader", Georgia, "Times New Roman", serif;
       --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     }
@@ -135,11 +134,11 @@
     /* ============ Main column ============ */
     main.content { min-width: 0; }
 
-    .page-header { margin-bottom: 48px; }
+    .page-header { margin-bottom: 56px; }
     .page-title {
       font-family: var(--serif);
       font-weight: 600;
-      font-size: 38px;
+      font-size: 40px;
       letter-spacing: .01em;
       margin: 0 0 8px;
       color: var(--navy-deep);
@@ -148,157 +147,150 @@
       color: var(--muted);
       font-family: var(--serif);
       font-style: italic;
-      font-size: 17px;
+      font-size: 18px;
       margin: 0;
     }
 
-    /* ============ Section styling ============ */
-    .gallery-section { margin-bottom: 68px; }
+    /* ============ Gallery sections ============ */
+    .gallery-section { margin-bottom: 72px; }
+
+    .section-head {
+      display: flex; align-items: baseline; gap: 18px;
+      margin-bottom: 6px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-num {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--brass);
+      letter-spacing: .08em;
+      flex: none;
+    }
     .section-title {
       font-family: var(--serif);
       font-size: 26px;
       font-weight: 600;
       letter-spacing: .01em;
       color: var(--navy-deep);
-      margin: 0 0 10px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--line);
+      margin: 0;
     }
     .section-intro {
       color: var(--ink-soft);
       font-size: 15.5px;
-      margin: 0 0 24px;
+      margin: 14px 0 28px;
       max-width: 62ch;
     }
 
-    /* ============ Photo gallery (natural image size) ============
-       图片保持原始像素尺寸：width/height 均不强制，
-       max-width:100% 仅用于窄屏时不溢出页面，不改变桌面端显示大小。 */
-    .photo-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .photo-item {
-      margin: 0;
-      cursor: zoom-in;
-      border-radius: 12px;
-      overflow: hidden;
+    /* ============ Framed photo (clarity-first) ============
+       图片按原始比例显示，仅在超出版面时等比缩小；
+       不做放大、不做裁切、不加模糊类滤镜。 */
+    .frame {
       background: var(--surface);
-      box-shadow: var(--shadow-sm), var(--shadow);
-      flex: 0 1 auto;
-      max-width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      transition: box-shadow .25s ease;
+      cursor: zoom-in;
     }
-    .photo-item img {
+    .frame:hover { box-shadow: var(--shadow-lg); }
+    .frame img {
       display: block;
       width: auto;
       height: auto;
       max-width: 100%;
+      border-radius: 4px;
     }
-
-    .photo-caption {
-      padding: 12px 16px 14px;
-      font-size: 13.5px;
-      color: var(--muted);
-      border-top: 1px solid var(--line);
-      background: var(--surface);
-      line-height: 1.55;
-    }
-    .photo-caption b { color: var(--ink-soft); font-weight: 600; }
-
-    /* Framed style for drawings */
-    .photo-item.framed { background: var(--warm); padding: 14px; }
-    .photo-item.framed img { border: 1px solid var(--line); border-radius: 4px; }
-
-    /* Side-by-side pair group, keeps original sizes side by side */
-    .photo-pair {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: flex-start;
-      margin-top: 20px;
-    }
-    .photo-pair .photo-item { margin: 0; }
-
-    /* Single hero photo (natural size, centered) */
-    .hero-photo { text-align: center; }
-    .hero-photo figure {
-      display: inline-block;
-      margin: 0;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm), var(--shadow);
-      cursor: zoom-in;
-    }
-    .hero-photo img {
-      display: block;
-      width: auto;
-      height: auto;
-      max-width: 100%;
-    }
-    .hero-caption {
+    .frame figcaption {
+      margin-top: 12px;
       text-align: center;
       font-family: var(--serif);
       font-style: italic;
+      font-size: 14px;
       color: var(--muted);
-      font-size: 15px;
-      margin-top: 12px;
+      line-height: 1.5;
+    }
+    .frame figcaption b { color: var(--ink-soft); font-weight: 600; font-style: normal; }
+
+    /* Hero photo (graduation) */
+    .hero-wrap { text-align: center; }
+    .hero-wrap .frame {
+      display: inline-block;
+      max-width: 580px;
     }
 
-    /* ============ Lightbox ============ */
+    /* Sketches */
+    .sketches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: flex-end;
+    }
+    .sketches .frame {
+      flex: 0 1 auto;
+      max-width: 240px;
+      background: var(--warm);
+    }
+
+    /* Photo grid (Melbourne) — editorial two-column */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+    .photo-grid .frame { width: 100%; }
+    .photo-grid .frame img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .photo-grid .wide { grid-column: span 2; }
+
+    /* ============ Lightbox (native resolution) ============ */
     .lightbox {
       position: fixed;
       inset: 0;
       z-index: 50;
-      background: rgba(20, 24, 30, .88);
+      background: rgba(20, 24, 30, .90);
       display: none;
       align-items: center;
       justify-content: center;
       padding: 32px;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(6px);
     }
     .lightbox.open { display: flex; }
-    .lightbox-box {
-      background: #fff;
-      border-radius: 14px;
-      max-width: 960px;
-      width: 100%;
+    .lightbox-inner {
+      max-width: 92vw;
       max-height: 90vh;
-      padding: 22px 22px 18px;
       position: relative;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, .4);
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
     }
-    .lightbox-box .lb-img {
-      max-height: 72vh;
-      overflow: hidden;
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      background: #faf9f6;
-    }
-    .lightbox-box img {
+    .lightbox-inner img {
+      display: block;
       max-width: 100%;
-      max-height: 72vh;
+      max-height: 80vh;
       width: auto;
       height: auto;
-      display: block;
+      border-radius: 6px;
     }
-    .lightbox-box .lb-caption {
-      margin-top: 14px;
-      font-size: 14px;
-      color: var(--ink-soft);
-      border-top: 1px solid var(--line);
-      padding-top: 12px;
+    .lightbox-caption {
+      margin-top: 12px;
       text-align: center;
       font-family: var(--serif);
       font-style: italic;
+      font-size: 14.5px;
+      color: var(--ink-soft);
     }
     .lb-close {
       position: absolute;
-      top: 14px;
-      right: 14px;
+      top: -14px;
+      right: -14px;
       width: 36px;
       height: 36px;
       border-radius: 50%;
@@ -311,34 +303,9 @@
       color: var(--ink-soft);
       font-size: 18px;
       line-height: 1;
-      z-index: 2;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
     }
     .lb-close:hover { background: var(--brass-soft); }
-
-    /* 毕业照主图 */
-.hero-photo img {
-  display: block;
-  width: 360px;
-  height: auto;
-  max-width: 100%;
-}
-
-/* 普通画廊照片 */
-.photo-item img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: 360px;
-}
-
-/* 两幅手绘 */
-.photo-item.framed img {
-  width: 270px;
-  height: auto;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-}
-
 
     /* ============ Responsive ============ */
     @media (max-width: 880px) {
@@ -352,12 +319,15 @@
       .identity h1 { margin-top: 16px; }
       nav.main-nav ul { display: flex; flex-wrap: wrap; gap: 4px; }
       nav.main-nav a { padding: 7px 12px; }
-      .page-title { font-size: 30px; }
+      .page-title { font-size: 32px; }
       .section-title { font-size: 22px; }
     }
 
     @media (max-width: 640px) {
-      .gallery-section { margin-bottom: 52px; }
+      .photo-grid { grid-template-columns: 1fr; }
+      .photo-grid .wide { grid-column: span 1; }
+      .gallery-section { margin-bottom: 56px; }
+      .sketches { justify-content: flex-start; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -370,7 +340,7 @@
 <body>
   <div class="wrapper">
 
-    <!-- ================= Sidebar (identical to homepage) ================= -->
+    <!-- ================= Sidebar ================= -->
     <aside class="sidebar">
       <img class="portrait" src="LP_best.png" alt="Portrait of Lei Pan">
 
@@ -420,58 +390,66 @@
         <p class="page-sub">Moments beyond research — hometown, sketches, and journeys.</p>
       </header>
 
-      <!-- Graduation -->
+      <!-- 01 Graduation -->
       <section class="gallery-section" id="graduation">
-        <h2 class="section-title">A Memorable Day</h2>
+        <div class="section-head">
+          <span class="section-num">01</span>
+          <h2 class="section-title">A Memorable Day</h2>
+        </div>
         <p class="section-intro">PhD graduation, 20 May 2019.</p>
 
-        <div class="hero-photo">
-          <figure data-caption="Harvey attends my PhD graduation ceremony · 20/05/2019">
+        <div class="hero-wrap">
+          <figure class="frame" data-caption="Harvey attends my PhD graduation ceremony · 20/05/2019">
             <img src="/photo/phd-graduation.png" alt="PhD graduation ceremony">
+            <figcaption>Harvey attends my PhD graduation ceremony · 20/05/2019</figcaption>
           </figure>
-          <p class="hero-caption">Harvey attends my PhD graduation ceremony · 20/05/2019</p>
         </div>
       </section>
 
-      <!-- Hometown -->
+      <!-- 02 Hometown -->
       <section class="gallery-section" id="hometown">
-        <h2 class="section-title">Hometown · Wuhu</h2>
+        <div class="section-head">
+          <span class="section-num">02</span>
+          <h2 class="section-title">Hometown · Wuhu</h2>
+        </div>
         <p class="section-intro">
           I grew up in Wuhu, a city in southeastern Anhui Province, China — a place of warm people and rich cultural spirit,
           nestled along the Yangtze River.
         </p>
 
         <div class="photo-grid">
-          <figure class="photo-item" data-caption="Zhongjiang Pagoda, Wuhu">
+          <figure class="frame" data-caption="Zhongjiang Pagoda, Wuhu">
             <img src="/photo/wuhu-1.png" alt="Zhongjiang Pagoda in Wuhu">
-            <figcaption class="photo-caption"><b>Zhongjiang Pagoda</b></figcaption>
+            <figcaption><b>Zhongjiang Pagoda</b></figcaption>
           </figure>
-          <figure class="photo-item" data-caption="The Third Yangtze River Bridge, Wuhu">
+          <figure class="frame" data-caption="The Third Yangtze River Bridge, Wuhu">
             <img src="/photo/wuhu-2.png" alt="The third Yangtze River bridge in Wuhu">
-            <figcaption class="photo-caption"><b>The Third Yangtze River Bridge</b></figcaption>
+            <figcaption><b>The Third Yangtze River Bridge</b></figcaption>
           </figure>
         </div>
       </section>
 
-      <!-- Drawings -->
+      <!-- 03 Sketches -->
       <section class="gallery-section" id="drawings">
-        <h2 class="section-title">Sketches</h2>
+        <div class="section-head">
+          <span class="section-num">03</span>
+          <h2 class="section-title">Sketches</h2>
+        </div>
         <p class="section-intro">
-          In my spare time I enjoy Chinese chess and drawing. Below are two of my portrait sketches,
-          inspired by classic characters.
+          In my spare time I enjoy Chinese chess and drawing. Below are two portrait sketches inspired by classic characters.
         </p>
 
-        <div class="photo-grid">
-          <figure class="photo-item framed" data-caption="The Deer and the Cauldron: Zhang Kangnian (1998 TVB version)">
+        <div class="sketches">
+          <figure class="frame" data-caption="The Deer and the Cauldron: Zhang Kangnian (1998 TVB version)">
             <img src="/photo/zkn.png" alt="The Deer and the Cauldron: Zhang Kangnian">
-            <figcaption class="photo-caption">
+            <figcaption>
               <b>The Deer and the Cauldron</b><br>
               Zhang Kangnian · 1998 TVB version
             </figcaption>
           </figure>
-          <figure class="photo-item framed" data-caption="Sun Quan — Romance of the Three Kingdoms">
+          <figure class="frame" data-caption="Sun Quan — Romance of the Three Kingdoms">
             <img src="/photo/sq.jpg" alt="Sun Quan from Romance of the Three Kingdoms">
-            <figcaption class="photo-caption">
+            <figcaption>
               <b>Romance of the Three Kingdoms</b><br>
               Sun Quan
             </figcaption>
@@ -479,86 +457,89 @@
         </div>
       </section>
 
-      <!-- Melbourne -->
+      <!-- 04 Melbourne -->
       <section class="gallery-section" id="melbourne">
-        <h2 class="section-title">Second Home · Melbourne</h2>
+        <div class="section-head">
+          <span class="section-num">04</span>
+          <h2 class="section-title">Second Home · Melbourne</h2>
+        </div>
         <p class="section-intro">
           Apart from economics, chess and drawing, I love travelling and good food.
           Melbourne, where I completed my PhD, has always felt like a second home.
         </p>
 
         <div class="photo-grid">
-          <figure class="photo-item" data-caption="Melbourne">
+          <figure class="frame wide" data-caption="Melbourne skyline">
             <img src="/photo/melbourne.png" alt="Melbourne city panorama">
-            <figcaption class="photo-caption"><b>Melbourne</b></figcaption>
+            <figcaption><b>Melbourne</b></figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Melbourne in the rain">
+          <figure class="frame" data-caption="Melbourne in the rain">
             <img src="/photo/melr.png" alt="Melbourne in the rain">
-            <figcaption class="photo-caption">Rainy Melbourne</figcaption>
+            <figcaption>Rainy Melbourne</figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Flinders Street Station">
+          <figure class="frame" data-caption="Flinders Street Station">
             <img src="/photo/fss.png" alt="Flinders Street railway station">
-            <figcaption class="photo-caption">Flinders Street Station</figcaption>
+            <figcaption>Flinders Street Station</figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Lui Bar — 525 Collins St, Melbourne VIC 3000">
+          <figure class="frame wide" data-caption="Lui Bar — 525 Collins St, Melbourne VIC 3000">
             <img src="/photo/mel-bar.png" alt="Melbourne night view from Lui Bar">
-            <figcaption class="photo-caption">
+            <figcaption>
               <b>City lights from Lui Bar</b><br>
               525 Collins St, Melbourne VIC 3000
             </figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Point Ormond Lookout">
+          <figure class="frame" data-caption="Point Ormond Lookout">
             <img src="/photo/mel_skyline.png" alt="Point Ormond Lookout">
-            <figcaption class="photo-caption">Point Ormond Lookout</figcaption>
+            <figcaption>Point Ormond Lookout</figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Royal Exhibition Building">
+          <figure class="frame" data-caption="Royal Exhibition Building">
             <img src="/photo/reb.png" alt="Royal Exhibition Building">
-            <figcaption class="photo-caption">Royal Exhibition Building</figcaption>
+            <figcaption>Royal Exhibition Building</figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Royal Botanic Gardens">
+          <figure class="frame" data-caption="Royal Botanic Gardens">
             <img src="/photo/rbg.png" alt="Royal Botanic Gardens">
-            <figcaption class="photo-caption">Royal Botanic Gardens</figcaption>
+            <figcaption>Royal Botanic Gardens</figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Melbourne in autumn">
+          <figure class="frame" data-caption="Melbourne in autumn">
             <img src="/photo/mel-autumn.png" alt="Melbourne autumn">
-            <figcaption class="photo-caption">Autumn in Melbourne</figcaption>
+            <figcaption>Autumn in Melbourne</figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Melbourne street view">
+          <figure class="frame" data-caption="Melbourne street view I">
             <img src="/photo/msv_1.png" alt="Melbourne street view 1">
-            <figcaption class="photo-caption">Street view · I</figcaption>
+            <figcaption>Street view · I</figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Melbourne street view">
+          <figure class="frame" data-caption="Melbourne street view II">
             <img src="/photo/msv_2.png" alt="Melbourne street view 2">
-            <figcaption class="photo-caption">Street view · II</figcaption>
+            <figcaption>Street view · II</figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Melbourne Zoo — first year with PhD cohorts">
+          <figure class="frame" data-caption="Melbourne Zoo — first year with PhD cohorts">
             <img src="/photo/mel zoo_1.png" alt="Melbourne Zoo photo 1">
-            <figcaption class="photo-caption">Melbourne Zoo · I</figcaption>
+            <figcaption>Melbourne Zoo · I</figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Melbourne Zoo — first year with PhD cohorts">
+          <figure class="frame" data-caption="Melbourne Zoo — first year with PhD cohorts">
             <img src="/photo/mel zoo_2.png" alt="Melbourne Zoo photo 2">
-            <figcaption class="photo-caption">Melbourne Zoo · II</figcaption>
+            <figcaption>Melbourne Zoo · II</figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Melbourne Zoo — first year with PhD cohorts">
+          <figure class="frame" data-caption="Melbourne Zoo — first year with PhD cohorts">
             <img src="/photo/mel zoo_3.png" alt="Melbourne Zoo photo 3">
-            <figcaption class="photo-caption">Melbourne Zoo · III</figcaption>
+            <figcaption>Melbourne Zoo · III</figcaption>
           </figure>
 
-          <figure class="photo-item" data-caption="Melbourne Zoo — first year with PhD cohorts">
+          <figure class="frame" data-caption="Melbourne Zoo — first year with PhD cohorts">
             <img src="/photo/mel zoo_4.png" alt="Melbourne Zoo photo 4">
-            <figcaption class="photo-caption">Melbourne Zoo · IV</figcaption>
+            <figcaption>Melbourne Zoo · IV</figcaption>
           </figure>
         </div>
       </section>
@@ -568,10 +549,10 @@
 
   <!-- Lightbox overlay -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview">
-    <div class="lightbox-box">
+    <div class="lightbox-inner">
       <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
-      <div class="lb-img" id="lb-img"></div>
-      <div class="lb-caption" id="lb-caption"></div>
+      <div id="lb-img"></div>
+      <div class="lightbox-caption" id="lb-caption"></div>
     </div>
   </div>
 
@@ -587,7 +568,13 @@
         var img = el.querySelector('img');
         var caption = el.getAttribute('data-caption') || '';
         lbImg.innerHTML = '';
-        if (img) lbImg.appendChild(img.cloneNode(true));
+        if (img) {
+          // Lightbox shows image at native resolution (limited only by viewport)
+          var clone = new Image();
+          clone.src = img.src;
+          clone.alt = img.alt || '';
+          lbImg.appendChild(clone);
+        }
         lbCaption.textContent = caption;
         lightbox.classList.add('open');
         document.body.style.overflow = 'hidden';
@@ -598,7 +585,7 @@
         document.body.style.overflow = '';
       }
 
-      document.querySelectorAll('.photo-item, .hero-photo figure').forEach(function(el){
+      document.querySelectorAll('.frame').forEach(function(el){
         el.addEventListener('click', function(){ openFrom(el); });
       });
 
