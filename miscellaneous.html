@@ -42,7 +42,6 @@
       --warm:       #f8f5ee;
       --shadow-sm:  0 1px 2px rgba(29, 39, 51, .05);
       --shadow:     0 1px 3px rgba(29, 39, 51, .08), 0 8px 24px rgba(29, 39, 51, .06);
-      --shadow-lg:  0 4px 12px rgba(29, 39, 51, .10), 0 20px 48px rgba(29, 39, 51, .12);
       --radius:     14px;
       --serif: "Newsreader", Georgia, "Times New Roman", serif;
       --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
@@ -172,12 +171,14 @@
       max-width: 62ch;
     }
 
-    /* ============ Photo grid (masonry feel) ============ */
+    /* ============ Photo gallery (natural image size) ============
+       图片保持原始像素尺寸：width/height 均不强制，
+       max-width:100% 仅用于窄屏时不溢出页面，不改变桌面端显示大小。 */
     .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 20px;
-      grid-auto-flow: dense;
+      align-items: flex-start;
     }
 
     .photo-item {
@@ -187,23 +188,15 @@
       overflow: hidden;
       background: var(--surface);
       box-shadow: var(--shadow-sm), var(--shadow);
-      transition: transform .35s ease, box-shadow .35s ease;
-    }
-    .photo-item:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
+      flex: 0 1 auto;
+      max-width: 100%;
     }
     .photo-item img {
-      width: 100%;
-      height: 100%;
       display: block;
-      object-fit: cover;
-      transition: transform .6s ease;
+      width: auto;
+      height: auto;
+      max-width: 100%;
     }
-    .photo-item:hover img { transform: scale(1.04); }
-
-    .photo-item.span-2 { grid-column: span 2; }
-    .photo-item.tall { grid-row: span 2; }
 
     .photo-caption {
       padding: 12px 16px 14px;
@@ -216,21 +209,23 @@
     .photo-caption b { color: var(--ink-soft); font-weight: 600; }
 
     /* Framed style for drawings */
-    .photo-item.framed {
-      background: var(--warm);
-      padding: 14px;
-    }
-    .photo-item.framed img {
-      border: 1px solid var(--line);
-      border-radius: 4px;
-    }
+    .photo-item.framed { background: var(--warm); padding: 14px; }
+    .photo-item.framed img { border: 1px solid var(--line); border-radius: 4px; }
 
-    /* Single hero photo */
-    .hero-photo {
-      max-width: 640px;
-      margin: 0 auto 20px;
+    /* Side-by-side pair group, keeps original sizes side by side */
+    .photo-pair {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+      margin-top: 20px;
     }
+    .photo-pair .photo-item { margin: 0; }
+
+    /* Single hero photo (natural size, centered) */
+    .hero-photo { text-align: center; }
     .hero-photo figure {
+      display: inline-block;
       margin: 0;
       border-radius: 14px;
       overflow: hidden;
@@ -238,9 +233,10 @@
       cursor: zoom-in;
     }
     .hero-photo img {
-      width: 100%;
-      height: auto;
       display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
     }
     .hero-caption {
       text-align: center;
@@ -250,29 +246,6 @@
       font-size: 15px;
       margin-top: 12px;
     }
-
-    .hero-caption {
-  text-align: center;
-  font-family: var(--serif);
-  font-style: italic;
-  color: var(--muted);
-  font-size: 15px;
-  margin-top: 12px;
-}
-
-/* 新增：调小毕业照尺寸 */
-.small-photo {
-  max-width: 420px;
-  margin: 0 auto 24px;
-}
-
-.small-photo img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(29, 39, 51, .08), 0 10px 28px rgba(29, 39, 51, .10);
-}
-   
 
     /* ============ Lightbox ============ */
     .lightbox {
@@ -359,8 +332,6 @@
     }
 
     @media (max-width: 640px) {
-      .photo-item.span-2 { grid-column: span 1; }
-      .photo-item.tall { grid-row: span 1; }
       .gallery-section { margin-bottom: 52px; }
     }
 
@@ -429,13 +400,13 @@
         <h2 class="section-title">A Memorable Day</h2>
         <p class="section-intro">PhD graduation, 20 May 2019.</p>
 
-        <div class="hero-photo small-photo">
-  <figure data-caption="Harvey attends my PhD graduation ceremony · 20/05/2019">
-    <img src="/photo/phd-graduation.png" alt="PhD graduation ceremony">
-  </figure>
-  <p class="hero-caption">Harvey attends my PhD graduation ceremony · 20/05/2019</p>
-</div>
-      
+        <div class="hero-photo">
+          <figure data-caption="Harvey attends my PhD graduation ceremony · 20/05/2019">
+            <img src="/photo/phd-graduation.png" alt="PhD graduation ceremony">
+          </figure>
+          <p class="hero-caption">Harvey attends my PhD graduation ceremony · 20/05/2019</p>
+        </div>
+      </section>
 
       <!-- Hometown -->
       <section class="gallery-section" id="hometown">
@@ -492,7 +463,7 @@
         </p>
 
         <div class="photo-grid">
-          <figure class="photo-item span-2" data-caption="Melbourne skyline">
+          <figure class="photo-item" data-caption="Melbourne">
             <img src="/photo/melbourne.png" alt="Melbourne city panorama">
             <figcaption class="photo-caption"><b>Melbourne</b></figcaption>
           </figure>
@@ -507,7 +478,7 @@
             <figcaption class="photo-caption">Flinders Street Station</figcaption>
           </figure>
 
-          <figure class="photo-item span-2" data-caption="Lui Bar — 525 Collins St, Melbourne VIC 3000">
+          <figure class="photo-item" data-caption="Lui Bar — 525 Collins St, Melbourne VIC 3000">
             <img src="/photo/mel-bar.png" alt="Melbourne night view from Lui Bar">
             <figcaption class="photo-caption">
               <b>City lights from Lui Bar</b><br>
@@ -602,7 +573,6 @@
         document.body.style.overflow = '';
       }
 
-      // Bind all photos
       document.querySelectorAll('.photo-item, .hero-photo figure').forEach(function(el){
         el.addEventListener('click', function(){ openFrom(el); });
       });
