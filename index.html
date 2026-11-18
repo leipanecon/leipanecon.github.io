@@ -1,119 +1,475 @@
 <!doctype html>
-<html>
-  <head>
-  <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Lei Pan's website</title>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lei Pan — Assistant Professor in Economics, Curtin University</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <!-- Favicon: LP monogram -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231f3a5f'/%3E%3Ctext x='32' y='42' font-family='Georgia, serif' font-size='28' font-weight='700' fill='%23f6f5f1' text-anchor='middle'%3ELP%3C/text%3E%3C/svg%3E">
 
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap">
 
-      ga('create', 'UA-29643011-3', 'auto');
-      ga('send', 'pageview');
-    </script>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/academicons.min.css"/>
 
-    <!-- For all browsers -->
-    <link rel="stylesheet" href="assets/css/academicons.min.css"/>
-    <link rel="stylesheet" href="assets/css/academicons.css"/>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-29643011-3', 'auto');
+    ga('send', 'pageview');
+  </script>
 
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
+  <style>
+    /* ============ Design tokens ============ */
+    :root {
+      --paper:      #f6f5f1;
+      --surface:    #ffffff;
+      --ink:        #1d2733;
+      --muted:      #5c6672;
+      --line:       #e4e1d8;
+      --navy:       #1f3a5f;
+      --navy-deep:  #162c47;
+      --brass:      #8c6d34;
+      --brass-soft: #f1ead9;
+      --shadow:     0 1px 3px rgba(29, 39, 51, .08), 0 8px 24px rgba(29, 39, 51, .06);
+      --serif: "Newsreader", Georgia, "Times New Roman", serif;
+      --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(31, 58, 95, .3);
+      transition: color .15s ease, text-decoration-color .15s ease;
+    }
+    a:hover { color: var(--brass); text-decoration-color: var(--brass); }
+    a:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 4px; }
+
+    /* ============ Layout ============ */
+    .wrapper {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 48px 28px 80px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ============ Sidebar ============ */
+    aside.sidebar {
+      position: sticky;
+      top: 36px;
+      min-width: 0;
+    }
+
+    .portrait {
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      display: block;
+    }
+
+    .identity h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: .01em;
+      margin: 20px 0 8px;
+      color: var(--navy-deep);
+    }
+
+    .identity .role {
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .identity .role .affil { color: var(--muted); }
+
+    /* Navigation */
+    nav.main-nav { margin-top: 26px; }
+    nav.main-nav ul { list-style: none; margin: 0; padding: 0; }
+    nav.main-nav li { margin: 2px 0; }
+    nav.main-nav a {
+      display: block;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    nav.main-nav a:hover { background: var(--brass-soft); color: var(--navy); }
+    nav.main-nav a.active { color: var(--navy); background: var(--brass-soft); }
+
+    /* Social icons */
+    .social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .social a {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 17px;
+      transition: background .15s ease, color .15s ease, border-color .15s ease, transform .15s ease;
+    }
+    .social a:hover {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Contact block */
+    .contact {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .contact .label {
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: .02em;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ============ Main column ============ */
+    main.content { min-width: 0; }
+
+    .lead {
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.65;
+      color: var(--navy-deep);
+      margin: 0 0 32px;
+    }
+
+    section.block { margin: 0 0 38px; }
+    section.block:last-of-type { margin-bottom: 0; }
+
+    h2 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 22px;
+      color: var(--navy-deep);
+      margin: 0 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      letter-spacing: .01em;
+    }
+
+    p { margin: 0 0 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* News list */
+    ul.news { list-style: none; margin: 0; padding: 0; }
+    ul.news li {
+      position: relative;
+      padding: 4px 0 20px 26px;
+    }
+    ul.news li:last-child { padding-bottom: 0; }
+    ul.news li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 13px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brass);
+    }
+
+    /* Research interest chips */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 4px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .chips li {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 13.5px;
+    }
+
+    /* Service list */
+    ul.service { list-style: none; margin: 0; padding: 0; }
+    ul.service li {
+      position: relative;
+      padding: 2px 0 14px 22px;
+    }
+    ul.service li:last-child { padding-bottom: 0; }
+    ul.service li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 12px;
+      width: 6px;
+      height: 6px;
+      border-radius: 2px;
+      background: var(--navy);
+    }
+
+    /* Footer */
+    footer.page-footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ============ Responsive ============ */
+    @media (max-width: 880px) {
+      .wrapper {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 32px 22px 64px;
+      }
+      aside.sidebar { position: static; }
+      .portrait { max-width: 190px; }
+      .identity h1 { margin-top: 16px; }
+      nav.main-nav ul { display: flex; flex-wrap: wrap; gap: 4px; }
+      nav.main-nav a { padding: 7px 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- ================= Sidebar ================= -->
+    <aside class="sidebar">
+      <img class="portrait" src="LP_best.png" alt="Portrait of Lei Pan">
+
+      <div class="identity">
         <h1>Lei Pan</h1>
-        <p>Assistant Professor<br>
-          <a href = "https://www.curtin.edu.au/about/learning-teaching/business-and-law/curtin-business-school/accounting-economics-finance/" target="_blank"> Economics Discipline </a><br>
-          <a href="https://www.curtin.edu.au/" target="_blank">Curtin University</a></p>
-        <!-- <p>Research Affiliate<br><a href="http://legacy.iza.org/en/webcontent/personnel/photos/index_html?key=24155">Institute for the Study of Labor (IZA)</a></p> -->
-    <h3><p class="view"><a href="https://leipanecon.github.io/">Home</a></p></h3>
-    <h3><p class="view"><a href="https://leipanecon.github.io/research/Lei Pan_CV.pdf" target="_explorer.exe">CV</a> </p></h3>
-        <h3><p class="view"><a href="https://leipanecon.github.io/research.html">Research</a></p></h3>
-        <h3><p class="view"><a href="https://leipanecon.github.io/teaching.html">Teaching</a></p></h3>
-        <h3><p class="view"><a href="https://leipanecon.github.io/miscellaneous.html">Miscellaneous</a></p></h3>
+        <p class="role">
+          Assistant Professor (Lecturer) in Economics<br>
+          <span class="affil">
+            <a href="https://www.curtin.edu.au/about/learning-teaching/business-and-law/curtin-business-school/accounting-economics-finance/" target="_blank" rel="noopener noreferrer">Economics Discipline</a>,
+            <a href="https://www.curtin.edu.au/" target="_blank" rel="noopener noreferrer">Curtin University</a>
+          </span>
+        </p>
+      </div>
 
-    <p class="view"><b>Circle</b><br>
-        <a href="mailto:lei.pan@curtin.edu.au" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
-        <a href="https://scholar.google.com/citations?user=bkbOz1IAAAAJ&hl=en" target="_blank"><i class="ai ai-fw ai-google-scholar-square"></i> Scholar</a><br>
-        <a href="https://au.linkedin.com/in/lei-pan-75b394b6" class="author-social" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a><br>
-        <a href="https://twitter.com/LeiPanEcon" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
-        <a href="https://github.com/leipanecon" target="_blank"><i class="fa fa-fw fa-github-square"></i> GitHub</a><br>
-        <!--<a href="https://www.researchgate.net/profile/Zhiyuan_Chen21"><i class='fa fa-aw fa-researchgate'></i> ReGate</a><br> -->
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="https://leipanecon.github.io/" class="active">Home</a></li>
+          <li><a href="https://leipanecon.github.io/research/Lei%20Pan_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
+          <li><a href="https://leipanecon.github.io/research.html">Research</a></li>
+          <li><a href="https://leipanecon.github.io/teaching.html">Teaching</a></li>
+          <li><a href="https://leipanecon.github.io/miscellaneous.html">Miscellaneous</a></li>
+        </ul>
+      </nav>
 
-      <p><b>Contact:</b><br> <a href="mailto:lei.pan@curtin.edu.au">lei.pan@curtin.edu.au</a><br>Economics Discipline<br>Curtin University<br>Perth, WA 6102, Australia</p>
-      </header>
-  <section>
-    <table class="img_meng_show">
-　　<tr>
-　　 <td>
-　　　　<span><img src="LP_best.png" style="width:55%; height:auto" class="center" align="middle"></span>
-　　</td>
-　　</tr>
-    </table>
+      <ul class="social" aria-label="Social and academic profiles">
+        <li><a href="mailto:lei.pan@curtin.edu.au" target="_blank" rel="noopener noreferrer" title="Email" aria-label="Email"><i class="fa fa-fw fa-envelope"></i></a></li>
+        <li><a href="https://scholar.google.com/citations?user=bkbOz1IAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-fw ai-google-scholar"></i></a></li>
+        <li><a href="https://au.linkedin.com/in/lei-pan-75b394b6" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa fa-fw fa-linkedin"></i></a></li>
+        <li><a href="https://twitter.com/LeiPanEcon" target="_blank" rel="noopener noreferrer" title="Twitter" aria-label="Twitter"><i class="fa fa-fw fa-twitter"></i></a></li>
+        <li><a href="https://github.com/leipanecon" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fa fa-fw fa-github"></i></a></li>
+      </ul>
 
-   <h2 style="color: orange;">What's NEW?</h2>
+      <div class="contact">
+        <span class="label">Contact</span>
+        <a href="mailto:lei.pan@curtin.edu.au">lei.pan@curtin.edu.au</a><br>
+        Economics Discipline<br>
+        Curtin University<br>
+        Perth, WA 6102, Australia
+      </div>
+    </aside>
 
-<ul>
-  <li>
-  My solo-authored paper "Centrality crowding in asset prices: a limited-attention network model"
-  has been accepted for publication at <a href="https://www.sciencedirect.com/journal/economics-letters" target="_blank" rel="noopener noreferrer">Economics Letters</a>
-  (refer to the full working paper version in the "Research" section for details).
-  </li>
+    <!-- ================= Main content ================= -->
+    <main class="content">
 
-  <li>
-  I have been appointed as the Associate Editor of the leading Australian economics journal: 
-  <a href="https://onlinelibrary.wiley.com/journal/14678454" target="_blank" rel="noopener noreferrer">Australian Economic Papers</a>. 
-  </li>
-    
-  <li>
-    Forthcoming: Co-editor of the book <em>"Routledge Handbook of Central Banking"</em>
-    with Prof. Joshua Yindenaba Abor (University of Ghana, Member of the Monetary Policy Committee
-    of the Bank of Ghana; No. 1 Scientist in Economics and Finance in Ghana for the 2026
-    <a href="https://research.com/scientists-rankings/economics-and-finance" target="_blank" rel="noopener noreferrer">Research.com Rankings</a>),
-    and Prof. Ulrich Volz (Director of the Centre for Sustainable Finance at SOAS University of London).
-  </li>
-</ul>
-      
-      <p> Welcome to my homepage! I am currently an Assistant Professor (Lecturer) in Economics and was the Economics Honours Course Lead in the <a href="https://www.curtin.edu.au/about/learning-teaching/business-and-law/curtin-business-school/accounting-economics-finance/" target="_blank" rel="noopener noreferrer">School of Accounting, Economics and Finance</a> at <a href="https://www.curtin.edu.au/" target="_blank" rel="noopener noreferrer">Curtin University</a>, Australia.
-      I am also a Non-resident Research Fellow at the <a href="https://www.monash.edu/business/cdes" target="_blank" rel="noopener noreferrer">Centre for Development Economics and Sustainability</a> (CDES), <a href="https://www.monash.edu/" target="_blank" rel="noopener noreferrer">Monash University</a>, Australia 
-      and an External Research Fellow at the <a href="https://www.soas.ac.uk/about/research-centres/centre-global-finance" target="_blank" rel="noopener noreferrer">Centre for Global Finance</a> (CGF), <a href="https://www.soas.ac.uk/" target="_blank" rel="noopener noreferrer">SOAS University of London</a>.
-      I was an Adjunct Faculty at <a href="https://www-en.scu.edu.tw/" target="_blank" rel="noopener noreferrer">Soochow University</a>, Taiwan.
-      Prior to joining <a href="https://www.curtin.edu.au/" target="_blank" rel="noopener noreferrer">Curtin University</a>, I was an Adjunct Assistant Professor (Lecturer) in Economics in the <a href="https://www.acu.edu.au/about-acu/faculties-directorates-and-staff/faculty-of-education-and-arts/national-school-of-arts" target="_blank" rel="noopener noreferrer">School of Arts</a> at <a href="https://www.acu.edu.au/" target="_blank" rel="noopener noreferrer">Australian Catholic University</a>.
-      <br><br>
-      I obtained my Ph.D. in Economics from <a href="https://www.monash.edu/" target="_blank" rel="noopener noreferrer">Monash University</a>, Australia.
-      My research focuses on international economics, monetary economics and financial economics, with particular attention to exchange rate dynamics and monetary policy.     
-      I am also deeply interested in financial economics. 
-      My work investigates the intersection of macroeconomic policy and global financial markets, aiming to offer insights that address both theoretical and practical challenges in our increasingly interconnected world.
-      <br><br>
-      My research has been published widely in leading academic journals (ABS 4*/4), such as <a href="https://onlinelibrary.wiley.com/journal/15384616" target="_blank" rel="noopener noreferrer">Journal of Money, Credit and Banking</a>, <a href="https://www.sciencedirect.com/journal/journal-of-international-money-and-finance" target="_blank" rel="noopener noreferrer">Journal of International Money and Finance</a>, 
-      <a href="https://www.sciencedirect.com/journal/economics-letters" target="_blank" rel="noopener noreferrer">Economics Letters</a>, <a href="https://www.cambridge.org/core/journals/macroeconomic-dynamics" target="_blank" rel="noopener noreferrer">Macroeconomic Dynamics</a>, <a href="https://www.journals.elsevier.com/energy-economics" target="_blank" rel="noopener noreferrer">Energy Economics</a>, 
-      <a href="https://www.sciencedirect.com/journal/international-review-of-economics-and-finance" target="_blank" rel="noopener noreferrer">International Review of Economics and Finance</a>, <a href="https://www.springer.com/journal/181" target="_blank" rel="noopener noreferrer">Empirical Economics</a>, <a href="https://journals.sagepub.com/home/jtr" target="_blank" rel="noopener noreferrer">Journal of Travel Research</a>, <a href="https://www.journals.elsevier.com/economic-modelling" target="_blank" rel="noopener noreferrer">Economic Modelling</a>, <a href="https://www.sciencedirect.com/journal/finance-research-letters" target="_blank" rel="noopener noreferrer">Finance Research Letters</a>, 
-      <a href="https://journals.sagepub.com/home/teu" target="_blank" rel="noopener noreferrer">Tourism Economics</a>, <a href="https://onlinelibrary.wiley.com/journal/14679485" target="_blank" rel="noopener noreferrer">Scottish Journal of Political Economy</a>,
-      <a href="https://www.tandfonline.com/journals/raec20?utm_source=google&utm_medium=cpc&utm_campaign=S8008195671_APANZC_cross-network&gad_source=1&gad_campaignid=22163740444&gbraid=0AAAAACwvVooXiw7Qo6sfo2pMwZbY1zHA9&gclid=CjwKCAjwprjDBhBTEiwA1m1d0nsKc40dmbIOcPBxkUPL6KTzcFcPf-1EQ5ma54z4Kia5qN_viPJL_xoCCzoQAvD_BwE" target="_blank" rel="noopener noreferrer">Applied Economics</a>, and <a href="https://www.ingentaconnect.com/content/cog/ta" target="_blank" rel="noopener noreferrer">Tourism Analysis</a>.
-      My paper is one of the 72 most cited articles at <a href="https://www.sciencedirect.com/journal/economic-modelling/special-issue/10XLNVGLQWL" target="_blank" rel="noopener noreferrer">Economic Modelling</a> during 2018-2022
-      and is selected in the special issue for celebrating <a href="https://www.sciencedirect.com/journal/economic-modelling/special-issue/10XLNVGLQWL" target="_blank" rel="noopener noreferrer">Economic Modelling</a>
-      as a top 20 journal in economics in 2023.
-      I am the Associate Editor of <a href="https://onlinelibrary.wiley.com/journal/14678454" target="_blank" rel="noopener noreferrer">Australian Economic Papers</a>, and I am also currently serving as the Guest Editor for a special issue of <a href="https://www.mdpi.com/journal/jrfm/special_issues/5TF547O219" target="_blank" rel="noopener noreferrer">Journal of Risk and Financial Management</a>
-      on the theme of "Monetary Policy in a Globalized World".
-      <br><br>
-      I am currently the macroeconomics group lead for Government of Ghana's economic policy think tank.
-      I lead the team responsible for analysing economic conditions and emerging development chanllenges in Ghana's economy and assesses potential macroeconomic policy options that can support Ghana in its pursuit of sustainable growth.
-      </p>
-       <br></br>
-       <br></br>
-       <p><i>last update: 2026/11/15</i></p>
+      <p class="lead">Welcome to my homepage!</p>
+
+      <!-- News -->
+      <section class="block" id="news">
+        <h2>News</h2>
+        <ul class="news">
+          <li>
+            My solo-authored paper “Centrality crowding in asset prices: a limited-attention
+            network model” has been accepted for publication at
+            <a href="https://www.sciencedirect.com/journal/economics-letters" target="_blank" rel="noopener noreferrer">Economics Letters</a>
+            (refer to the full working paper version in the “Research” section for details).
+          </li>
+          <li>
+            I have been appointed as the Associate Editor of the leading Australian economics
+            journal:
+            <a href="https://onlinelibrary.wiley.com/journal/14678454" target="_blank" rel="noopener noreferrer">Australian Economic Papers</a>.
+          </li>
+          <li>
+            Forthcoming: Co-editor of the book <em>“Routledge Handbook of Central Banking”</em>
+            with Prof. Joshua Yindenaba Abor (University of Ghana, Member of the Monetary Policy
+            Committee of the Bank of Ghana; No. 1 Scientist in Economics and Finance in Ghana for
+            the 2026
+            <a href="https://research.com/scientists-rankings/economics-and-finance" target="_blank" rel="noopener noreferrer">Research.com Rankings</a>),
+            and Prof. Ulrich Volz (Director of the Centre for Sustainable Finance at SOAS University
+            of London).
+          </li>
+        </ul>
       </section>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-  </body>
+
+      <!-- About -->
+      <section class="block" id="about">
+        <h2>About</h2>
+        <p>
+          I am currently an Assistant Professor (Lecturer) in Economics and was the Economics
+          Honours Course Lead in the
+          <a href="https://www.curtin.edu.au/about/learning-teaching/business-and-law/curtin-business-school/accounting-economics-finance/" target="_blank" rel="noopener noreferrer">School of Accounting, Economics and Finance</a>
+          at <a href="https://www.curtin.edu.au/" target="_blank" rel="noopener noreferrer">Curtin University</a>, Australia.
+          I am also a Non-resident Research Fellow at the
+          <a href="https://www.monash.edu/business/cdes" target="_blank" rel="noopener noreferrer">Centre for Development Economics and Sustainability</a>
+          (CDES), <a href="https://www.monash.edu/" target="_blank" rel="noopener noreferrer">Monash University</a>, Australia,
+          and an External Research Fellow at the
+          <a href="https://www.soas.ac.uk/about/research-centres/centre-global-finance" target="_blank" rel="noopener noreferrer">Centre for Global Finance</a>
+          (CGF), <a href="https://www.soas.ac.uk/" target="_blank" rel="noopener noreferrer">SOAS University of London</a>.
+          I was an Adjunct Faculty at
+          <a href="https://www-en.scu.edu.tw/" target="_blank" rel="noopener noreferrer">Soochow University</a>, Taiwan.
+          Prior to joining <a href="https://www.curtin.edu.au/" target="_blank" rel="noopener noreferrer">Curtin University</a>,
+          I was an Adjunct Assistant Professor (Lecturer) in Economics in the
+          <a href="https://www.acu.edu.au/about-acu/faculties-directorates-and-staff/faculty-of-education-and-arts/national-school-of-arts" target="_blank" rel="noopener noreferrer">School of Arts</a>
+          at <a href="https://www.acu.edu.au/" target="_blank" rel="noopener noreferrer">Australian Catholic University</a>.
+        </p>
+        <p>
+          I obtained my Ph.D. in Economics from
+          <a href="https://www.monash.edu/" target="_blank" rel="noopener noreferrer">Monash University</a>, Australia.
+          My research focuses on international economics, monetary economics and financial
+          economics, with particular attention to exchange rate dynamics and monetary policy.
+          I am also deeply interested in financial economics. My work investigates the intersection
+          of macroeconomic policy and global financial markets, aiming to offer insights that address
+          both theoretical and practical challenges in our increasingly interconnected world.
+        </p>
+      </section>
+
+      <!-- Research interests -->
+      <section class="block" id="interests">
+        <h2>Research Interests</h2>
+        <ul class="chips">
+          <li>International Economics</li>
+          <li>Monetary Economics</li>
+          <li>Financial Economics</li>
+          <li>Exchange Rate Dynamics</li>
+          <li>Monetary Policy</li>
+          <li>Macro–Financial Markets</li>
+        </ul>
+      </section>
+
+      <!-- Publications -->
+      <section class="block" id="publications">
+        <h2>Publications</h2>
+        <p>
+          My research has been published widely in leading academic journals (ABS 4*/4), such as
+          <a href="https://onlinelibrary.wiley.com/journal/15384616" target="_blank" rel="noopener noreferrer">Journal of Money, Credit and Banking</a>,
+          <a href="https://www.sciencedirect.com/journal/journal-of-international-money-and-finance" target="_blank" rel="noopener noreferrer">Journal of International Money and Finance</a>,
+          <a href="https://www.sciencedirect.com/journal/economics-letters" target="_blank" rel="noopener noreferrer">Economics Letters</a>,
+          <a href="https://www.cambridge.org/core/journals/macroeconomic-dynamics" target="_blank" rel="noopener noreferrer">Macroeconomic Dynamics</a>,
+          <a href="https://www.journals.elsevier.com/energy-economics" target="_blank" rel="noopener noreferrer">Energy Economics</a>,
+          <a href="https://www.sciencedirect.com/journal/international-review-of-economics-and-finance" target="_blank" rel="noopener noreferrer">International Review of Economics and Finance</a>,
+          <a href="https://www.springer.com/journal/181" target="_blank" rel="noopener noreferrer">Empirical Economics</a>,
+          <a href="https://journals.sagepub.com/home/jtr" target="_blank" rel="noopener noreferrer">Journal of Travel Research</a>,
+          <a href="https://www.journals.elsevier.com/economic-modelling" target="_blank" rel="noopener noreferrer">Economic Modelling</a>,
+          <a href="https://www.sciencedirect.com/journal/finance-research-letters" target="_blank" rel="noopener noreferrer">Finance Research Letters</a>,
+          <a href="https://journals.sagepub.com/home/teu" target="_blank" rel="noopener noreferrer">Tourism Economics</a>,
+          <a href="https://onlinelibrary.wiley.com/journal/14679485" target="_blank" rel="noopener noreferrer">Scottish Journal of Political Economy</a>,
+          <a href="https://www.tandfonline.com/journals/raec20" target="_blank" rel="noopener noreferrer">Applied Economics</a>,
+          and <a href="https://www.ingentaconnect.com/content/cog/ta" target="_blank" rel="noopener noreferrer">Tourism Analysis</a>.
+        </p>
+        <p>
+          My paper is one of the 72 most cited articles at
+          <a href="https://www.sciencedirect.com/journal/economic-modelling/special-issue/10XLNVGLQWL" target="_blank" rel="noopener noreferrer">Economic Modelling</a>
+          during 2018–2022 and was selected in the special issue celebrating
+          <a href="https://www.sciencedirect.com/journal/economic-modelling/special-issue/10XLNVGLQWL" target="_blank" rel="noopener noreferrer">Economic Modelling</a>
+          as a top 20 journal in economics in 2023.
+        </p>
+      </section>
+
+      <!-- Service -->
+      <section class="block" id="service">
+        <h2>Editorial Roles &amp; Service</h2>
+        <ul class="service">
+          <li>
+            Associate Editor of
+            <a href="https://onlinelibrary.wiley.com/journal/14678454" target="_blank" rel="noopener noreferrer">Australian Economic Papers</a>.
+          </li>
+          <li>
+            Guest Editor for a special issue of
+            <a href="https://www.mdpi.com/journal/jrfm/special_issues/5TF547O219" target="_blank" rel="noopener noreferrer">Journal of Risk and Financial Management</a>
+            on the theme “Monetary Policy in a Globalized World”.
+          </li>
+          <li>
+            Forthcoming Co-editor of the book <em>Routledge Handbook of Central Banking</em>,
+            with Prof. Joshua Yindenaba Abor and Prof. Ulrich Volz.
+          </li>
+          <li>
+            Macroeconomics group lead for the Government of Ghana’s economic policy think tank.
+            I lead the team responsible for analysing economic conditions and emerging
+            development challenges in Ghana’s economy, and assessing potential macroeconomic
+            policy options that can support Ghana in its pursuit of sustainable growth.
+          </li>
+        </ul>
+      </section>
+
+      <footer class="page-footer">
+        Last update: 2026/11/15
+      </footer>
+
+    </main>
+  </div>
+</body>
 </html>
