@@ -1,658 +1,725 @@
 <!doctype html>
-<html>
-  <head>
-  <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Lei Pan's Website</title>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teaching — Lei Pan, Curtin University</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231f3a5f'/%3E%3Ctext x='32' y='42' font-family='Georgia, serif' font-size='28' font-weight='700' fill='%23f6f5f1' text-anchor='middle'%3ELP%3C/text%3E%3C/svg%3E">
 
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap">
 
-      ga('create', 'UA-29643011-3', 'auto');
-      ga('send', 'pageview');
-    </script>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/academicons.min.css"/>
 
-    <!-- For all browsers -->
-    <link rel="stylesheet" href="assets/css/academicons.min.css"/>
-    <link rel="stylesheet" href="assets/css/academicons.css"/>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-29643011-3', 'auto');
+    ga('send', 'pageview');
+  </script>
 
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-      <h1>Lei Pan</h1>
-        <p>Assistant Professor<br>
-          <a href = "https://www.curtin.edu.au/about/learning-teaching/business-and-law/curtin-business-school/accounting-economics-finance/" target="_blank"> Economics Discipline </a><br>
-          <a href="https://www.curtin.edu.au/" target="_blank">Curtin University</a></p>
-        <!-- <p>Research Affiliate<br><a href="http://legacy.iza.org/en/webcontent/personnel/photos/index_html?key=24155">Institute for the Study of Labor (IZA)</a></p> -->
-    <h3><p class="view"><a href="https://leipanecon.github.io/">Home</a></p></h3>
-    <h3><p class="view"><a href="https://leipanecon.github.io/research/Lei Pan_CV.pdf" target="_explorer.exe">CV</a> </p></h3>
-        <h3><p class="view"><a href="https://leipanecon.github.io/research.html">Research</a></p></h3>
-        <h3><p class="view"><a href="https://leipanecon.github.io/teaching.html">Teaching</a></p></h3>
-        <h3><p class="view"><a href="https://leipanecon.github.io/miscellaneous.html">Miscellaneous</a></p></h3>
+  <style>
+    /* ============ Design tokens (shared with homepage) ============ */
+    :root {
+      --paper:      #f6f5f1;
+      --surface:    #ffffff;
+      --ink:        #1d2733;
+      --ink-soft:   #4a515c;
+      --muted:      #6b7280;
+      --line:       #e4e1d8;
+      --navy:       #1f3a5f;
+      --navy-deep:  #162c47;
+      --navy-soft:  #eaf0f7;
+      --brass:      #8c6d34;
+      --brass-soft: #f1ead9;
+      --teal:       #3d6b5c;
+      --plum:       #6b5578;
+      --rust:       #8c4a3c;
+      --shadow-sm:  0 1px 2px rgba(29, 39, 51, .05);
+      --shadow:     0 1px 3px rgba(29, 39, 51, .08), 0 8px 24px rgba(29, 39, 51, .06);
+      --radius:     14px;
+      --serif: "Newsreader", Georgia, "Times New Roman", serif;
+      --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
 
-    <p class="view"><b>Circle</b><br>
-        <a href="mailto:lei.pan@curtin.edu.au" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
-        <a href="https://scholar.google.com/citations?user=bkbOz1IAAAAJ&hl=en" target="_blank"><i class="ai ai-fw ai-google-scholar-square"></i> Scholar</a><br>
-        <a href="https://au.linkedin.com/in/lei-pan-75b394b6" class="author-social" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a><br>
-        <a href="https://twitter.com/LeiPanEcon" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
-        <a href="https://github.com/leipanecon" target="_blank"><i class="fa fa-fw fa-github-square"></i> GitHub</a><br>
-        <!--<a href="https://www.researchgate.net/profile/Zhiyuan_Chen21"><i class='fa fa-aw fa-researchgate'></i> ReGate</a><br> -->
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-      <p><b>Contact:</b><br> <a href="mailto:lei.pan@curtin.edu.au">lei.pan@curtin.edu.au</a><br>Economics Discipline<br>Curtin University<br>Perth, WA 6102, Australia</p>
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(31, 58, 95, .3);
+      transition: color .15s ease, text-decoration-color .15s ease;
+    }
+    a:hover { color: var(--brass); text-decoration-color: var(--brass); }
+    a:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 4px; }
+    button { font-family: inherit; }
+
+    /* ============ Layout (shared) ============ */
+    .wrapper {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 48px 28px 80px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ============ Sidebar (shared) ============ */
+    aside.sidebar { position: sticky; top: 36px; min-width: 0; }
+
+    .portrait {
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: block;
+    }
+
+    .identity h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: .01em;
+      margin: 20px 0 8px;
+      color: var(--navy-deep);
+    }
+    .identity .role { color: var(--ink); font-size: 15px; line-height: 1.6; margin: 0; }
+    .identity .role .affil { color: var(--muted); }
+
+    nav.main-nav { margin-top: 26px; }
+    nav.main-nav ul { list-style: none; margin: 0; padding: 0; }
+    nav.main-nav li { margin: 2px 0; }
+    nav.main-nav a {
+      display: block; padding: 8px 12px; border-radius: 8px;
+      text-decoration: none; font-size: 15px; font-weight: 500; color: var(--ink);
+    }
+    nav.main-nav a:hover { background: var(--brass-soft); color: var(--navy); }
+    nav.main-nav a.active { color: var(--navy); background: var(--brass-soft); }
+
+    .social { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 0; padding: 0; list-style: none; }
+    .social a {
+      width: 38px; height: 38px; display: grid; place-items: center;
+      border: 1px solid var(--line); border-radius: 50%; background: var(--surface);
+      color: var(--navy); text-decoration: none; font-size: 17px;
+      transition: background .15s ease, color .15s ease, border-color .15s ease, transform .15s ease;
+    }
+    .social a:hover { background: var(--navy); border-color: var(--navy); color: #fff; transform: translateY(-2px); }
+
+    .contact {
+      margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line);
+      font-size: 13.5px; color: var(--muted); line-height: 1.65;
+    }
+    .contact .label { font-weight: 600; color: var(--ink); letter-spacing: .02em; display: block; margin-bottom: 4px; }
+
+    /* ============ Main column ============ */
+    main.content { min-width: 0; }
+
+    .page-header { margin-bottom: 28px; }
+    .page-title {
+      font-family: var(--serif); font-weight: 600; font-size: 34px;
+      letter-spacing: .01em; margin: 0 0 6px; color: var(--navy-deep);
+    }
+    .page-sub { color: var(--muted); font-size: 15.5px; margin: 0; }
+
+    /* ============ Toolbar: search + filters ============ */
+    .toolbar {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+      margin: 0 0 28px; padding: 16px 18px;
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+    .search-box { position: relative; flex: 1 1 240px; min-width: 200px; }
+    .search-box svg {
+      position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+      width: 15px; height: 15px; color: var(--muted);
+    }
+    .search-box input {
+      width: 100%; padding: 9px 14px 9px 38px;
+      border: 1px solid var(--line); border-radius: 999px;
+      background: var(--paper); color: var(--ink);
+      font: inherit; font-size: 14.5px;
+    }
+    .search-box input:focus { outline: none; border-color: var(--navy); background: #fff; }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter-chip {
+      border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft);
+      border-radius: 999px; padding: 6px 13px; font-size: 13.5px; font-weight: 500;
+      cursor: pointer; transition: background .15s ease, color .15s ease, border-color .15s ease;
+    }
+    .filter-chip:hover { border-color: var(--navy); color: var(--navy); }
+    .filter-chip.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+    /* ============ Course cards ============ */
+    .course {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow-sm), var(--shadow); margin-bottom: 28px; overflow: hidden;
+    }
+    .course-header {
+      width: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 16px;
+      padding: 24px 28px; background: none; border: none; cursor: pointer; text-align: left;
+    }
+    .course-head-text { flex: 1 1 280px; min-width: 0; }
+    .course-code {
+      display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .06em;
+      color: var(--navy); background: var(--navy-soft); border-radius: 6px; padding: 3px 10px;
+      margin-bottom: 8px;
+    }
+    .course-name {
+      font-family: var(--serif); font-size: 22px; font-weight: 600; line-height: 1.3;
+      margin: 0 0 6px; color: var(--navy-deep);
+    }
+    .course-meta { color: var(--muted); font-size: 14px; margin: 0; }
+
+    .course-stats { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .stat {
+      font-size: 13px; color: var(--ink-soft); background: var(--paper);
+      border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px;
+    }
+    .course-chev { width: 18px; height: 18px; color: var(--muted); transition: transform .2s ease; flex: none; }
+    .course-header[aria-expanded="true"] .course-chev { transform: rotate(180deg); }
+
+    .course-body { border-top: 1px solid var(--line); }
+    .course-body-inner { padding: 20px 28px 26px; }
+
+    .course-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 18px; }
+    .link-btn {
+      background: none; border: none; padding: 0; cursor: pointer;
+      color: var(--navy); font-size: 13.5px; font-weight: 500; text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .link-btn:hover { color: var(--brass); }
+
+    .group-title {
+      font-family: var(--serif); font-size: 16px; font-weight: 600; color: var(--ink-soft);
+      margin: 22px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--line);
+    }
+    .group-title:first-of-type { margin-top: 0; }
+
+    /* ============ Lecture rows ============ */
+    .lecture {
+      border: 1px solid var(--line); border-radius: 10px;
+      background: #fbfaf7; margin-bottom: 10px; overflow: hidden;
+    }
+    .lecture-header {
+      width: 100%; display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px; background: none; border: none; cursor: pointer; text-align: left;
+    }
+    .lec-no {
+      flex: none; width: 38px; height: 26px; display: grid; place-items: center;
+      font-size: 12.5px; font-weight: 600; color: var(--navy);
+      background: var(--navy-soft); border-radius: 6px;
+    }
+    .lec-title { flex: 1 1 auto; min-width: 0; font-weight: 500; font-size: 15px; color: var(--ink); }
+    .lec-count { flex: none; font-size: 12.5px; color: var(--muted); }
+    .lec-chev { width: 15px; height: 15px; color: var(--muted); flex: none; transition: transform .2s ease; }
+    .lecture-header[aria-expanded="true"] .lec-chev { transform: rotate(180deg); }
+
+    .lecture-body { overflow: hidden; max-height: 0; transition: max-height .28s ease; }
+    .lecture-body-inner { padding: 0 16px 16px 68px; }
+
+    /* ============ Resource pills ============ */
+    .resource-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .res {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13.5px; color: var(--ink); text-decoration: none;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+      padding: 6px 13px; transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+    }
+    .res:hover { border-color: var(--navy); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+    .res-badge {
+      font-size: 11px; font-weight: 600; letter-spacing: .03em;
+      padding: 2px 8px; border-radius: 999px;
+    }
+    .res-label { color: var(--ink-soft); }
+    .res-ext { font-size: 11px; color: var(--muted); letter-spacing: .04em; }
+
+    .t-slides     { color: var(--navy);    background: var(--navy-soft); }
+    .t-tutorial   { color: var(--teal);     background: #e8f1ee; }
+    .t-data       { color: var(--plum);     background: #f0ebf3; }
+    .t-solution   { color: var(--brass);    background: var(--brass-soft); }
+    .t-assessment { color: var(--rust);     background: #f7ece9; }
+    .t-guide      { color: var(--ink-soft); background: var(--paper); }
+    .t-other      { color: var(--muted);     background: var(--paper); }
+
+    /* ============ Empty state ============ */
+    .empty-state {
+      display: none; text-align: center; color: var(--muted);
+      padding: 48px 20px; border: 1px dashed var(--line); border-radius: var(--radius);
+    }
+    .empty-state.show { display: block; }
+
+    /* ============ Responsive ============ */
+    @media (max-width: 880px) {
+      .wrapper { grid-template-columns: 1fr; gap: 36px; padding: 32px 22px 64px; }
+      aside.sidebar { position: static; }
+      .portrait { max-width: 190px; }
+      .identity h1 { margin-top: 16px; }
+      nav.main-nav ul { display: flex; flex-wrap: wrap; gap: 4px; }
+      nav.main-nav a { padding: 7px 12px; }
+      .page-title { font-size: 28px; }
+      .course-header { padding: 20px 20px; }
+      .course-body-inner { padding: 18px 20px 22px; }
+      .lecture-body-inner { padding-left: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- ================= Sidebar (identical to homepage) ================= -->
+    <aside class="sidebar">
+      <img class="portrait" src="LP_best.png" alt="Portrait of Lei Pan">
+
+      <div class="identity">
+        <h1>Lei Pan</h1>
+        <p class="role">
+          Assistant Professor (Lecturer) in Economics<br>
+          <span class="affil">
+            <a href="https://www.curtin.edu.au/about/learning-teaching/business-and-law/curtin-business-school/accounting-economics-finance/" target="_blank" rel="noopener noreferrer">Economics Discipline</a>,
+            <a href="https://www.curtin.edu.au/" target="_blank" rel="noopener noreferrer">Curtin University</a>
+          </span>
+        </p>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="https://leipanecon.github.io/">Home</a></li>
+          <li><a href="https://leipanecon.github.io/research/Lei%20Pan_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
+          <li><a href="https://leipanecon.github.io/research.html">Research</a></li>
+          <li><a href="https://leipanecon.github.io/teaching.html" class="active">Teaching</a></li>
+          <li><a href="https://leipanecon.github.io/miscellaneous.html">Miscellaneous</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social" aria-label="Social and academic profiles">
+        <li><a href="mailto:lei.pan@curtin.edu.au" target="_blank" rel="noopener noreferrer" title="Email" aria-label="Email"><i class="fa fa-fw fa-envelope"></i></a></li>
+        <li><a href="https://scholar.google.com/citations?user=bkbOz1IAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-fw ai-google-scholar"></i></a></li>
+        <li><a href="https://au.linkedin.com/in/lei-pan-75b394b6" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa fa-fw fa-linkedin"></i></a></li>
+        <li><a href="https://twitter.com/LeiPanEcon" target="_blank" rel="noopener noreferrer" title="Twitter" aria-label="Twitter"><i class="fa fa-fw fa-twitter"></i></a></li>
+        <li><a href="https://github.com/leipanecon" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fa fa-fw fa-github"></i></a></li>
+      </ul>
+
+      <div class="contact">
+        <span class="label">Contact</span>
+        <a href="mailto:lei.pan@curtin.edu.au">lei.pan@curtin.edu.au</a><br>
+        Economics Discipline<br>
+        Curtin University<br>
+        Perth, WA 6102, Australia
+      </div>
+    </aside>
+
+    <!-- ================= Main content ================= -->
+    <main class="content">
+
+      <header class="page-header">
+        <h1 class="page-title">Teaching</h1>
+        <p class="page-sub">Courses, lecture materials, problem sets and tutorials. Search by topic, or filter by resource type.</p>
       </header>
-      <section>
-      <!-- <h2>Teaching Statement</h2> -->
-      <!-- <p><a href="https://tyleransom.github.io/teaching/Teaching-Statement.pdf">Download (PDF)</a><br></p> -->    
-      <h2>Curtin University</h2>
-     
-      <p></p>
-      <b>ECON4002: Advanced Macroeconomics</b>
-      <br>Honours: Semester 1, 2022; Semester 1, 2026 </br>        
-      <br>
-      Lecture 1 - School of macroeconomic thoughts
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 1 School of Macroeconomic Thoughts.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 1</a>] </li>               
-</ul>
-      Lecture 2 - Solow-Swan model
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 2 Solow-Swan Model.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 2</a>] </li>               
-</ul>
-Lecture 3 - The Diamond model
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 3 The Diamond Model.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 3</a>] </li>               
-</ul>
-Lecture 4 - More on Diamond
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 4 More on Diamond.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 4</a>] </li>               
-</ul>
-Lecture 5 - Ramsey-Cass-Koopmans model
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 5 Ramsey-Cass-Koopmans Model.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 5</a>] </li>               
-</ul>
-Lecture 6 - More on RCK
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 6 More on RCK.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 6</a>] </li>               
-</ul>
-Lecture 7 - The new growth theory: Romer model
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 7 Romer Model.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 7</a>] </li>               
-</ul>
-Lecture 8 - The new growth theory: Lucas model
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 8 Lucas Model.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 8</a>] </li>               
-</ul>
-Lecture 9 - An overview of fiscal policy
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 9 An Overview of Fiscal Policy.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 9</a>] </li>               
-</ul>
-Lecture 10 - The effects of government debt on capital and saving
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 10 The Effects of Government Debt on Capital and Saving.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 10</a>] </li>               
-</ul>
-Lecture 11 - An overview of money and monetary policy
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 11 An Overview of Money and Monetary Policy.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 11</a>] </li>               
-</ul>
-Lecture 12 - Transmission mechanisms of monetary policy and OLG model with money
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 12 Transmission mechanisms of monetary policy and OLG model with money.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 12</a>] </li>               
-</ul>
-Problem set 1: Solow-Swan model</p>
-<ul style="list-style-type:disc">
-  <li> [<a href="https://leipanecon.github.io/teaching/Problem set 1_solow.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] </li> 
-  <li> [<a href="https://leipanecon.github.io/teaching/Problem set 1 solution_solow.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] </li> 
-</ul>
-Problem set 2: The Diamond model</p>
-<ul style="list-style-type:disc">
-  <li> [<a href="https://leipanecon.github.io/teaching/Problem set 2_olg.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] </li> 
-  <li> [<a href="https://leipanecon.github.io/teaching/Problem set 2 solution_olg.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] </li> 
-</ul>
-Problem set 3: Ramsey-Cass-Koopmans model</p>
-<ul style="list-style-type:disc">
-  <li> [<a href="https://leipanecon.github.io/teaching/Problem set 3_rck.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] </li> 
-  <li> [<a href="https://leipanecon.github.io/teaching/Problem set 3 solution_rck.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] </li> 
-</ul>
-Problem set 4: Romer model</p>
-<ul style="list-style-type:disc">
-  <li> [<a href="https://leipanecon.github.io/teaching/Problem set 4_romer.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] </li> 
-  <li> [<a href="https://leipanecon.github.io/teaching/Problem set 4 solution_romer.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] </li> 
-</ul>
-Problem set 5: Lucas model</p>
-<ul style="list-style-type:disc">
-  <li> [<a href="https://leipanecon.github.io/teaching/Problem set 5_lucas.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] </li> 
-  <li> [<a href="https://leipanecon.github.io/teaching/Problem set 5 solution_lucas.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] </li> 
-</ul>
-Problem set 6: Fiscal policy</p>
-<ul style="list-style-type:disc">
-  <li> [<a href="https://leipanecon.github.io/teaching/Problem set 6_fiscal.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] </li> 
-  <li> [<a href="https://leipanecon.github.io/teaching/Problem set 6 solution_fiscal.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] </li> 
-</ul>
-Mid-term exam
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Mid-term Exam_advanced macro.pdf" target="_blank" rel="noopener noreferrer">Questions</a>]  </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Mid-term Exam Solution_advanced macro.pdf" target="_blank" rel="noopener noreferrer">Solution</a>]  </li> 
-</ul>
-<!--
-Lecture 10 - An overview of money and monetary policy
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 10 A Overview of Money and Monetary Policy.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 10</a>] </li>               
-</ul>
-Problem set 1 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Problem set 1.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Problem set 1 solution.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] </li> 
-</ul>
-Problem set 2 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Problem set 2.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Problem set 2 solution.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] </li> 
-</ul>
-Major essay 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Major essay.pdf" target="_blank" rel="noopener noreferrer">asessment</a>] </li>         
-</ul>
--->
 
-<hr>
-
-<p>
-  <strong>ECOM5005: Business Analytics and Data Visualisation</strong><br>
-  Postgraduate: Trimester 2A, 2026 (Singapore campus); Semester 2, 2026 (Perth and Mauritius campuses); Trimester 3, 2026 (Dubai campus)
-</p>
-
-<p>Lecture 1 - Defining and Collecting Data</p>
-
-<ul>
-  <li>
-    [<a href="/teaching/Lecture 1_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 1</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/You Do It Solution.pdf" target="_blank" rel="noopener noreferrer">"You Do It" solution</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial%20Guide.pdf" target="_blank" rel="noopener noreferrer">Tutorial Guide</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 1_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 1</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/survey questions.pdf" target="_blank" rel="noopener noreferrer">Survey questions</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/survey results.xlsx" target="_blank" rel="noopener noreferrer">Survey results</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 1 sol_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 1 solution</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 1 data exercise solution.xlsx" target="_blank" rel="noopener noreferrer">Data exercise solution</a>]
-  </li>
-</ul>
-
-<p>Lecture 2 - Organising and Presenting Data</p>
-
-<ul>        
-  <li>
-    [<a href="/teaching/Lecture 2_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 2</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/You Do It_Lecture 2.pdf" target="_blank" rel="noopener noreferrer">"You Do It" solution</a>]
-  </li>
-  
-  <li>
-    [<a href="/teaching/Tutorial 2_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 2</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/unemp_AUS.xlsx" target="_blank" rel="noopener noreferrer">Data</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 2 sol_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 2 solution</a>]
-  </li>
-  </ul>
-
-  <p>Lecture 3 - Numerical Descriptive Measures</p>
-
-  <ul>        
-  <li>
-    [<a href="/teaching/Lecture 3_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 3</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/You Do It_Lecture 3.pdf" target="_blank" rel="noopener noreferrer">"You Do It" solution</a>]
-  </li>
-    
-  <li>
-    [<a href="/teaching/Tutorial 3_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 3</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Beer.xlsx" target="_blank" rel="noopener noreferrer">Data</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 3 sol_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 3 solution</a>]
-  </li>
-  </ul>
-
-<p>Lecture 4 - Elementary Probability</p>
-
-  <ul>        
-  <li>
-    [<a href="/teaching/Lecture 4_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 4</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/You Do It_Lecture 4.pdf" target="_blank" rel="noopener noreferrer">"You Do It" solution</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 4_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 4</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/UE_Australia.xlsx" target="_blank" rel="noopener noreferrer">Data</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 4 sol_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 4 solution</a>]
-  </li>
-  </ul>
-
-<p>Lecture 5 - Probability Distributions</p>
-
-  <ul>        
-  <li>
-    [<a href="/teaching/Lecture 5_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 5</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/You Do It_Lecture 5.pdf" target="_blank" rel="noopener noreferrer">"You Do It" solution</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 5_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 5</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/stock_price_2017.xlsx" target="_blank" rel="noopener noreferrer">Data</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 5 sol_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 5 solution</a>]
-  </li>
-  </ul>
-
-<p>Lecture 6 - Sampling Distributions</p>
-
-  <ul>        
-  <li>
-    [<a href="/teaching/Lecture 6_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 6</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/You Do It_Lecture 6.pdf" target="_blank" rel="noopener noreferrer">"You Do It" solution</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 6_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 6</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Restaurant_Times.xlsx" target="_blank" rel="noopener noreferrer">Data</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 6 sol_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 6 solution</a>]
-  </li>
-  </ul>
-
-<p>Lecture 7A - The Normal Distribution and Other Continuous Distribution</p>
-
-  <ul>        
-  <li>
-    [<a href="/teaching/Lecture 7A_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 7A</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/You Do It_Lecture 7A.pdf" target="_blank" rel="noopener noreferrer">"You Do It" solution</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 7A_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 7A</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Palmer_Penguins_Data.xlsx" target="_blank" rel="noopener noreferrer">Data</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 7A sol_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 7A solution</a>]
-  </li>
-  </ul>
-
-<p>Lecture 7B - Confidence Interval Estimation</p>
-
-  <ul>        
-  <li>
-    [<a href="/teaching/Lecture 7B_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 7B</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/You Do It_Lecture 7B.pdf" target="_blank" rel="noopener noreferrer">"You Do It" solution</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 7B_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 7B</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Restaurant_Tips_Data.xlsx" target="_blank" rel="noopener noreferrer">Data</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 7B sol_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 7B solution</a>]
-  </li>
-  </ul>  
-
-  <p>Lecture 8 - Hypothesis Testing: One-sample Tests</p>
-
-  <ul>        
-  <li>
-    [<a href="/teaching/Lecture 8_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 8</a>]
-  </li>
-
- <li>
-    [<a href="/teaching/You Do It_Lecture 8.pdf" target="_blank" rel="noopener noreferrer">"You Do It" solution</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 8_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 8</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Consumer_Credit_Card_Data.xlsx" target="_blank" rel="noopener noreferrer">Data</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 8 sol_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 8 solution</a>]
-  </li>
-  </ul> 
-
-  <p>Lecture 9 - Hypothesis Testing: Two-sample Tests</p>
-
-  <ul>        
-  <li>
-    [<a href="/teaching/Lecture 9_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 9</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/You Do It_Lecture 9.pdf" target="_blank" rel="noopener noreferrer">"You Do It" solution</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 9_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 9</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Palmer_Penguins_Data.xlsx" target="_blank" rel="noopener noreferrer">Data</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 9 sol_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 9 solution</a>]
-  </li>
-  </ul>
-
-  <p>Lecture 10 - Simple Linear Regression</p>
-
-  <ul>        
-  <li>
-    [<a href="/teaching/Lecture 10_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 10</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/You Do It_Lecture 10.pdf" target="_blank" rel="noopener noreferrer">"You Do It" solution</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 10_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 10</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/EPA_Fuel_Economy_Data.xlsx" target="_blank" rel="noopener noreferrer">Data</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/Tutorial 10 sol_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Tutorial 10 solution</a>]
-  </li>
-  </ul>
-
-  <p>Lecture 11 - Multiple Regression Analysis</p>
-
-  <ul>        
-  <li>
-    [<a href="/teaching/Lecture 11_ecom5005.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 11</a>]
-  </li>
-
-  <li>
-    [<a href="/teaching/You Do It_Lecture 11.pdf" target="_blank" rel="noopener noreferrer">"You Do It" solution</a>]
-  </li>
-  </ul>
-        
-        
-<!--        
-<hr>
-
-  <h2>Australian Catholic University</h2>
-     
-      <b>ECON203: Macroeconomics 2</b>
-      <br> Undergraduate: Semester 2, 2019 </br>
-  <br>
-  Lecture 1 - Introduction to macroeconomics 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/econ203/Lecture 1.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 1</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 1.pdf" target="_blank" rel="noopener noreferrer">Tutorial 1</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 1 Solution.pdf" target="_blank" rel="noopener noreferrer">Tutorial 1 Solution</a>] </li>   
-</ul>
-Lecture 2 - Productivity, output and employment 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/econ203/Lecture 2.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 2</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 2.pdf" target="_blank" rel="noopener noreferrer">Tutorial 2</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 2 Solution.pdf" target="_blank" rel="noopener noreferrer">Tutorial 2 Solution</a>] </li>   
-</ul>
-Lecture 3 - Consumption, savings and investment 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/econ203/Lecture 3.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 3</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 3.pdf" target="_blank" rel="noopener noreferrer">Tutorial 3</a>] [<a href="https://leipanecon.github.io/teaching/Tutorial 4.pdf" target="_blank" rel="noopener noreferrer">Tutorial 4</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 3 Solution.pdf" target="_blank" rel="noopener noreferrer">Tutorial 3 Solution</a>] [<a href="https://leipanecon.github.io/teaching/Tutorial 4 Solution.pdf" target="_blank" rel="noopener noreferrer">Tutorial 4 Solution</a>] </li>   
-</ul>
-Lecture 4 - Saving and investment in the open economy
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/econ203/Lecture 4.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 4</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 5.pdf" target="_blank" rel="noopener noreferrer">Tutorial 5</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 5 Solution.pdf" target="_blank" rel="noopener noreferrer">Tutorial 5 Solution</a>] </li>   
-</ul>
-Lecture 5 - Long-run economic growth
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/econ203/Lecture 5.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 5</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 6.pdf" target="_blank" rel="noopener noreferrer">Tutorial 6</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 6 Solution.pdf" target="_blank" rel="noopener noreferrer">Tutorial 6 Solution</a>] </li>   
-</ul>
-Lecture 6 - The asset market, money and prices
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/econ203/Lecture 6.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 6</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 7.pdf" target="_blank" rel="noopener noreferrer">Tutorial 7</a>] [<a href="https://leipanecon.github.io/teaching/Tutorial 8.pdf" target="_blank" rel="noopener noreferrer">Tutorial 8</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 7 Solution.pdf" target="_blank" rel="noopener noreferrer">Tutorial 7 Solution</a>] [<a href="https://leipanecon.github.io/teaching/Tutorial 8 Solution.pdf" target="_blank" rel="noopener noreferrer">Tutorial 8 Solution</a>] </li>   
-</ul>
-Lecture 7 - The IS-LM/AD-AS model
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/econ203/Lecture 7.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 7</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 9.pdf" target="_blank" rel="noopener noreferrer">Tutorial 9</a>] [<a href="https://leipanecon.github.io/teaching/Tutorial 10.pdf" target="_blank" rel="noopener noreferrer">Tutorial 10</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Tutorial 9 Solution.pdf" target="_blank" rel="noopener noreferrer">Tutorial 9 Solution</a>] [<a href="https://leipanecon.github.io/teaching/Tutorial 10 Solution.pdf" target="_blank" rel="noopener noreferrer">Tutorial 10 Solution</a>] </li>   
-</ul>
-Homework 1 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Homework 1.pdf" target="_blank" rel="noopener noreferrer">Homework 1</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Homework 1 Solution.pdf" target="_blank" rel="noopener noreferrer">Homework 1 Solution</a>] </li> 
-</ul>
-Homework 2 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Homework 2.pdf" target="_blank" rel="noopener noreferrer">Homework 2</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Homework 2 Solution.pdf" target="_blank" rel="noopener noreferrer">Homework 2 Solution</a>] </li> 
-</ul>
-Final exam 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/econ203/Final exam.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/econ203/Final exam solution.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] </li> 
-</ul>
-Deferred exam 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Deferred exam.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Deferred exam solution.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] </li> 
-</ul>
-Supplementary assessment 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Supplementary assessment.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Supplementary assessment solution.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] </li> 
-</ul>
--->
-  
- <!-- 
-        <hr>
-
-      <h2>Soochow University, Taiwan</h2>
-     
-      <b>ECON202: Macroeconomics</b>
-      <br> Undergraduate: Winter 2021/Summer 2022 </br>
-  <br>
-  Lecture 1 - Introduction to macroeconomics
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 1.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 1</a>] </li>               
-</ul>
-Lecture 2 - Measuring a nation's income
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 2.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 2</a>] </li>               
-</ul>
-Lecture 3 - Measuring the cost of living
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 3.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 3</a>] </li>               
-</ul>
-Lecture 4 - Unemployment
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 4.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 4</a>] </li>               
-</ul>
-Lecture 5 - Production and growth
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 5.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 5</a>] </li>               
-</ul>
-Lecture 6 - Saving, investment, and the financial system
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 6.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 6</a>] </li>               
-</ul>
-Lecture 7 - The basic tool of finance
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 7.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 7</a>] </li>               
-</ul>
-Lecture 8 - Mid-term revision
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 8.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 8</a>] </li>               
-</ul>
-Lecture 9 - The monetary system
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 9.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 9</a>] </li>               
-</ul>
-Lecture 10 - Money growth and inflation
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 10.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 10</a>] </li>               
-</ul>
-Lecture 11 - Open-economy macroeconomics: Basics
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 11.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 11</a>] </li>               
-</ul>
-Lecture 12 - A macroeconomic theory of the open economy
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 12.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 12</a>] </li>               
-</ul>
-Lecture 13 - Aggregate demand and aggregate supply: Part 1
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 13.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 13</a>] </li>               
-</ul>
-Lecture 14 - Aggregate demand and aggregate supply: Part 2
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 14.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 14</a>] </li>               
-</ul>
-Lecture 15 - Monetary and fiscal policy: Part 1
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 15.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 15</a>] </li>               
-</ul>
-Lecture 16 - Monetary and fiscal policy: Part 2
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Lecture 16.pdf" target="_blank" rel="noopener noreferrer">Lecture slides 16</a>] </li>               
-</ul>
-Discussion session I 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Discussion Session I.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] (Winter 2021) &nbsp; [<a href="https://leipanecon.github.io/teaching/Discussion Session I-2022.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] (Summer 2022) </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Discussion Session I Solution.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] (Winter 2021) &nbsp; [<a href="https://leipanecon.github.io/teaching/Discussion Session I Solution 2022.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] (Summer 2022) </li> 
-</ul>
-Discussion session II 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Discussion Session II.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] (Winter 2021) &nbsp; [<a href="https://leipanecon.github.io/teaching/Discussion Session II 2022.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] (Summer 2022) </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Discussion Session II Solution.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] (Winter 2021) &nbsp; [<a href="https://leipanecon.github.io/teaching/Discussion Session II Solution 2022.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] (Summer 2022) </li> 
-</ul>
-Quiz 1 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Quiz 1.pdf" target="_blank" rel="noopener noreferrer">Quiz 1</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Quiz 1 Solution.pdf" target="_blank" rel="noopener noreferrer">Quiz 1 Solution</a>] </li> 
-</ul>
-Quiz 2 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Quiz 2.pdf" target="_blank" rel="noopener noreferrer">Quiz 2</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Quiz 2 Solution.pdf" target="_blank" rel="noopener noreferrer">Quiz 2 Solution</a>] </li> 
-</ul>
-Quiz 3 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Quiz 3.pdf" target="_blank" rel="noopener noreferrer">Quiz 3</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Quiz 3 Solution.pdf" target="_blank" rel="noopener noreferrer">Quiz 3 Solution</a>] </li> 
-</ul>
-Quiz 4 
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Quiz 4.pdf" target="_blank" rel="noopener noreferrer">Quiz 4</a>] </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Quiz 4 Solution.pdf" target="_blank" rel="noopener noreferrer">Quiz 4 Solution</a>] </li> 
-</ul>
-Mid-term exam
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Mid-term Exam.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] (Winter 2021) &nbsp; [<a href="https://leipanecon.github.io/teaching/Mid-term exam 2022.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] (Summer 2022) </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Mid-term Exam Solution.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] (Winter 2021) &nbsp; [<a href="https://leipanecon.github.io/teaching/Mid-term exam solution 2022.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] (Summer 2022) </li> 
-</ul>
-Final exam
-<ul style="list-style-type:disc">
-<li> [<a href="https://leipanecon.github.io/teaching/Final Exam.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] (Winter 2021) &nbsp; [<a href="https://leipanecon.github.io/teaching/Final exam 2022.pdf" target="_blank" rel="noopener noreferrer">Questions</a>] (Summer 2022) </li> 
-<li> [<a href="https://leipanecon.github.io/teaching/Final Exam Solution.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] (Winter 2021) &nbsp; [<a href="https://leipanecon.github.io/teaching/Final exam solution 2022.pdf" target="_blank" rel="noopener noreferrer">Solution</a>] (Summer 2022) </li> 
-</ul>
--->
-
-      
-    <script src="javascripts/scale.fix.js"></script>
-  </body>
+      <div class="toolbar">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input id="search" type="search" placeholder="Search lectures or resources…" aria-label="Search teaching materials">
+        </div>
+        <div class="filters" id="filters" role="group" aria-label="Filter by resource type">
+          <button class="filter-chip active" data-type="all">All</button>
+          <button class="filter-chip" data-type="slides">Slides</button>
+          <button class="filter-chip" data-type="tutorial">Tutorial</button>
+          <button class="filter-chip" data-type="data">Data</button>
+          <button class="filter-chip" data-type="solution">Solution</button>
+          <button class="filter-chip" data-type="assessment">Assessment</button>
+          <button class="filter-chip" data-type="guide">Guide</button>
+        </div>
+      </div>
+
+      <div id="course-list"></div>
+      <p class="empty-state" id="empty-state">No materials match your search or filter.</p>
+
+    </main>
+  </div>
+
+  <script>
+    /* ==================== Data ==================== */
+    var ECON_BASE = "https://leipanecon.github.io/teaching/";
+    var ECOM_BASE = "/teaching/";
+
+    var TYPE_META = {
+      slides:     { label: "Slides",     cls: "t-slides" },
+      tutorial:   { label: "Tutorial",   cls: "t-tutorial" },
+      data:       { label: "Data",       cls: "t-data" },
+      solution:   { label: "Solution",   cls: "t-solution" },
+      assessment: { label: "Assessment", cls: "t-assessment" },
+      guide:      { label: "Guide",      cls: "t-guide" },
+      other:      { label: "Other",      cls: "t-other" }
+    };
+
+    var COURSES = [
+      {
+        code: "ECON4002",
+        name: "Advanced Macroeconomics",
+        meta: "Honours · Semester 1, 2022; Semester 1, 2026",
+        base: ECON_BASE,
+        sections: [
+          {
+            title: "Lectures",
+            items: [
+              { no: "L1",  title: "School of macroeconomic thoughts",            res: [{ label: "Lecture slides 1",  type: "slides",     file: "Lecture 1 School of Macroeconomic Thoughts.pdf" }] },
+              { no: "L2",  title: "Solow-Swan model",                            res: [{ label: "Lecture slides 2",  type: "slides",     file: "Lecture 2 Solow-Swan Model.pdf" }] },
+              { no: "L3",  title: "The Diamond model",                           res: [{ label: "Lecture slides 3",  type: "slides",     file: "Lecture 3 The Diamond Model.pdf" }] },
+              { no: "L4",  title: "More on Diamond",                             res: [{ label: "Lecture slides 4",  type: "slides",     file: "Lecture 4 More on Diamond.pdf" }] },
+              { no: "L5",  title: "Ramsey-Cass-Koopmans model",                  res: [{ label: "Lecture slides 5",  type: "slides",     file: "Lecture 5 Ramsey-Cass-Koopmans Model.pdf" }] },
+              { no: "L6",  title: "More on RCK",                                 res: [{ label: "Lecture slides 6",  type: "slides",     file: "Lecture 6 More on RCK.pdf" }] },
+              { no: "L7",  title: "The new growth theory: Romer model",          res: [{ label: "Lecture slides 7",  type: "slides",     file: "Lecture 7 Romer Model.pdf" }] },
+              { no: "L8",  title: "The new growth theory: Lucas model",         res: [{ label: "Lecture slides 8",  type: "slides",     file: "Lecture 8 Lucas Model.pdf" }] },
+              { no: "L9",  title: "An overview of fiscal policy",                 res: [{ label: "Lecture slides 9",  type: "slides",     file: "Lecture 9 An Overview of Fiscal Policy.pdf" }] },
+              { no: "L10", title: "The effects of government debt on capital and saving", res: [{ label: "Lecture slides 10", type: "slides", file: "Lecture 10 The Effects of Government Debt on Capital and Saving.pdf" }] },
+              { no: "L11", title: "An overview of money and monetary policy",     res: [{ label: "Lecture slides 11", type: "slides",     file: "Lecture 11 An Overview of Money and Monetary Policy.pdf" }] },
+              { no: "L12", title: "Transmission mechanisms of monetary policy and OLG model with money", res: [{ label: "Lecture slides 12", type: "slides", file: "Lecture 12 Transmission mechanisms of monetary policy and OLG model with money.pdf" }] }
+            ]
+          },
+          {
+            title: "Problem Sets",
+            items: [
+              { no: "PS1", title: "Solow-Swan model",            res: [
+                { label: "Questions",  type: "assessment", file: "Problem set 1_solow.pdf" },
+                { label: "Solution",   type: "solution",   file: "Problem set 1 solution_solow.pdf" }
+              ]},
+              { no: "PS2", title: "The Diamond model",           res: [
+                { label: "Questions",  type: "assessment", file: "Problem set 2_olg.pdf" },
+                { label: "Solution",   type: "solution",   file: "Problem set 2 solution_olg.pdf" }
+              ]},
+              { no: "PS3", title: "Ramsey-Cass-Koopmans model", res: [
+                { label: "Questions",  type: "assessment", file: "Problem set 3_rck.pdf" },
+                { label: "Solution",   type: "solution",   file: "Problem set 3 solution_rck.pdf" }
+              ]},
+              { no: "PS4", title: "Romer model",                 res: [
+                { label: "Questions",  type: "assessment", file: "Problem set 4_romer.pdf" },
+                { label: "Solution",   type: "solution",   file: "Problem set 4 solution_romer.pdf" }
+              ]},
+              { no: "PS5", title: "Lucas model",                 res: [
+                { label: "Questions",  type: "assessment", file: "Problem set 5_lucas.pdf" },
+                { label: "Solution",   type: "solution",   file: "Problem set 5 solution_lucas.pdf" }
+              ]},
+              { no: "PS6", title: "Fiscal policy",               res: [
+                { label: "Questions",  type: "assessment", file: "Problem set 6_fiscal.pdf" },
+                { label: "Solution",   type: "solution",   file: "Problem set 6 solution_fiscal.pdf" }
+              ]}
+            ]
+          },
+          {
+            title: "Assessment",
+            items: [
+              { no: "EX", title: "Mid-term exam", res: [
+                { label: "Questions", type: "assessment", file: "Mid-term Exam_advanced macro.pdf" },
+                { label: "Solution", type: "solution",   file: "Mid-term Exam Solution_advanced macro.pdf" }
+              ]}
+            ]
+          }
+        ]
+      },
+      {
+        code: "ECOM5005",
+        name: "Business Analytics and Data Visualisation",
+        meta: "Postgraduate · Trimester 2A, 2026 (Singapore); Semester 2, 2026 (Perth & Mauritius); Trimester 3, 2026 (Dubai)",
+        base: ECOM_BASE,
+        sections: [
+          {
+            title: "Lectures",
+            items: [
+              { no: "L1", title: "Defining and Collecting Data", res: [
+                { label: "Lecture slides 1",        type: "slides",     file: "Lecture 1_ecom5005.pdf" },
+                { label: "“You Do It” solution",   type: "guide",      file: "You Do It Solution.pdf" },
+                { label: "Tutorial Guide",          type: "guide",      file: "Tutorial Guide.pdf" },
+                { label: "Tutorial 1",              type: "tutorial",   file: "Tutorial 1_ecom5005.pdf" },
+                { label: "Survey questions",        type: "other",      file: "survey questions.pdf" },
+                { label: "Survey results",          type: "data",       file: "survey results.xlsx" },
+                { label: "Tutorial 1 solution",     type: "solution",   file: "Tutorial 1 sol_ecom5005.pdf" },
+                { label: "Data exercise solution",  type: "data",       file: "Tutorial 1 data exercise solution.xlsx" }
+              ]},
+              { no: "L2", title: "Organising and Presenting Data", res: [
+                { label: "Lecture slides 2",      type: "slides",     file: "Lecture 2_ecom5005.pdf" },
+                { label: "“You Do It” solution",  type: "guide",      file: "You Do It_Lecture 2.pdf" },
+                { label: "Tutorial 2",            type: "tutorial",   file: "Tutorial 2_ecom5005.pdf" },
+                { label: "Data",                  type: "data",       file: "unemp_AUS.xlsx" },
+                { label: "Tutorial 2 solution",   type: "solution",   file: "Tutorial 2 sol_ecom5005.pdf" }
+              ]},
+              { no: "L3", title: "Numerical Descriptive Measures", res: [
+                { label: "Lecture slides 3",      type: "slides",     file: "Lecture 3_ecom5005.pdf" },
+                { label: "“You Do It” solution",  type: "guide",      file: "You Do It_Lecture 3.pdf" },
+                { label: "Tutorial 3",            type: "tutorial",   file: "Tutorial 3_ecom5005.pdf" },
+                { label: "Data",                  type: "data",       file: "Beer.xlsx" },
+                { label: "Tutorial 3 solution",   type: "solution",   file: "Tutorial 3 sol_ecom5005.pdf" }
+              ]},
+              { no: "L4", title: "Elementary Probability", res: [
+                { label: "Lecture slides 4",      type: "slides",     file: "Lecture 4_ecom5005.pdf" },
+                { label: "“You Do It” solution",  type: "guide",      file: "You Do It_Lecture 4.pdf" },
+                { label: "Tutorial 4",            type: "tutorial",   file: "Tutorial 4_ecom5005.pdf" },
+                { label: "Data",                  type: "data",       file: "UE_Australia.xlsx" },
+                { label: "Tutorial 4 solution",   type: "solution",   file: "Tutorial 4 sol_ecom5005.pdf" }
+              ]},
+              { no: "L5", title: "Probability Distributions", res: [
+                { label: "Lecture slides 5",      type: "slides",     file: "Lecture 5_ecom5005.pdf" },
+                { label: "“You Do It” solution",  type: "guide",      file: "You Do It_Lecture 5.pdf" },
+                { label: "Tutorial 5",            type: "tutorial",   file: "Tutorial 5_ecom5005.pdf" },
+                { label: "Data",                  type: "data",       file: "stock_price_2017.xlsx" },
+                { label: "Tutorial 5 solution",   type: "solution",   file: "Tutorial 5 sol_ecom5005.pdf" }
+              ]},
+              { no: "L6", title: "Sampling Distributions", res: [
+                { label: "Lecture slides 6",      type: "slides",     file: "Lecture 6_ecom5005.pdf" },
+                { label: "“You Do It” solution",  type: "guide",      file: "You Do It_Lecture 6.pdf" },
+                { label: "Tutorial 6",            type: "tutorial",   file: "Tutorial 6_ecom5005.pdf" },
+                { label: "Data",                  type: "data",       file: "Restaurant_Times.xlsx" },
+                { label: "Tutorial 6 solution",   type: "solution",   file: "Tutorial 6 sol_ecom5005.pdf" }
+              ]},
+              { no: "L7A", title: "The Normal Distribution and Other Continuous Distribution", res: [
+                { label: "Lecture slides 7A",     type: "slides",     file: "Lecture 7A_ecom5005.pdf" },
+                { label: "“You Do It” solution",  type: "guide",      file: "You Do It_Lecture 7A.pdf" },
+                { label: "Tutorial 7A",           type: "tutorial",   file: "Tutorial 7A_ecom5005.pdf" },
+                { label: "Data",                  type: "data",       file: "Palmer_Penguins_Data.xlsx" },
+                { label: "Tutorial 7A solution",  type: "solution",   file: "Tutorial 7A sol_ecom5005.pdf" }
+              ]},
+              { no: "L7B", title: "Confidence Interval Estimation", res: [
+                { label: "Lecture slides 7B",     type: "slides",     file: "Lecture 7B_ecom5005.pdf" },
+                { label: "“You Do It” solution",  type: "guide",      file: "You Do It_Lecture 7B.pdf" },
+                { label: "Tutorial 7B",           type: "tutorial",   file: "Tutorial 7B_ecom5005.pdf" },
+                { label: "Data",                  type: "data",       file: "Restaurant_Tips_Data.xlsx" },
+                { label: "Tutorial 7B solution",  type: "solution",   file: "Tutorial 7B sol_ecom5005.pdf" }
+              ]},
+              { no: "L8", title: "Hypothesis Testing: One-sample Tests", res: [
+                { label: "Lecture slides 8",      type: "slides",     file: "Lecture 8_ecom5005.pdf" },
+                { label: "“You Do It” solution",  type: "guide",      file: "You Do It_Lecture 8.pdf" },
+                { label: "Tutorial 8",            type: "tutorial",   file: "Tutorial 8_ecom5005.pdf" },
+                { label: "Data",                  type: "data",       file: "Consumer_Credit_Card_Data.xlsx" },
+                { label: "Tutorial 8 solution",   type: "solution",   file: "Tutorial 8 sol_ecom5005.pdf" }
+              ]},
+              { no: "L9", title: "Hypothesis Testing: Two-sample Tests", res: [
+                { label: "Lecture slides 9",      type: "slides",     file: "Lecture 9_ecom5005.pdf" },
+                { label: "“You Do It” solution",  type: "guide",      file: "You Do It_Lecture 9.pdf" },
+                { label: "Tutorial 9",            type: "tutorial",   file: "Tutorial 9_ecom5005.pdf" },
+                { label: "Data",                  type: "data",       file: "Palmer_Penguins_Data.xlsx" },
+                { label: "Tutorial 9 solution",   type: "solution",   file: "Tutorial 9 sol_ecom5005.pdf" }
+              ]},
+              { no: "L10", title: "Simple Linear Regression", res: [
+                { label: "Lecture slides 10",     type: "slides",     file: "Lecture 10_ecom5005.pdf" },
+                { label: "“You Do It” solution",  type: "guide",      file: "You Do It_Lecture 10.pdf" },
+                { label: "Tutorial 10",           type: "tutorial",   file: "Tutorial 10_ecom5005.pdf" },
+                { label: "Data",                  type: "data",       file: "EPA_Fuel_Economy_Data.xlsx" },
+                { label: "Tutorial 10 solution",  type: "solution",   file: "Tutorial 10 sol_ecom5005.pdf" }
+              ]},
+              { no: "L11", title: "Multiple Regression Analysis", res: [
+                { label: "Lecture slides 11",     type: "slides",     file: "Lecture 11_ecom5005.pdf" },
+                { label: "“You Do It” solution",  type: "guide",      file: "You Do It_Lecture 11.pdf" }
+              ]}
+            ]
+          }
+        ]
+      }
+    ];
+
+    /* ==================== Rendering ==================== */
+    function extOf(file) {
+      var m = /\.([a-z0-9]+)$/i.exec(file);
+      return m ? m[1].toUpperCase() : "FILE";
+    }
+
+    function hrefOf(base, file) {
+      return base + encodeURIComponent(file);
+    }
+
+    function esc(str) {
+      return String(str).replace(/[&<>"']/g, function(c){
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+
+    function renderResource(base, r) {
+      var meta = TYPE_META[r.type] || TYPE_META.other;
+      return '<a class="res" data-type="' + r.type + '" href="' + esc(hrefOf(base, r.file)) + '" target="_blank" rel="noopener noreferrer">' +
+        '<span class="res-badge ' + meta.cls + '">' + meta.label + '</span>' +
+        '<span class="res-label">' + esc(r.label) + '</span>' +
+        '<span class="res-ext">' + extOf(r.file) + '</span>' +
+      '</a>';
+    }
+
+    function renderLecture(base, item) {
+      var resHtml = item.res.map(function(r){ return renderResource(base, r); }).join("");
+      var count = item.res.length;
+      return '<div class="lecture" data-title="' + esc(item.title.toLowerCase()) + '">' +
+        '<button class="lecture-header" aria-expanded="false">' +
+          '<span class="lec-no">' + esc(item.no) + '</span>' +
+          '<span class="lec-title">' + esc(item.title) + '</span>' +
+          '<span class="lec-count">' + count + (count === 1 ? " resource" : " resources") + '</span>' +
+          '<svg class="lec-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>' +
+        '</button>' +
+        '<div class="lecture-body">' +
+          '<div class="lecture-body-inner"><div class="resource-list">' + resHtml + '</div></div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    function renderCourse(course, idx) {
+      var lectureCount = 0, resCount = 0;
+      var sectionsHtml = course.sections.map(function(sec){
+        var itemsHtml = sec.items.map(function(item){
+          lectureCount += 1;
+          resCount += item.res.length;
+          return renderLecture(course.base, item);
+        }).join("");
+        return '<div class="group">' +
+          '<h3 class="group-title">' + esc(sec.title) + '</h3>' +
+          '<div class="lecture-group">' + itemsHtml + '</div>' +
+        '</div>';
+      }).join("");
+
+      return '<article class="course" data-course="' + idx + '">' +
+        '<button class="course-header" aria-expanded="' + (idx === 0 ? "true" : "false") + '">' +
+          '<div class="course-head-text">' +
+            '<span class="course-code">' + esc(course.code) + '</span>' +
+            '<h3 class="course-name">' + esc(course.name) + '</h3>' +
+            '<p class="course-meta">' + esc(course.meta) + '</p>' +
+          '</div>' +
+          '<div class="course-stats">' +
+            '<span class="stat">' + lectureCount + (lectureCount === 1 ? " session" : " sessions") + '</span>' +
+            '<span class="stat">' + resCount + " resources</span>" +
+            '<svg class="course-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>' +
+          '</div>' +
+        '</button>' +
+        '<div class="course-body">' +
+          '<div class="course-body-inner">' +
+            '<div class="course-actions">' +
+              '<button class="link-btn" data-action="expand-all">Expand all sessions</button>' +
+              '<button class="link-btn" data-action="collapse-all">Collapse all</button>' +
+            '</div>' +
+            sectionsHtml +
+          '</div>' +
+        '</div>' +
+      '</article>';
+    }
+
+    var listEl = document.getElementById("course-list");
+    listEl.innerHTML = COURSES.map(renderCourse).join("");
+
+    /* ==================== Accordion behavior ==================== */
+    function setPanel(panel, open) {
+      panel.style.maxHeight = open ? panel.scrollHeight + "px" : "0";
+    }
+
+    document.querySelectorAll(".course-header").forEach(function(btn){
+      var body = btn.parentElement.querySelector(".course-body");
+      var open = btn.getAttribute("aria-expanded") === "true";
+      setPanel(body, open);
+      btn.addEventListener("click", function(){
+        open = !open;
+        btn.setAttribute("aria-expanded", String(open));
+        setPanel(body, open);
+      });
+    });
+
+    document.querySelectorAll(".lecture-header").forEach(function(btn){
+      var body = btn.parentElement.querySelector(".lecture-body");
+      setPanel(body, false);
+      btn.addEventListener("click", function(){
+        var open = btn.getAttribute("aria-expanded") !== "true";
+        btn.setAttribute("aria-expanded", String(open));
+        setPanel(body, open);
+      });
+    });
+
+    document.querySelectorAll(".course-actions").forEach(function(actions){
+      actions.addEventListener("click", function(e){
+        var action = e.target.getAttribute("data-action");
+        if (!action) return;
+        var course = actions.closest(".course");
+        var headers = course.querySelectorAll(".lecture-header");
+        headers.forEach(function(h){
+          var body = h.parentElement.querySelector(".lecture-body");
+          var open = action === "expand-all";
+          h.setAttribute("aria-expanded", String(open));
+          setPanel(body, open);
+        });
+      });
+    });
+
+    /* ==================== Search + filter ==================== */
+    var searchInput = document.getElementById("search");
+    var filterBtns = document.querySelectorAll(".filter-chip");
+    var emptyState = document.getElementById("empty-state");
+    var activeType = "all";
+
+    function applyFilters() {
+      var q = searchInput.value.trim().toLowerCase();
+      var visibleCourses = 0;
+
+      document.querySelectorAll(".course").forEach(function(course){
+        var visibleLectures = 0;
+
+        course.querySelectorAll(".lecture").forEach(function(lec){
+          var title = lec.getAttribute("data-title") || "";
+          var visibleRes = 0;
+
+          lec.querySelectorAll(".res").forEach(function(res){
+            var typeOk = activeType === "all" || res.getAttribute("data-type") === activeType;
+            var text = (res.textContent + " " + title).toLowerCase();
+            var queryOk = !q || text.indexOf(q) !== -1;
+            var show = typeOk && queryOk;
+            res.style.display = show ? "" : "none";
+            if (show) visibleRes += 1;
+          });
+
+          var lectureShow = visibleRes > 0 || (!q && activeType === "all");
+          lec.style.display = lectureShow ? "" : "none";
+          if (lectureShow) visibleLectures += 1;
+        });
+
+        var courseShow = visibleLectures > 0;
+        course.style.display = courseShow ? "" : "none";
+        if (courseShow) visibleCourses += 1;
+      });
+
+      emptyState.classList.toggle("show", visibleCourses === 0);
+    }
+
+    filterBtns.forEach(function(btn){
+      btn.addEventListener("click", function(){
+        filterBtns.forEach(function(b){ b.classList.remove("active"); });
+        btn.classList.add("active");
+        activeType = btn.getAttribute("data-type");
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener("input", applyFilters);
+  </script>
+</body>
 </html>
